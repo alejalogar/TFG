@@ -1,0 +1,111 @@
+body {
+    background: linear-gradient(120deg, #fefefe 0%, rgb(6, 195, 195) 100%);
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+  }
+
+  h1{
+      margin: 0;
+      padding: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 30px;
+      margin-top: 30px;
+      margin-bottom: 30px;
+
+  }
+
+  .hr{
+    color: rgb(0, 0, 0); /* Cambia el color a rojo */
+    height: 1px; /* Cambia la altura a 2 píxeles */
+    border: none; /* Quita el borde */
+    background: black;
+  }
+  .card-2{
+      margin: 0;
+      padding: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 20px;
+  }
+  
+  .filters-container {
+    text-align: center;
+  }
+  
+  .filter-container {
+    display: inline-block;
+    margin: 0 20px;
+  }
+  
+  .filter-dropdown {
+    display: inline-block;
+    position: relative;
+  }
+  
+  .filter-dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #fff;
+    min-width: 160px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    z-index: 1;
+  }
+  
+  .filter-dropdown:hover .filter-dropdown-content {
+    display: block;
+  }
+  
+  .filter-item {
+    padding: 5px 10px;
+    cursor: pointer;
+  }
+  
+  .card-container {
+    display: flex;
+    flex-wrap: wrap;
+    padding: 20px;
+    box-sizing: border-box; /* Añadido para evitar problemas de desbordamiento */
+  }
+  
+  .card {
+    flex-basis: 100%; /* Cambiado para que cada card ocupe una línea completa */
+    background-color: #fff;
+    border: 1px solid #3a3a3a;
+    border-radius: 5px;
+    padding: 20px;
+    margin-bottom: 20px;
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    gap: 10px;
+    align-items: center;
+  }
+
+  /* boton */
+  .button {
+    display: inline-block;
+    border-radius: 4px;
+    background-color: rgb(26, 0, 175);
+    border: 1px solid #3a3a3a;
+    color: #FFFFFF;
+    text-align: center;
+    font-size: 18px;
+    padding: 10px;
+    width: 100px;
+    transition: all 0.5s;
+    cursor: pointer;
+    margin: 5px;
+  }
+
+  /* hover */
+  .button:hover {
+    background-color: #608ab4;
+    color: white;
+    font-size: 19px;
+    
+  }
+
+

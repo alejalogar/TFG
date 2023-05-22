@@ -5,10 +5,44 @@
 {% block stylesheets %}
 {{ parent() }}
 <link rel="stylesheet" href="{{ asset('css/login.css') }}">
+<style>
+ .ie-panel {
+      display: none;
+      background: #212121;
+      padding: 10px 0;
+      box-shadow: 3px 3px 5px 0 rgba(0, 0, 0, .3);
+      clear: both;
+      text-align: center;
+      position: relative;
+      z-index: 1;
+    }
+
+    html.ie-10 .ie-panel,
+    html.lt-ie-10 .ie-panel {
+      display: block;
+    }
+</style>
 {% endblock %}
 
 {% block content %}
-<div class="container">
+
+
+ <div class="container">
+    <h2>Iniciar sesión</h2>
+    <form>
+      <label for="username">Usuario:</label>
+      <input type="text" id="username" name="username" placeholder="Ingresa tu usuario">
+
+      <label for="password">Contraseña:</label>
+      <input type="password" id="password" name="password" placeholder="Ingresa tu contraseña">
+
+      <input type="submit" value="Iniciar sesión">
+
+      <a href="register.html">¿No tienes cuenta? Registrate</a>
+    </form>
+  </div>
+
+{# <div class="container">
 <form class="form-signin" method="post">
 {% if error %}
 <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
@@ -35,5 +69,7 @@
 
         <button class="btn btn-lg btn-primary btn-block" type="submit">Iniciar sesión</button>
     </form>
-</div>
+</div> #}
+
+
 {% endblock %}

@@ -1,16 +1,50 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Inicio de sesión{% endblock %}
+{% block title %}Registro{% endblock %}
 
 {% block stylesheets %}
     {{ parent() }}
 
-    <link rel="stylesheet" href="{{ asset('css/login.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/register.css') }}">
+     <style>
+    .ie-panel {
+      display: none;
+      background: #212121;
+      padding: 10px 0;
+      box-shadow: 3px 3px 5px 0 rgba(0, 0, 0, .3);
+      clear: both;
+      text-align: center;
+      position: relative;
+      z-index: 1;
+    }
+
+    html.ie-10 .ie-panel,
+    html.lt-ie-10 .ie-panel {
+      display: block;
+    }
+  </style>
 {% endblock %}
 
 {% block content %}
 
+
 <div class="container">
+    <h2>Registro</h2>
+    <form>
+      <label for="username">Usuario:</label>
+      <input type="text" id="username" name="username" placeholder="Ingresa tu usuario">
+
+      <label for="email">Correo electrónico:</label>
+      <input type="email" id="email" name="email" placeholder="Ingresa tu correo electrónico">
+
+      <label for="password">Contraseña:</label>
+      <input type="password" id="password" name="password" placeholder="Ingresa tu contraseña">
+
+      <input type="submit" value="Registrarse">
+    </form>
+  </div>
+
+{# <div class="container">
     <form class="form-signin" method="post">
         <h1 class="h3 mb-3 font-weight-normal text-center">Registro</h1>
 
@@ -47,6 +81,6 @@
 
         <p>¿Ya tienes una cuenta? <a href="{{ path('app_login') }}">Iniciar sesión</a></p>
     </form>
-</div>
+</div> #}
 
 {% endblock %}

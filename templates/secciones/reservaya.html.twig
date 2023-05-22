@@ -1,0 +1,110 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}BH Reserva{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" href="{{ asset('css/style.css') }}">
+    <link rel="stylesheet" href="css/bootstrap.css">
+    <link rel="stylesheet" href="css/fonts.css">
+    <link rel="stylesheet" href="css/reservaya.css">
+    <style>
+    .ie-panel{
+        display: none;
+        background: #212121;
+        padding: 10px 0;
+        box-shadow: 3px 3px 5px 0 rgba(0,0,0,.3);
+        clear: both;
+        text-align:center;
+        position: relative;
+        z-index: 1;
+        }
+
+    html.ie-10 .ie-panel, html.lt-ie-10 .ie-panel {
+        display: block;
+        }
+    </style>
+
+{% endblock %}
+
+
+{% block content %}
+
+<div class="container">
+      <h2><span class="d-inline-block wow fadeInRight">RESERVA YA</span>
+        <div class="subtitle-classic wow fadeInUp">Rellene todos los campos para completar con su reserva*</div>
+        <hr class="line">
+      </h2>
+      <!-- RD Mailform-->
+      <form class="rd-form rd-mailform" data-form-output="form-output-global" data-form-type="contact" method="post" action="bat/rd-mailform.php">
+        <div class="form-wrap wow fadeInRight">
+          <label class="form-label" for="contact-name">Nombre completo</label>
+          <input class="form-input" id="contact-name" type="text" name="name" data-constraints="@Required">
+        </div>
+        <div class="form-wrap wow fadeInRight">
+          <label class="form-label" for="contact-email">Correo electrónico</label>
+          <input class="form-input" id="contact-email" type="email" name="email" data-constraints="@Required @Email">
+        </div>
+        <div class="form-wrap wow fadeInRight">
+          <label class="form-label" for="contact-phone">Número de teléfono</label>
+          <input class="form-input" id="contact-phone" type="tel" name="phone" data-constraints="@Required">
+        </div>
+        <div class="form-wrap wow fadeInRight">
+          <label class="form-label" for="contact-departure">Fecha de salida deseada</label>
+          <input class="form-input" id="contact-departure" type="date" name="departure" data-constraints="@Required">
+        </div>
+        <div class="form-wrap wow fadeInRight">
+          <label class="form-label" for="contact-return">Fecha de regreso deseada</label>
+          <input class="form-input" id="contact-return" type="date" name="return" data-constraints="@Required">
+        </div>
+        <div class="form-wrap wow fadeInRight">
+          <label class="form-label" for="contact-passengers">Número de pasajeros</label>
+          <input class="form-input" id="contact-passengers" type="number" name="passengers" data-constraints="@Required">
+        </div>
+        <div class="form-wrap wow fadeInRight">
+          <label class="form-label" for="contact-cabin">Tipo de cabina</label>
+          <select class="form-input" id="contact-cabin" name="cabin" data-constraints="@Required">
+            <option value="">Seleccione una opción</option>
+            <option value="estandar">Cabina estándar</option>
+            <option value="suite">Suite</option>
+            <option value="balcon">Cabina con balcón</option>
+          </select>
+        </div>
+        <div class="form-wrap wow fadeInRight">
+          <label class="form-label" for="contact-location">Preferencias de ubicación de la cabina</label>
+          <input class="form-input" id="contact-location" type="text" name="location">
+        </div>
+        <div class="form-wrap wow fadeInRight">
+          <label class="form-label" for="contact-dietary">Comidas especiales o restricciones dietéticas</label>
+          <textarea class="form-input" id="contact-dietary" name="dietary"></textarea>
+        </div>
+        <div class="form-wrap wow fadeInRight">
+          <label class="form-label" for="contact-special">Solicitudes especiales</label>
+          <textarea class="form-input" id="contact-special" name="special"></textarea>
+        </div>
+        <div class="form-button text-center">
+          <button class="button button-default wow fadeInUp" type="submit">Enviar reserva</button>
+        </div>
+      </form>
+    </div>
+    
+
+
+        <div class="container">
+          <div class="footer-classic-list-social wow fadeInUp">
+            <ul class="list-inline list-social list-inline-sm">
+              <li><a class="icon fa fa-linkedin" href="#"></a></li>
+              <li><a class="icon fa fa-twitter" href="#"></a></li>
+              <li><a class="icon fa fa-facebook" href="#"></a></li>
+              <li><a class="icon fa fa-instagram" href="#"></a></li>
+            </ul>
+          </div>
+          <p class="rights wow fadeInUp"><span>&copy;&nbsp; </span><span class="copyright-year"></span><span>&nbsp;</span><span> HORIZON BLUE </span><span>.&nbsp;</span><span>All rights reserved.</span><br>David Galvez <br> Alejandro Lopez</p>
+        </div>
+  
+    </div>
+    <div class="snackbars" id="form-output-global"></div>
+    <script src="js/core.min.js"></script>
+    <script src="js/script.js"></script>
+
+{% endblock %}

@@ -1,0 +1,156 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Cruceros{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" href="{{ asset('css/style.css') }}">
+    <link rel="stylesheet" href="css/bootstrap.css">
+    <link rel="stylesheet" href="css/fonts.css">
+    <link rel="stylesheet" href="css/cruceros.css">
+    <style>
+      .ie-panel{
+      display: none;
+      background: #212121;
+      padding: 10px 0;
+      box-shadow: 3px 3px 5px 0 rgba(0,0,0,.3);
+      clear: both;
+      text-align:center;
+      position: relative;
+      z-index: 1;
+      } 
+      html.ie-10 .ie-panel,html.lt-ie-10 .ie-panel {
+      display: block;
+      }
+    </style>
+{% endblock %}
+
+
+{% block content %}
+
+<h1>¡Elige la mejor experiencia entre todas nuestras opciones!</h1>
+
+  <hr class="hr">
+  
+  <div class="card-2">
+    <div class="filters">
+      <label for="destino">Destino:</label>
+      <select id="destino" name="destino">
+        <option value="destino1">Destino 1</option>
+        <option value="destino2">Destino 2</option>
+        <option value="destino3">Destino 3</option>
+        <!-- Agrega más opciones de destino según tus necesidades -->
+      </select>
+      
+      <label for="experiencia">Experiencia:</label>
+      <select id="experiencia" name="experiencia">
+        <option value="experiencia1">Experiencia 1</option>
+        <option value="experiencia2">Experiencia 2</option>
+        <option value="experiencia3">Experiencia 3</option>
+        <!-- Agrega más opciones de experiencia según tus necesidades -->
+      </select>
+    </div>
+  </div>
+  
+  
+  <div class="card-container">
+
+    <div class="card">
+      <img src="images/alaska.jpg" alt="Imagen" width="300px" height="200px">
+      <div>
+        <h3>Alaska</h3>
+        <p>Un viaje a Alaska ofrece una experiencia única y emocionante, 
+        ya que es un destino conocido por su impresionante belleza natural 
+        y su vida silvestre diversa. </p>
+        <!-- precio -->
+        <p>Desde 1.000 €</p>
+      </div>
+      <button class="button">Reservar</button>
+    </div>
+
+    <div class="card">
+      <img src="images/arabia.jpg" alt="Imagen" width="300px" height="200px">
+      <div>
+        <h3>Arabia</h3>
+        <p>Un viaje a Arabia promete ser una experiencia fascinante,
+        ya que la región tiene una rica historia, cultura vibrante y paisajes impresionantes.</p>
+        <p> Desde 1.300 €</p>
+      </div>
+      <button class="button">Reservar</button>
+    </div>
+
+    <div class="card">
+      <img src="images/alaska.jpg" alt="Imagen" width="300px" height="200px">
+      <div>
+        <h3>Alaska</h3>
+        <p>Un viaje a Alaska ofrece una experiencia única y emocionante, 
+        ya que es un destino conocido por su impresionante belleza natural 
+        y su vida silvestre diversa. </p>
+        <!-- precio -->
+        <p>Desde 1.000 €</p>
+      </div>
+      <button class="button">Reservar</button>
+    </div>
+
+    <div class="card">
+      <img src="images/arabia.jpg" alt="Imagen" width="300px" height="200px">
+      <div>
+        <h3>Arabia</h3>
+        <p>Un viaje a Arabia promete ser una experiencia fascinante,
+        ya que la región tiene una rica historia, cultura vibrante y paisajes impresionantes.</p>
+        <p> Desde 1.300 €</p>
+      </div>
+      <button class="button">Reservar</button>
+    </div>
+    
+    <div class="card">
+      <img src="images/alaska.jpg" alt="Imagen" width="300px" height="200px">
+      <div>
+        <h3>Alaska</h3>
+        <p>Un viaje a Alaska ofrece una experiencia única y emocionante, 
+        ya que es un destino conocido por su impresionante belleza natural 
+        y su vida silvestre diversa. </p>
+        <!-- precio -->
+        <p>Desde 1.000 €</p>
+      </div>
+      <button class="button">Reservar</button>
+    </div>
+
+    <div class="card">
+      <img src="images/arabia.jpg" alt="Imagen" width="300px" height="200px">
+      <div>
+        <h3>Arabia</h3>
+        <p>Un viaje a Arabia promete ser una experiencia fascinante,
+        ya que la región tiene una rica historia, cultura vibrante y paisajes impresionantes.</p>
+        <p> Desde 1.300 €</p>
+      </div>
+      <button class="button">Reservar</button>
+    </div>
+
+    <div class="card">
+      <img src="images/alaska.jpg" alt="Imagen" width="300px" height="200px">
+      <div>
+        <h3>Alaska</h3>
+        <p>Un viaje a Alaska ofrece una experiencia única y emocionante, 
+        ya que es un destino conocido por su impresionante belleza natural 
+        y su vida silvestre diversa. </p>
+        <!-- precio -->
+        <p>Desde 1.000 €</p>
+      </div>
+      <button class="button">Reservar</button>
+    </div>
+
+    <div class="card">
+      <img src="images/arabia.jpg" alt="Imagen" width="300px" height="200px">
+      <div>
+        <h3>Arabia</h3>
+        <p>Un viaje a Arabia promete ser una experiencia fascinante,
+        ya que la región tiene una rica historia, cultura vibrante y paisajes impresionantes.</p>
+        <p> Desde 1.300 €</p>
+      </div>
+      <button class="button">Reservar</button>
+    </div>
+
+  </div>
+
+{% endblock %}
