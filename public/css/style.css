@@ -117,13 +117,12 @@ dd {
 	display: flex; /* Utilizar flexbox para alinear verticalmente los elementos internos */
 	flex-direction: column; /* Alinear verticalmente los elementos internos */
 	justify-content: center; /* Centrar verticalmente los elementos internos */
-	padding: 50px; /* Espaciado interno para el formulario */
   }
 
   /* label de form-group */
 .form-group label {
 	color: black;
-	font-size: 24px;
+	font-size: 20px;
 	margin: 20px;
 	/* texto negrita */
 	font-weight: bold;
@@ -152,11 +151,12 @@ dd {
 
   .form-style {
 	/* transparencia */
-	background-color: #abe0ff;
+	background-color: #abe0ff91;
 	border: 0.5px solid #000000;
 	border-color: #000000;
 	/* esquinas redondas */
 	border-radius: 5px;
+	font-size: 5px;
   }
   
 /* **************************************** */
@@ -724,6 +724,7 @@ html [class*='section-'].section-bottom-0 {
 
 @media (min-width: 1200px) {
 	.section-full {
+		width: 100%;
 		display: flex;
 		align-items: center;
 		justify-content: center;
@@ -1931,7 +1932,7 @@ a[href*='tel'], a[href*='mailto'] {
 		box-shadow: 0 6px 24px 0 rgba(0, 0, 0, 0.15);
 	}
 	.desktop .project-classic:hover .project-classic-caption {
-		background: #9fd5ff;
+		background: #9fd5ffc3;
 	}
 	.desktop .project-classic:hover .project-classic-tag,
 	.desktop .project-classic:hover .project-classic-title {

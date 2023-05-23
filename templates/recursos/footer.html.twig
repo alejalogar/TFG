@@ -1,6 +1,43 @@
 {% block stylesheets %}
     <link rel="stylesheet" href="{{ asset('css/footer.css') }}">
 {% endblock %}
+
+<footer class="section footer-classic section-full section-full-1 section-sm section-inset-2 bg-gray-3 context-dark text-md-center">
+        <div class="container">
+          <h2><span class="d-inline-block wow fadeInRight">Rellene este formulario para más información </span>
+            <div class="subtitle-classic wow fadeInUp">Nuestro equipo se pondrá en contacto con usted</div>
+          </h2>
+          <!-- RD Mailform-->
+          <form class="rd-form rd-mailform" data-form-output="form-output-global" data-form-type="contact" method="post" action="bat/rd-mailform.php">
+            <div class="form-wrap wow fadeInRight">
+              <label class="form-label" for="contact-name">Nombre y apellidos</label>
+              <input class="form-input" id="contact-name" type="text" name="name" data-constraints="@Required">
+            </div>
+            <div class="form-wrap wow fadeInRight">
+              <label class="form-label" for="contact-email">E-Mail</label>
+              <input class="form-input" id="contact-email" type="email" name="email" data-constraints="@Required @Email">
+            </div>
+            <div class="form-wrap wow fadeInRight">
+              <label class="form-label" for="contact-message">Mensaje</label>
+              <textarea class="form-input" id="contact-message" name="message" data-constraints="@Required"></textarea>
+            </div>
+            <div class="form-button text-center">
+              <button class="button button-default wow fadeInUp" type="submit" id="contacts">Enviar</button>
+            </div>
+          </form>
+        </div>
+        <div class="container">
+          <div class="footer-classic-list-social wow fadeInUp">
+            <ul class="list-inline list-social list-inline-sm">
+              <li><a class="icon fa fa-linkedin" href="#"></a></li>
+              <li><a class="icon fa fa-twitter" href="#"></a></li>
+              <li><a class="icon fa fa-facebook" href="#"></a></li>
+              <li><a class="icon fa fa-instagram" href="#"></a></li>
+            </ul>
+          </div>
+          <p class="rights wow fadeInUp"><span>&copy;&nbsp; </span><span class="copyright-year"></span><span>&nbsp;</span><span> HORIZON BLUE </span><span>.&nbsp;</span><span>All rights reserved.</span><br>David Galvez <br> Aljandro Lopez</p>
+        </div>
+      </footer>
 {# <footer>
     <p class="text-white mb-0">© {{ "now"|date("Y") }} Cruceros.com - Todos los derechos reservados</p>
 </footer> #}

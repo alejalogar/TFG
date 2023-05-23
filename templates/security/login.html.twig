@@ -26,8 +26,8 @@
 
 {% block content %}
 
-
- <div class="container">
+{# 
+ <div>
     <h2>Iniciar sesión</h2>
     <form>
       <label for="username">Usuario:</label>
@@ -40,9 +40,11 @@
 
       <a href="register.html">¿No tienes cuenta? Registrate</a>
     </form>
-  </div>
+  </div> #}
 
-{# <div class="container">
+  
+
+<div class="container">
 <form class="form-signin" method="post">
 {% if error %}
 <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
@@ -69,7 +71,7 @@
 
         <button class="btn btn-lg btn-primary btn-block" type="submit">Iniciar sesión</button>
     </form>
-</div> #}
+</div>
 
 
 {% endblock %}
