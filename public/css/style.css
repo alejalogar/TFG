@@ -4926,7 +4926,7 @@ html:not(.lt-ie10) .not-animated {
 *
 * ToTop
 */
-.ui-to-top {
+/* .ui-to-top {
 	position: fixed;
 	text-align: center;
 	overflow: hidden;
@@ -4969,7 +4969,7 @@ html.tablet .ui-to-top {
 		right: 40px;
 		bottom: 40px;
 	}
-}
+} */
 
 /*
 *
