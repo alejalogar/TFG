@@ -5971,17 +5971,17 @@ html.tablet .ui-to-top {
 	left: 10px;
 }
 
-.owl-prev::before {
+/* .owl-prev::before {
 	content: '\f104';
-}
+} */
 
 .owl-next {
 	right: 10px;
 }
 
-.owl-next::before {
+/* .owl-next::before {
 	content: '\f105';
-}
+} */
 
 /*
  * Owl Pagination
