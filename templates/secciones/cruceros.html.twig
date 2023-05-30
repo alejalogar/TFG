@@ -1,12 +1,18 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Cruceros{% endblock %}
+{% block title %}BH Cruceros{% endblock %}
 
 {% block stylesheets %}
+    {{ parent() }}
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link rel="icon" href="images/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Montserrat:300%7CQuestrial">
+    <link rel="stylesheet" href="{{ asset('css/bootstrap.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/fonts.css') }}">
     <link rel="stylesheet" href="{{ asset('css/style.css') }}">
-    <link rel="stylesheet" href="css/bootstrap.css">
-    <link rel="stylesheet" href="css/fonts.css">
-    <link rel="stylesheet" href="css/cruceros.css">
+    <link rel="stylesheet" href="{{ asset('css/cruceros.css') }}">
     <style>
       .ie-panel{
       display: none;
@@ -23,6 +29,7 @@
       }
     </style>
 {% endblock %}
+
 
 
 {% block content %}
@@ -64,7 +71,7 @@
         <!-- precio -->
         <p>Desde 1.000 €</p>
       </div>
-      <button class="button">Reservar</button>
+      <button class="button button-default wow fadeInUp">Reservar</button>
     </div>
 
     <div class="card">
@@ -75,7 +82,7 @@
         ya que la región tiene una rica historia, cultura vibrante y paisajes impresionantes.</p>
         <p> Desde 1.300 €</p>
       </div>
-      <button class="button">Reservar</button>
+      <button class="button button-default wow fadeInUp">Reservar</button>
     </div>
 
     <div class="card">
@@ -88,7 +95,7 @@
         <!-- precio -->
         <p>Desde 1.000 €</p>
       </div>
-      <button class="button">Reservar</button>
+      <button class="button button-default wow fadeInUp">Reservar</button>
     </div>
 
     <div class="card">
@@ -99,7 +106,7 @@
         ya que la región tiene una rica historia, cultura vibrante y paisajes impresionantes.</p>
         <p> Desde 1.300 €</p>
       </div>
-      <button class="button">Reservar</button>
+      <button class="button button-default wow fadeInUp">Reservar</button>
     </div>
     
     <div class="card">
@@ -112,7 +119,7 @@
         <!-- precio -->
         <p>Desde 1.000 €</p>
       </div>
-      <button class="button">Reservar</button>
+      <button class="button button-default wow fadeInUp">Reservar</button>
     </div>
 
     <div class="card">
@@ -123,7 +130,7 @@
         ya que la región tiene una rica historia, cultura vibrante y paisajes impresionantes.</p>
         <p> Desde 1.300 €</p>
       </div>
-      <button class="button">Reservar</button>
+      <button class="button button-default wow fadeInUp">Reservar</button>
     </div>
 
     <div class="card">
@@ -136,7 +143,7 @@
         <!-- precio -->
         <p>Desde 1.000 €</p>
       </div>
-      <button class="button">Reservar</button>
+      <button class="button button-default wow fadeInUp">Reservar</button>
     </div>
 
     <div class="card">
@@ -147,7 +154,7 @@
         ya que la región tiene una rica historia, cultura vibrante y paisajes impresionantes.</p>
         <p> Desde 1.300 €</p>
       </div>
-      <button class="button">Reservar</button>
+      <button class="button button-default wow fadeInUp">Reservar</button>
     </div>
 
   </div>

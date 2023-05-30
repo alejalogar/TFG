@@ -33,20 +33,4 @@ class HomePageController extends AbstractController
         return $this->render('secciones/reservaya.html.twig');
     }
 
-    /**
-     * @Route("/login", name="login")
-     */
-    public function login(): Response
-    {
-        return $this->render('security/login.html.twig');
-    }
-
-     /**
-     * @Route("/register", name="register")
-     */
-    public function register(): Response
-    {
-        return $this->render('registration/register.html.twig');
-    }
-
 }

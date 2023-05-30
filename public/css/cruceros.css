@@ -1,9 +1,19 @@
 body {
-    background: linear-gradient(120deg, #fefefe 0%, rgb(6, 195, 195) 100%);
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
-  }
+  background-image: url(../images/trail-sea-water-surface-boat.jpg);
+  background-color: white;
+  font-family: Arial, sans-serif;
+  margin: 30px;
+}
+
+.card-container{
+  margin-left: 100px;
+  margin-right: 100px;
+}
+
+/* hover card */
+.card:hover {
+ background-color: rgb(224, 248, 240);
+}
 
   h1{
       margin: 0;
@@ -11,7 +21,7 @@ body {
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 30px;
+      font-size: 40px;
       margin-top: 30px;
       margin-bottom: 30px;
 
@@ -82,30 +92,6 @@ body {
     grid-template-columns: auto 1fr auto;
     gap: 10px;
     align-items: center;
-  }
-
-  /* boton */
-  .button {
-    display: inline-block;
-    border-radius: 4px;
-    background-color: rgb(26, 0, 175);
-    border: 1px solid #3a3a3a;
-    color: #FFFFFF;
-    text-align: center;
-    font-size: 18px;
-    padding: 10px;
-    width: 100px;
-    transition: all 0.5s;
-    cursor: pointer;
-    margin: 5px;
-  }
-
-  /* hover */
-  .button:hover {
-    background-color: #608ab4;
-    color: white;
-    font-size: 19px;
-    
   }
 
 
