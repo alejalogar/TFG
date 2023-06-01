@@ -7,13 +7,13 @@ CREATE DATABASE TFG;
 -- Usar base de datos
 USE TFG;
 
--- Crear tabla Usuarios
-CREATE TABLE usuarios (
+-- Crear tabla user
+CREATE TABLE user (
   id INT NOT NULL AUTO_INCREMENT,
   nombre VARCHAR(255) NOT NULL,
-  correo_electronico VARCHAR(255) NOT NULL,
-  contraseña VARCHAR(255) NOT NULL,
-  tipo ENUM('admin', 'normal') DEFAULT 'normal',
+  email VARCHAR(255) NOT NULL,
+  password VARCHAR(255) NOT NULL,
+  roles ENUM('admin', 'normal') DEFAULT 'normal',
   PRIMARY KEY (id)
 );
 
@@ -59,7 +59,7 @@ CREATE TABLE reservas (
   camarote_id INT NOT NULL,
   fecha_de_reserva DATETIME NOT NULL,
   PRIMARY KEY (id),
-  FOREIGN KEY (usuario_id) REFERENCES usuarios(id),
+  FOREIGN KEY (usuario_id) REFERENCES user(id),
   FOREIGN KEY (camarote_id) REFERENCES camarotes(id)
 );
 
@@ -71,7 +71,7 @@ CREATE TABLE comentarios (
   comentario TEXT NOT NULL,
   fecha_de_comentario DATETIME NOT NULL,
   PRIMARY KEY (id),
-  FOREIGN KEY (usuario_id) REFERENCES usuarios(id),
+  FOREIGN KEY (usuario_id) REFERENCES user(id),
   FOREIGN KEY (crucero_id) REFERENCES Cruceros(id)
 );
 
@@ -323,7 +323,7 @@ FROM cruceros c, servicios s;
 
 
 -- Usuario admin
-INSERT INTO usuarios (nombre, correo_electronico, contraseña, tipo)
+INSERT INTO user (nombre, email, password, roles)
 VALUES ('admin', 'admin@example.com', SHA2('123456789', 256), 'admin');
 
 
