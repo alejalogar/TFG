@@ -35,9 +35,11 @@ CREATE TABLE Cruceros (
   fecha_de_salida DATE NOT NULL,
   fecha_de_llegada DATE NOT NULL,
   tipo_id INT NOT NULL,
+  imagen VARCHAR(255), -- Columna para almacenar la ruta de la imagen
   PRIMARY KEY (id),
   FOREIGN KEY (tipo_id) REFERENCES TipoCrucero(id)
 );
+
 
 -- Crear tabla Camarotes
 CREATE TABLE camarotes (
@@ -110,7 +112,8 @@ INSERT INTO TipoCrucero (nombre)
 VALUES ('Parejas'), ('Familias'), ('Solteros'), ('LGTBI+'), ('Tercera Edad'), ('Adolescentes');
 
 -- Insertar datos en la tabla Cruceros
-INSERT INTO Cruceros (nombre, destino, descripcion, puerto_de_salida, puerto_de_llegada, fecha_de_salida, fecha_de_llegada, tipo_id)
+INSERT INTO Cruceros (nombre, destino, descripcion, puerto_de_salida, puerto_de_llegada, fecha_de_salida, fecha_de_llegada, imagen, 
+tipo_id)
 SELECT 
   'Crucero Mediterráneo' AS nombre,
   'Mediterráneo' AS destino,
@@ -119,16 +122,37 @@ SELECT
   'Roma' AS puerto_de_llegada,
   '2023-06-01' AS fecha_de_salida,
   '2023-06-10' AS fecha_de_llegada,
-  tipo_id
+   imagenes.imagen AS imagen,
+  tipos.tipo_id
 FROM
   (SELECT 1 AS tipo_id UNION ALL
    SELECT 2 AS tipo_id UNION ALL
    SELECT 3 AS tipo_id UNION ALL
    SELECT 4 AS tipo_id UNION ALL
    SELECT 5 AS tipo_id UNION ALL
-   SELECT 6 AS tipo_id) t;
+   SELECT 6 AS tipo_id) tipos
+JOIN
+  (SELECT 1 AS tipo_id, '/ruta/de/imagen1' AS imagen UNION ALL
+   SELECT 2 AS tipo_id, '/ruta/de/imagen2' AS imagen UNION ALL
+   SELECT 3 AS tipo_id, '/ruta/de/imagen3' AS imagen UNION ALL
+   SELECT 4 AS tipo_id, '/ruta/de/imagen4' AS imagen UNION ALL
+   SELECT 5 AS tipo_id, '/ruta/de/imagen5' AS imagen UNION ALL
+   SELECT 6 AS tipo_id, '/ruta/de/imagen6' AS imagen) imagenes
+ON tipos.tipo_id = imagenes.tipo_id
+ORDER BY RAND();
+ 
 
-INSERT INTO Cruceros (nombre, destino, descripcion, puerto_de_salida, puerto_de_llegada, fecha_de_salida, fecha_de_llegada, tipo_id)
+ 
+
+
+
+
+
+
+
+
+INSERT INTO Cruceros (nombre, destino, descripcion, puerto_de_salida, puerto_de_llegada, fecha_de_salida, fecha_de_llegada, imagen, 
+tipo_id)
 SELECT 
   'Crucero Caribe' AS nombre,
   'Caribe' AS destino,
@@ -137,16 +161,36 @@ SELECT
   'Cozumel' AS puerto_de_llegada,
   '2023-07-01' AS fecha_de_salida,
   '2023-07-10' AS fecha_de_llegada,
-  tipo_id
+   imagenes.imagen AS imagen,
+  tipos.tipo_id
 FROM
   (SELECT 1 AS tipo_id UNION ALL
    SELECT 2 AS tipo_id UNION ALL
    SELECT 3 AS tipo_id UNION ALL
    SELECT 4 AS tipo_id UNION ALL
    SELECT 5 AS tipo_id UNION ALL
-   SELECT 6 AS tipo_id) t;
+   SELECT 6 AS tipo_id) tipos
+JOIN
+  (SELECT 1 AS tipo_id, '/ruta/de/imagen1' AS imagen UNION ALL
+   SELECT 2 AS tipo_id, '/ruta/de/imagen2' AS imagen UNION ALL
+   SELECT 3 AS tipo_id, '/ruta/de/imagen3' AS imagen UNION ALL
+   SELECT 4 AS tipo_id, '/ruta/de/imagen4' AS imagen UNION ALL
+   SELECT 5 AS tipo_id, '/ruta/de/imagen5' AS imagen UNION ALL
+   SELECT 6 AS tipo_id, '/ruta/de/imagen6' AS imagen) imagenes
+ON tipos.tipo_id = imagenes.tipo_id
+ORDER BY RAND();
+ 
 
-INSERT INTO Cruceros (nombre, destino, descripcion, puerto_de_salida, puerto_de_llegada, fecha_de_salida, fecha_de_llegada, tipo_id)
+ 
+
+
+
+
+
+
+
+INSERT INTO Cruceros (nombre, destino, descripcion, puerto_de_salida, puerto_de_llegada, fecha_de_salida, fecha_de_llegada, imagen, 
+tipo_id)
 SELECT 
   'Crucero Norte de Europa' AS nombre,
   'Norte de Europa' AS destino,
@@ -155,16 +199,36 @@ SELECT
   'Estocolmo' AS puerto_de_llegada,
   '2023-08-01' AS fecha_de_salida,
   '2023-08-10' AS fecha_de_llegada,
-  tipo_id
+   imagenes.imagen AS imagen,
+  tipos.tipo_id
 FROM
   (SELECT 1 AS tipo_id UNION ALL
    SELECT 2 AS tipo_id UNION ALL
    SELECT 3 AS tipo_id UNION ALL
    SELECT 4 AS tipo_id UNION ALL
    SELECT 5 AS tipo_id UNION ALL
-   SELECT 6 AS tipo_id) t;
+   SELECT 6 AS tipo_id) tipos
+JOIN
+  (SELECT 1 AS tipo_id, '/ruta/de/imagen1' AS imagen UNION ALL
+   SELECT 2 AS tipo_id, '/ruta/de/imagen2' AS imagen UNION ALL
+   SELECT 3 AS tipo_id, '/ruta/de/imagen3' AS imagen UNION ALL
+   SELECT 4 AS tipo_id, '/ruta/de/imagen4' AS imagen UNION ALL
+   SELECT 5 AS tipo_id, '/ruta/de/imagen5' AS imagen UNION ALL
+   SELECT 6 AS tipo_id, '/ruta/de/imagen6' AS imagen) imagenes
+ON tipos.tipo_id = imagenes.tipo_id
+ORDER BY RAND();
+ 
 
-INSERT INTO Cruceros (nombre, destino, descripcion, puerto_de_salida, puerto_de_llegada, fecha_de_salida, fecha_de_llegada, tipo_id)
+ 
+
+
+
+
+
+
+
+INSERT INTO Cruceros (nombre, destino, descripcion, puerto_de_salida, puerto_de_llegada, fecha_de_salida, fecha_de_llegada, imagen, 
+tipo_id)
 SELECT 
   'Crucero Alaska' AS nombre,
   'Alaska' AS destino,
@@ -173,16 +237,36 @@ SELECT
   'Anchorage' AS puerto_de_llegada,
   '2023-09-01' AS fecha_de_salida,
   '2023-09-10' AS fecha_de_llegada,
-  tipo_id
+   imagenes.imagen AS imagen,
+  tipos.tipo_id
 FROM
   (SELECT 1 AS tipo_id UNION ALL
    SELECT 2 AS tipo_id UNION ALL
    SELECT 3 AS tipo_id UNION ALL
    SELECT 4 AS tipo_id UNION ALL
    SELECT 5 AS tipo_id UNION ALL
-   SELECT 6 AS tipo_id) t;
+   SELECT 6 AS tipo_id) tipos
+JOIN
+  (SELECT 1 AS tipo_id, '/ruta/de/imagen1' AS imagen UNION ALL
+   SELECT 2 AS tipo_id, '/ruta/de/imagen2' AS imagen UNION ALL
+   SELECT 3 AS tipo_id, '/ruta/de/imagen3' AS imagen UNION ALL
+   SELECT 4 AS tipo_id, '/ruta/de/imagen4' AS imagen UNION ALL
+   SELECT 5 AS tipo_id, '/ruta/de/imagen5' AS imagen UNION ALL
+   SELECT 6 AS tipo_id, '/ruta/de/imagen6' AS imagen) imagenes
+ON tipos.tipo_id = imagenes.tipo_id
+ORDER BY RAND();
+ 
 
-INSERT INTO Cruceros (nombre, destino, descripcion, puerto_de_salida, puerto_de_llegada, fecha_de_salida, fecha_de_llegada, tipo_id)
+ 
+
+
+
+
+
+
+
+INSERT INTO Cruceros (nombre, destino, descripcion, puerto_de_salida, puerto_de_llegada, fecha_de_salida, fecha_de_llegada, imagen, 
+tipo_id)
 SELECT 
   'Crucero Dubai' AS nombre,
   'Dubai' AS destino,
@@ -191,16 +275,36 @@ SELECT
   'Dubai' AS puerto_de_llegada,
   '2023-10-01' AS fecha_de_salida,
   '2023-10-10' AS fecha_de_llegada,
-  tipo_id
+   imagenes.imagen AS imagen,
+  tipos.tipo_id
 FROM
   (SELECT 1 AS tipo_id UNION ALL
    SELECT 2 AS tipo_id UNION ALL
    SELECT 3 AS tipo_id UNION ALL
    SELECT 4 AS tipo_id UNION ALL
    SELECT 5 AS tipo_id UNION ALL
-   SELECT 6 AS tipo_id) t;
+   SELECT 6 AS tipo_id) tipos
+JOIN
+  (SELECT 1 AS tipo_id, '/ruta/de/imagen1' AS imagen UNION ALL
+   SELECT 2 AS tipo_id, '/ruta/de/imagen2' AS imagen UNION ALL
+   SELECT 3 AS tipo_id, '/ruta/de/imagen3' AS imagen UNION ALL
+   SELECT 4 AS tipo_id, '/ruta/de/imagen4' AS imagen UNION ALL
+   SELECT 5 AS tipo_id, '/ruta/de/imagen5' AS imagen UNION ALL
+   SELECT 6 AS tipo_id, '/ruta/de/imagen6' AS imagen) imagenes
+ON tipos.tipo_id = imagenes.tipo_id
+ORDER BY RAND();
+ 
 
-INSERT INTO Cruceros (nombre, destino, descripcion, puerto_de_salida, puerto_de_llegada, fecha_de_salida, fecha_de_llegada, tipo_id)
+ 
+
+
+
+
+
+
+
+INSERT INTO Cruceros (nombre, destino, descripcion, puerto_de_salida, puerto_de_llegada, fecha_de_salida, fecha_de_llegada, imagen, 
+tipo_id)
 SELECT 
   'Crucero Egipto' AS nombre,
   'Egipto' AS destino,
@@ -209,16 +313,36 @@ SELECT
   'Asuán' AS puerto_de_llegada,
   '2023-11-01' AS fecha_de_salida,
   '2023-11-10' AS fecha_de_llegada,
-  tipo_id
+   imagenes.imagen AS imagen,
+  tipos.tipo_id
 FROM
   (SELECT 1 AS tipo_id UNION ALL
    SELECT 2 AS tipo_id UNION ALL
    SELECT 3 AS tipo_id UNION ALL
    SELECT 4 AS tipo_id UNION ALL
    SELECT 5 AS tipo_id UNION ALL
-   SELECT 6 AS tipo_id) t;
+   SELECT 6 AS tipo_id) tipos
+JOIN
+  (SELECT 1 AS tipo_id, '/ruta/de/imagen1' AS imagen UNION ALL
+   SELECT 2 AS tipo_id, '/ruta/de/imagen2' AS imagen UNION ALL
+   SELECT 3 AS tipo_id, '/ruta/de/imagen3' AS imagen UNION ALL
+   SELECT 4 AS tipo_id, '/ruta/de/imagen4' AS imagen UNION ALL
+   SELECT 5 AS tipo_id, '/ruta/de/imagen5' AS imagen UNION ALL
+   SELECT 6 AS tipo_id, '/ruta/de/imagen6' AS imagen) imagenes
+ON tipos.tipo_id = imagenes.tipo_id
+ORDER BY RAND();
+ 
 
-INSERT INTO Cruceros (nombre, destino, descripcion, puerto_de_salida, puerto_de_llegada, fecha_de_salida, fecha_de_llegada, tipo_id)
+ 
+
+
+
+
+
+
+
+INSERT INTO Cruceros (nombre, destino, descripcion, puerto_de_salida, puerto_de_llegada, fecha_de_salida, fecha_de_llegada, imagen, 
+tipo_id)
 SELECT 
   'Crucero Sudáfrica' AS nombre,
   'Sudáfrica' AS destino,
@@ -227,16 +351,36 @@ SELECT
   'Durban' AS puerto_de_llegada,
   '2023-12-01' AS fecha_de_salida,
   '2023-12-10' AS fecha_de_llegada,
-  tipo_id
+   imagenes.imagen AS imagen,
+  tipos.tipo_id
 FROM
   (SELECT 1 AS tipo_id UNION ALL
    SELECT 2 AS tipo_id UNION ALL
    SELECT 3 AS tipo_id UNION ALL
    SELECT 4 AS tipo_id UNION ALL
    SELECT 5 AS tipo_id UNION ALL
-   SELECT 6 AS tipo_id) t;
+   SELECT 6 AS tipo_id) tipos
+JOIN
+  (SELECT 1 AS tipo_id, '/ruta/de/imagen1' AS imagen UNION ALL
+   SELECT 2 AS tipo_id, '/ruta/de/imagen2' AS imagen UNION ALL
+   SELECT 3 AS tipo_id, '/ruta/de/imagen3' AS imagen UNION ALL
+   SELECT 4 AS tipo_id, '/ruta/de/imagen4' AS imagen UNION ALL
+   SELECT 5 AS tipo_id, '/ruta/de/imagen5' AS imagen UNION ALL
+   SELECT 6 AS tipo_id, '/ruta/de/imagen6' AS imagen) imagenes
+ON tipos.tipo_id = imagenes.tipo_id
+ORDER BY RAND();
+ 
 
-INSERT INTO Cruceros (nombre, destino, descripcion, puerto_de_salida, puerto_de_llegada, fecha_de_salida, fecha_de_llegada, tipo_id)
+ 
+
+
+
+
+
+
+
+INSERT INTO Cruceros (nombre, destino, descripcion, puerto_de_salida, puerto_de_llegada, fecha_de_salida, fecha_de_llegada, imagen, 
+tipo_id)
 SELECT 
   'Crucero Asia' AS nombre,
   'Asia' AS destino,
@@ -245,16 +389,36 @@ SELECT
   'Tokio' AS puerto_de_llegada,
   '2024-01-01' AS fecha_de_salida,
   '2024-01-10' AS fecha_de_llegada,
-  tipo_id
+   imagenes.imagen AS imagen,
+  tipos.tipo_id
 FROM
   (SELECT 1 AS tipo_id UNION ALL
    SELECT 2 AS tipo_id UNION ALL
    SELECT 3 AS tipo_id UNION ALL
    SELECT 4 AS tipo_id UNION ALL
    SELECT 5 AS tipo_id UNION ALL
-   SELECT 6 AS tipo_id) t;
+   SELECT 6 AS tipo_id) tipos
+JOIN
+  (SELECT 1 AS tipo_id, '/ruta/de/imagen1' AS imagen UNION ALL
+   SELECT 2 AS tipo_id, '/ruta/de/imagen2' AS imagen UNION ALL
+   SELECT 3 AS tipo_id, '/ruta/de/imagen3' AS imagen UNION ALL
+   SELECT 4 AS tipo_id, '/ruta/de/imagen4' AS imagen UNION ALL
+   SELECT 5 AS tipo_id, '/ruta/de/imagen5' AS imagen UNION ALL
+   SELECT 6 AS tipo_id, '/ruta/de/imagen6' AS imagen) imagenes
+ON tipos.tipo_id = imagenes.tipo_id
+ORDER BY RAND();
+ 
 
-INSERT INTO Cruceros (nombre, destino, descripcion, puerto_de_salida, puerto_de_llegada, fecha_de_salida, fecha_de_llegada, tipo_id)
+ 
+
+
+
+
+
+
+
+INSERT INTO Cruceros (nombre, destino, descripcion, puerto_de_salida, puerto_de_llegada, fecha_de_salida, fecha_de_llegada, imagen, 
+tipo_id)
 SELECT 
   'Crucero Sudamérica' AS nombre,
   'Sudamérica' AS destino,
@@ -263,14 +427,33 @@ SELECT
   'Santiago de Chile' AS puerto_de_llegada,
   '2024-02-01' AS fecha_de_salida,
   '2024-02-10' AS fecha_de_llegada,
-  tipo_id
+   imagenes.imagen AS imagen,
+  tipos.tipo_id
 FROM
   (SELECT 1 AS tipo_id UNION ALL
    SELECT 2 AS tipo_id UNION ALL
    SELECT 3 AS tipo_id UNION ALL
    SELECT 4 AS tipo_id UNION ALL
    SELECT 5 AS tipo_id UNION ALL
-   SELECT 6 AS tipo_id) t;
+   SELECT 6 AS tipo_id) tipos
+JOIN
+  (SELECT 1 AS tipo_id, '/ruta/de/imagen1' AS imagen UNION ALL
+   SELECT 2 AS tipo_id, '/ruta/de/imagen2' AS imagen UNION ALL
+   SELECT 3 AS tipo_id, '/ruta/de/imagen3' AS imagen UNION ALL
+   SELECT 4 AS tipo_id, '/ruta/de/imagen4' AS imagen UNION ALL
+   SELECT 5 AS tipo_id, '/ruta/de/imagen5' AS imagen UNION ALL
+   SELECT 6 AS tipo_id, '/ruta/de/imagen6' AS imagen) imagenes
+ON tipos.tipo_id = imagenes.tipo_id
+ORDER BY RAND();
+ 
+
+ 
+
+
+
+
+
+
 
 
 
