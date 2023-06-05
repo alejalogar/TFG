@@ -2,28 +2,26 @@
 
 namespace App\Repository;
 
-use App\Entity\Crucero;
+use App\Entity\Camarote;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
-use Doctrine\ORM\QueryBuilder;
-
 
 /**
- * @extends ServiceEntityRepository<Crucero>
+ * @extends ServiceEntityRepository<Camarote>
  *
- * @method Crucero|null find($id, $lockMode = null, $lockVersion = null)
- * @method Crucero|null findOneBy(array $criteria, array $orderBy = null)
- * @method Crucero[]    findAll()
- * @method Crucero[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
+ * @method Camarote|null find($id, $lockMode = null, $lockVersion = null)
+ * @method Camarote|null findOneBy(array $criteria, array $orderBy = null)
+ * @method Camarote[]    findAll()
+ * @method Camarote[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
  */
-class CruceroRepository extends ServiceEntityRepository
+class CamaroteRepository extends ServiceEntityRepository
 {
     public function __construct(ManagerRegistry $registry)
     {
-        parent::__construct($registry, Crucero::class);
+        parent::__construct($registry, Camarote::class);
     }
 
-    public function add(Crucero $entity, bool $flush = false): void
+    public function add(Camarote $entity, bool $flush = false): void
     {
         $this->getEntityManager()->persist($entity);
 
@@ -32,7 +30,7 @@ class CruceroRepository extends ServiceEntityRepository
         }
     }
 
-    public function remove(Crucero $entity, bool $flush = false): void
+    public function remove(Camarote $entity, bool $flush = false): void
     {
         $this->getEntityManager()->remove($entity);
 
@@ -41,16 +39,8 @@ class CruceroRepository extends ServiceEntityRepository
         }
     }
 
-    public function findAllCruceros()
-    {
-        return $this->createQueryBuilder('c')
-            ->getQuery()
-            ->getResult();
-    }
-
-
 //    /**
-//     * @return Crucero[] Returns an array of Crucero objects
+//     * @return Camarote[] Returns an array of Camarote objects
 //     */
 //    public function findByExampleField($value): array
 //    {
@@ -64,7 +54,7 @@ class CruceroRepository extends ServiceEntityRepository
 //        ;
 //    }
 
-//    public function findOneBySomeField($value): ?Crucero
+//    public function findOneBySomeField($value): ?Camarote
 //    {
 //        return $this->createQueryBuilder('c')
 //            ->andWhere('c.exampleField = :val')

@@ -1,15 +1,11 @@
 <?php
-// src/Entity/Crucero.php
 
 namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
-use Doctrine\Common\Collections\ArrayCollection;
-use Doctrine\Common\Collections\Collection;
 
 /**
- * @ORM\Entity()
- * @ORM\Table(name="cruceros")
+ * @ORM\Entity(repositoryClass="App\Repository\CruceroRepository")
  */
 class Crucero
 {
@@ -24,6 +20,11 @@ class Crucero
      * @ORM\Column(type="string", length=255)
      */
     private $nombre;
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $destino;
 
     /**
      * @ORM\Column(type="text")
@@ -51,167 +52,126 @@ class Crucero
     private $fechaDeLlegada;
 
     /**
-     * @ORM\OneToMany(targetEntity="App\Entity\Camarote", mappedBy="crucero")
+     * @ORM\ManyToOne(targetEntity="App\Entity\TipoCrucero")
+     * @ORM\JoinColumn(name="tipo_id", referencedColumnName="id")
      */
-    private $camarotes;
+    private $tipo;
 
     /**
- * Get the value of id
- */ 
-public function getId()
-{
-    return $this->id;
-}
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $imagen;
 
-/**
- * Set the value of id
- *
- * @return  self
- */ 
-public function setId($id)
-{
-    $this->id = $id;
+    public function getId(): ?int
+    {
+        return $this->id;
+    }
 
-    return $this;
-}
+    public function getNombre(): ?string
+    {
+        return $this->nombre;
+    }
 
-/**
- * Get the value of nombre
- */ 
-public function getNombre()
-{
-    return $this->nombre;
-}
+    public function setNombre(string $nombre): self
+    {
+        $this->nombre = $nombre;
 
-/**
- * Set the value of nombre
- *
- * @return  self
- */ 
-public function setNombre($nombre)
-{
-    $this->nombre = $nombre;
+        return $this;
+    }
 
-    return $this;
-}
+    public function getDestino(): ?string
+    {
+        return $this->destino;
+    }
 
-/**
- * Get the value of descripcion
- */ 
-public function getDescripcion()
-{
-    return $this->descripcion;
-}
+    public function setDestino(string $destino): self
+    {
+        $this->destino = $destino;
 
-/**
- * Set the value of descripcion
- *
- * @return  self
- */ 
-public function setDescripcion($descripcion)
-{
-    $this->descripcion = $descripcion;
+        return $this;
+    }
 
-    return $this;
-}
+    public function getDescripcion(): ?string
+    {
+        return $this->descripcion;
+    }
 
-/**
- * Get the value of puertoDeSalida
- */ 
-public function getPuertoDeSalida()
-{
-    return $this->puertoDeSalida;
-}
+    public function setDescripcion(string $descripcion): self
+    {
+        $this->descripcion = $descripcion;
 
-/**
- * Set the value of puertoDeSalida
- *
- * @return  self
- */ 
-public function setPuertoDeSalida($puertoDeSalida)
-{
-    $this->puertoDeSalida = $puertoDeSalida;
+        return $this;
+    }
 
-    return $this;
-}
+    public function getPuertoDeSalida(): ?string
+    {
+        return $this->puertoDeSalida;
+    }
 
-/**
- * Get the value of puertoDeLlegada
- */ 
-public function getPuertoDeLlegada()
-{
-    return $this->puertoDeLlegada;
-}
+    public function setPuertoDeSalida(string $puertoDeSalida): self
+    {
+        $this->puertoDeSalida = $puertoDeSalida;
 
-/**
- * Set the value of puertoDeLlegada
- *
- * @return  self
- */ 
-public function setPuertoDeLlegada($puertoDeLlegada)
-{
-    $this->puertoDeLlegada = $puertoDeLlegada;
+        return $this;
+    }
 
-    return $this;
-}
+    public function getPuertoDeLlegada(): ?string
+    {
+        return $this->puertoDeLlegada;
+    }
 
-/**
- * Get the value of fechaDeSalida
- */ 
-public function getFechaDeSalida()
-{
-    return $this->fechaDeSalida;
-}
+    public function setPuertoDeLlegada(string $puertoDeLlegada): self
+    {
+        $this->puertoDeLlegada = $puertoDeLlegada;
 
-/**
- * Set the value of fechaDeSalida
- *
- * @return  self
- */ 
-public function setFechaDeSalida($fechaDeSalida)
-{
-    $this->fechaDeSalida = $fechaDeSalida;
+        return $this;
+    }
 
-    return $this;
-}
+    public function getFechaDeSalida(): ?\DateTimeInterface
+    {
+        return $this->fechaDeSalida;
+    }
 
-/**
- * Get the value of fechaDeLlegada
- */ 
-public function getFechaDeLlegada()
-{
-    return $this->fechaDeLlegada;
-}
+    public function setFechaDeSalida(\DateTimeInterface $fechaDeSalida): self
+    {
+        $this->fechaDeSalida = $fechaDeSalida;
 
-/**
- * Set the value of fechaDeLlegada
- *
- * @return  self
- */ 
-public function setFechaDeLlegada($fechaDeLlegada)
-{
-    $this->fechaDeLlegada = $fechaDeLlegada;
+        return $this;
+    }
 
-    return $this;
-}
+    public function getFechaDeLlegada(): ?\DateTimeInterface
+    {
+        return $this->fechaDeLlegada;
+    }
 
-/**
- * Get the value of camarotes
- */ 
-public function getCamarotes()
-{
-    return $this->camarotes;
-}
+    public function setFechaDeLlegada(\DateTimeInterface $fechaDeLlegada): self
+    {
+        $this->fechaDeLlegada = $fechaDeLlegada;
 
-/**
- * Set the value of camarotes
- *
- * @return  self
- */ 
-public function setCamarotes($camarotes)
-{
-    $this->camarotes = $camarotes;
+        return $this;
+    }
 
-    return $this;
-}
+    public function getTipo(): ?TipoCrucero
+    {
+        return $this->tipo;
+    }
+
+    public function setTipo(?TipoCrucero $tipo): self
+    {
+        $this->tipo = $tipo;
+
+        return $this;
+    }
+
+    public function getImagen(): ?string
+    {
+        return $this->imagen;
+    }
+
+    public function setImagen(?string $imagen): self
+    {
+        $this->imagen = $imagen;
+
+        return $this;
+    }
 }

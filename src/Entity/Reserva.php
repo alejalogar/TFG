@@ -18,34 +18,34 @@ class Reserva
 
     /**
      * @ORM\ManyToOne(targetEntity="App\Entity\User")
-     * @ORM\JoinColumn(nullable=false)
+     * @ORM\JoinColumn(name="usuario_id", referencedColumnName="id")
      */
-    private $User;
+    private $usuario;
 
     /**
      * @ORM\ManyToOne(targetEntity="App\Entity\Camarote")
-     * @ORM\JoinColumn(nullable=false)
+     * @ORM\JoinColumn(name="camarote_id", referencedColumnName="id")
      */
     private $camarote;
 
     /**
-     * @ORM\Column(type="datetime")
+     * @ORM\Column(name="fecha_de_reserva", type="datetime")
      */
-    private $fecha_de_reserva;
+    private $fechaDeReserva;
 
     public function getId(): ?int
     {
         return $this->id;
     }
 
-    public function getUser(): ?User
+    public function getUsuario(): ?User
     {
-        return $this->User;
+        return $this->usuario;
     }
 
-    public function setUser(?User $User): self
+    public function setUsuario(?User $usuario): self
     {
-        $this->User = $User;
+        $this->usuario = $usuario;
 
         return $this;
     }
@@ -64,12 +64,12 @@ class Reserva
 
     public function getFechaDeReserva(): ?\DateTimeInterface
     {
-        return $this->fecha_de_reserva;
+        return $this->fechaDeReserva;
     }
 
-    public function setFechaDeReserva(\DateTimeInterface $fecha_de_reserva): self
+    public function setFechaDeReserva(\DateTimeInterface $fechaDeReserva): self
     {
-        $this->fecha_de_reserva = $fecha_de_reserva;
+        $this->fechaDeReserva = $fechaDeReserva;
 
         return $this;
     }

@@ -5,14 +5,13 @@ namespace App\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * @ORM\Entity
- * @ORM\Table(name="camarotes")
+ * @ORM\Entity(repositoryClass="App\Repository\CamaroteRepository")
  */
 class Camarote
 {
     /**
-     * @ORM\Id
-     * @ORM\GeneratedValue
+     * @ORM\Id()
+     * @ORM\GeneratedValue()
      * @ORM\Column(type="integer")
      */
     private $id;
@@ -28,9 +27,9 @@ class Camarote
     private $descripcion;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(name="tipo_de_cama", type="string", length=255)
      */
-    private $tipo_de_cama;
+    private $tipoDeCama;
 
     /**
      * @ORM\Column(type="decimal", precision=10, scale=2)
@@ -38,13 +37,13 @@ class Camarote
     private $precio;
 
     /**
-     * @ORM\Column(type="integer")
+     * @ORM\Column(name="cantidad_disponible", type="integer")
      */
-    private $cantidad_disponible;
+    private $cantidadDisponible;
 
     /**
      * @ORM\ManyToOne(targetEntity="App\Entity\Crucero", inversedBy="camarotes")
-     * @ORM\JoinColumn(nullable=false)
+     * @ORM\JoinColumn(name="crucero_id", referencedColumnName="id")
      */
     private $crucero;
 
@@ -79,22 +78,22 @@ class Camarote
 
     public function getTipoDeCama(): ?string
     {
-        return $this->tipo_de_cama;
+        return $this->tipoDeCama;
     }
 
-    public function setTipoDeCama(string $tipo_de_cama): self
+    public function setTipoDeCama(string $tipoDeCama): self
     {
-        $this->tipo_de_cama = $tipo_de_cama;
+        $this->tipoDeCama = $tipoDeCama;
 
         return $this;
     }
 
-    public function getPrecio(): ?string
+    public function getPrecio(): ?float
     {
         return $this->precio;
     }
 
-    public function setPrecio(string $precio): self
+    public function setPrecio(float $precio): self
     {
         $this->precio = $precio;
 
@@ -103,12 +102,12 @@ class Camarote
 
     public function getCantidadDisponible(): ?int
     {
-        return $this->cantidad_disponible;
+        return $this->cantidadDisponible;
     }
 
-    public function setCantidadDisponible(int $cantidad_disponible): self
+    public function setCantidadDisponible(int $cantidadDisponible): self
     {
-        $this->cantidad_disponible = $cantidad_disponible;
+        $this->cantidadDisponible = $cantidadDisponible;
 
         return $this;
     }
