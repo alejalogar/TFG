@@ -1,0 +1,117 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}BH Cruceros{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link rel="icon" href="images/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Montserrat:300%7CQuestrial">
+    <link rel="stylesheet" href="{{ asset('css/bootstrap.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/fonts.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/style.css') }}">
+        <link rel="stylesheet" href="{{ asset('css/about.css') }}">
+    <style>
+      .ie-panel{
+      display: none;
+      background: #212121;
+      padding: 10px 0;
+      box-shadow: 3px 3px 5px 0 rgba(0,0,0,.3);
+      clear: both;
+      text-align:center;
+      position: relative;
+      z-index: 1;
+      } 
+      html.ie-10 .ie-panel,html.lt-ie-10 .ie-panel {
+      display: block;
+      }
+    </style>
+{% endblock %}
+
+
+
+{% block content %}
+
+<style>
+ p{
+  color: #000000;
+  font-weight: 700;
+}
+
+</style>  
+      <!-- About Us-->
+      <section class="section section-full section-xl bg-default text-md-center" id="about">
+        <div class="container">
+
+              <h2>Un poco <span class="text-primary">sobre nosotros </span><br>
+              </h2>
+
+              <hr>
+
+             <p class="wow fadeInRight">Como empresa de cruceros, nos enorgullece brindar experiencias inolvidables a nuestros clientes. Nos importa mucho más la satisfacción de nuestros pasajeros que el simple destino al que viajan. Nuestro objetivo es crear recuerdos inolvidables y ofrecer un servicio excepcional a todos los segmentos de clientes que atendemos.</p>
+
+              <div class="row">
+      <div class="col-md-6">
+        <h3>Jovenes</h3>
+        <p class="wow fadeInRight">Para los jóvenes en busca de diversión y aventura, organizamos cruceros llenos de energía y emoción. Nuestro objetivo es proporcionar una experiencia única y emocionante para cada uno de nuestros pasajeros jóvenes. Durante el viaje, ofrecemos una amplia gama de actividades y entretenimiento a bordo. Desde fiestas temáticas vibrantes y emocionantes deportes acuáticos hasta discotecas con música en vivo y espectáculos impresionantes, hay algo para todos los gustos. Queremos que cada día en nuestro crucero sea una aventura inolvidable, llena de momentos emocionantes y recuerdos duraderos.</p>  
+      </div>
+      <div class="col-md-6">
+       <img src="images/amigos-ibiza.jpg" alt="" class="img">
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-6">
+        <img src="../images/gay.jpg" alt="Imagen 1" class="img">
+      </div>
+      <div class="col-md-6">
+        <h3>LGTBI+</h3>
+        <p class="wow fadeInRight">Valoramos y respetamos la diversidad de nuestros pasajeros LGTBI+. Creemos en la inclusión y en proporcionar un ambiente seguro y acogedor para todos. Nuestros cruceros LGTBI+ ofrecen un espacio donde las personas pueden ser ellas mismas, conectarse con otros viajeros afines y disfrutar de un ambiente libre de prejuicios. Nos esforzamos por crear experiencias que celebren la diversidad y promuevan la igualdad.</p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-6">
+        <h3>Tercera edad</h3>
+        <p class="wow fadeInRight">Reconocemos la importancia de brindar opciones de cruceros adaptadas a las necesidades de nuestros clientes de la tercera edad. Ofrecemos comodidades y servicios diseñados pensando en su comodidad, como programas de entretenimiento, excursiones más tranquilas y opciones gastronómicas que satisfacen sus preferencias. Nuestro objetivo es garantizar que disfruten de unas vacaciones relajantes y enriquecedoras.</p>
+      </div>
+      <div class="col-md-6">
+       <img src="images/abuelos2.jpg" alt="" class="img">
+      </div>
+
+      <div class="row">
+      <div class="col-md-6">
+        <img src="images/pareja.jpg" alt="" class="img">
+      </div>
+      <div class="col-md-6">
+        <h3>Parejas</h3>
+         <p class="wow fadeInRight">Para las parejas, nuestros cruceros ofrecen un ambiente romántico y acogedor. Con cenas a la luz de las velas, actividades diseñadas para dos y experiencias especiales, nos aseguramos de que cada pareja cree recuerdos inolvidables. Ya sea celebrando una ocasión especial o simplemente disfrutando de tiempo juntos, nos esforzamos por crear un ambiente íntimo y romántico.</p>
+    </div>
+    <div class="row">
+      <div class="col-md-6">
+        <h3>Familia</h3>
+        <p class="wow fadeInRight">Sabemos lo importante que es disfrutar de unas vacaciones en familia. Nuestros cruceros están diseñados para brindar diversión y entretenimiento para todas las edades. Desde actividades para niños y adolescentes hasta opciones gastronómicas para satisfacer los gustos de todos, nos aseguramos de que las familias creen recuerdos duraderos juntos. Además, contamos con servicios de cuidado infantil y programas adaptados a las necesidades de las familias.</p>
+      </div>
+      <div class="col-md-6">
+       <img src="images/familia.jpg" alt="" class="img">
+      </div>
+
+      <div class="row">
+      <div class="col-md-6">
+              <img src="images/solteros.jpg" alt="" class="img">
+      </div>
+      <div class="col-md-6">
+        <h3>Solteros</h3>
+        <p class="wow fadeInRight">Para los solteros que desean disfrutar de nuevas experiencias y conocer gente interesante, organizamos cruceros diseñados especialmente para satisfacer sus necesidades. Nuestro objetivo es brindar un ambiente divertido y estimulante donde los solteros puedan socializar y conectarse con otros viajeros afines. Ofrecemos una variedad de actividades y eventos sociales a bordo, como cócteles de bienvenida, cenas grupales, fiestas temáticas y excursiones emocionantes. Ya sea que estés buscando establecer nuevas amistades o encontrar una conexión especial, nuestro crucero para solteros es el lugar perfecto para disfrutar de una experiencia única y llena de posibilidades.</p>
+      </div>
+    </div>
+
+  <br>
+  <br>
+
+  <p class="wow fadeInRight">En resumen, nuestra empresa de cruceros se enfoca en la experiencia de los clientes, independientemente del destino. Ya sean jóvenes, solteros, LGTBI+, personas de la tercera edad, parejas o familias, nos esforzamos por ofrecerles momentos inolvidables y servicios personalizados que se adapten a sus necesidades y preferencias.</p>
+      
+        </div>
+      </section>
+
+{% endblock %}

@@ -11,7 +11,6 @@
     <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Montserrat:300%7CQuestrial">
     <link rel="stylesheet" href="{{ asset('css/bootstrap.css') }}">
     <link rel="stylesheet" href="{{ asset('css/fonts.css') }}">
-    <link rel="stylesheet" href="{{ asset('css/style.css') }}">
     <link rel="stylesheet" href="{{ asset('css/cruceros.css') }}">
     <style>
       .ie-panel{
@@ -34,32 +33,49 @@
 
 {% block content %}
 
-<h1>¡Elige la mejor experiencia entre todas nuestras opciones!</h1>
+<style>
+ p{
+  color: #000000;
+  font-weight: 700;
+}
 
-  <hr class="hr">
-  
-  <div class="card-2">
-    <div class="filters">
-      <label for="destino">Destino:</label>
-      <select id="destino" name="destino">
-        <option value="destino1">Destino 1</option>
-        <option value="destino2">Destino 2</option>
-        <option value="destino3">Destino 3</option>
-        <!-- Agrega más opciones de destino según tus necesidades -->
-      </select>
-      
-      <label for="experiencia">Experiencia:</label>
-      <select id="experiencia" name="experiencia">
-        <option value="experiencia1">Experiencia 1</option>
-        <option value="experiencia2">Experiencia 2</option>
-        <option value="experiencia3">Experiencia 3</option>
-        <!-- Agrega más opciones de experiencia según tus necesidades -->
-      </select>
+</style>
+<!-- BLUE HORIZON-->
+
+<section class="section bg-image background-position-1 section-formulario" id="home" style="background-image: url(images/trail-sea-water-surface-boat.jpg)">
+
+      <!-- Agregar formulario -->
+      <form class="form-style form-large form-inline" action="/buscar" method="GET">
+        <div class="form-group">
+
+          <label for="destino">Destino:</label>
+          <select class="form-control" id="destino" name="destino" required>
+            <option value="">Destino</option>
+            <option value="destino1">Destino 1</option>
+            <option value="destino2">Destino 2</option>
+            <option value="destino3">Destino 3</option>
+            <!-- Agrega más opciones de destino según tus necesidades -->
+          </select>
+
+          <label for="experiencia">Experiencia:</label>
+          <select class="form-control" id="experiencia" name="experiencia" required>
+            <option value="">Experiencia</option>
+            <option value="destino1">experiencia 1</option>
+            <option value="destino2">experiencia 2</option>
+            <option value="destino3">experiencia 3</option>
+          </select>
+
+          <label for="fecha">Fecha:</label>
+          <input type="date" class="form-control" id="fecha" name="fecha" required>
+        <button type="submit" class="btn btn-primary">Buscar</button>
+      </div>
+      </form>
+      <!-- Fin del formulario -->
     </div>
   </div>
-  
-  
-  <div class="card-container">
+</section>
+      
+<div class="card-container">
 
     <div class="card">
       <img src="images/alaska.jpg" alt="Imagen" width="300px" height="200px">

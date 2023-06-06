@@ -33,4 +33,12 @@ class HomePageController extends AbstractController
         return $this->render('secciones/reservaya.html.twig');
     }
 
+    /**
+     * @Route("/about", name="reserva")
+     */
+    public function about(): Response
+    {
+        return $this->render('secciones/about.html.twig');
+    }
+
 }
