@@ -7,15 +7,16 @@ CREATE DATABASE TFG;
 -- Usar base de datos
 USE TFG;
 
--- Crear tabla user
 CREATE TABLE user (
   id INT NOT NULL AUTO_INCREMENT,
   nombre VARCHAR(255) NOT NULL,
   email VARCHAR(255) NOT NULL,
   password VARCHAR(255) NOT NULL,
-  roles ENUM('admin', 'normal') DEFAULT 'normal',
-  PRIMARY KEY (id)
+  roles VARCHAR(20) NOT NULL,
+  PRIMARY KEY (id),
+  CHECK (roles IN ('admin', 'normal'))
 );
+
 
 -- Crear tabla TipoCrucero
 CREATE TABLE TipoCrucero (
@@ -24,8 +25,8 @@ CREATE TABLE TipoCrucero (
   PRIMARY KEY (id)
 );
 
--- Crear tabla Cruceros
-CREATE TABLE Cruceros (
+-- Crear tabla Crucero
+CREATE TABLE Crucero (
   id INT NOT NULL AUTO_INCREMENT,
   nombre VARCHAR(255) NOT NULL,
   destino VARCHAR(255) NOT NULL,
@@ -51,7 +52,7 @@ CREATE TABLE camarotes (
   cantidad_disponible INT NOT NULL,
   crucero_id INT NOT NULL,
   PRIMARY KEY (id),
-  FOREIGN KEY (crucero_id) REFERENCES Cruceros(id)
+  FOREIGN KEY (crucero_id) REFERENCES Crucero(id)
 );
 
 -- Crear tabla Reservas
@@ -74,7 +75,7 @@ CREATE TABLE comentarios (
   fecha_de_comentario DATETIME NOT NULL,
   PRIMARY KEY (id),
   FOREIGN KEY (usuario_id) REFERENCES user(id),
-  FOREIGN KEY (crucero_id) REFERENCES Cruceros(id)
+  FOREIGN KEY (crucero_id) REFERENCES Crucero(id)
 );
 
 -- Crear tabla Servicios
@@ -103,7 +104,7 @@ CREATE TABLE ServiciosCrucero (
   crucero_id INT NOT NULL,
   servicio_id INT NOT NULL,
   PRIMARY KEY (id),
-  FOREIGN KEY (crucero_id) REFERENCES Cruceros(id),
+  FOREIGN KEY (crucero_id) REFERENCES Crucero(id),
   FOREIGN KEY (servicio_id) REFERENCES servicios(id)
 );
 
@@ -111,8 +112,8 @@ CREATE TABLE ServiciosCrucero (
 INSERT INTO TipoCrucero (nombre)
 VALUES ('Parejas'), ('Familias'), ('Solteros'), ('LGTBI+'), ('Tercera Edad'), ('Adolescentes');
 
--- Insertar datos en la tabla Cruceros
-INSERT INTO Cruceros (nombre, destino, descripcion, puerto_de_salida, puerto_de_llegada, fecha_de_salida, fecha_de_llegada, imagen, 
+-- Insertar datos en la tabla Crucero
+INSERT INTO Crucero (nombre, destino, descripcion, puerto_de_salida, puerto_de_llegada, fecha_de_salida, fecha_de_llegada, imagen, 
 tipo_id)
 SELECT 
   'Crucero Mediterráneo' AS nombre,
@@ -151,7 +152,7 @@ ORDER BY RAND();
 
 
 
-INSERT INTO Cruceros (nombre, destino, descripcion, puerto_de_salida, puerto_de_llegada, fecha_de_salida, fecha_de_llegada, imagen, 
+INSERT INTO Crucero (nombre, destino, descripcion, puerto_de_salida, puerto_de_llegada, fecha_de_salida, fecha_de_llegada, imagen, 
 tipo_id)
 SELECT 
   'Crucero Caribe' AS nombre,
@@ -189,7 +190,7 @@ ORDER BY RAND();
 
 
 
-INSERT INTO Cruceros (nombre, destino, descripcion, puerto_de_salida, puerto_de_llegada, fecha_de_salida, fecha_de_llegada, imagen, 
+INSERT INTO Crucero (nombre, destino, descripcion, puerto_de_salida, puerto_de_llegada, fecha_de_salida, fecha_de_llegada, imagen, 
 tipo_id)
 SELECT 
   'Crucero Norte de Europa' AS nombre,
@@ -227,7 +228,7 @@ ORDER BY RAND();
 
 
 
-INSERT INTO Cruceros (nombre, destino, descripcion, puerto_de_salida, puerto_de_llegada, fecha_de_salida, fecha_de_llegada, imagen, 
+INSERT INTO Crucero (nombre, destino, descripcion, puerto_de_salida, puerto_de_llegada, fecha_de_salida, fecha_de_llegada, imagen, 
 tipo_id)
 SELECT 
   'Crucero Alaska' AS nombre,
@@ -265,7 +266,7 @@ ORDER BY RAND();
 
 
 
-INSERT INTO Cruceros (nombre, destino, descripcion, puerto_de_salida, puerto_de_llegada, fecha_de_salida, fecha_de_llegada, imagen, 
+INSERT INTO Crucero (nombre, destino, descripcion, puerto_de_salida, puerto_de_llegada, fecha_de_salida, fecha_de_llegada, imagen, 
 tipo_id)
 SELECT 
   'Crucero Dubai' AS nombre,
@@ -303,7 +304,7 @@ ORDER BY RAND();
 
 
 
-INSERT INTO Cruceros (nombre, destino, descripcion, puerto_de_salida, puerto_de_llegada, fecha_de_salida, fecha_de_llegada, imagen, 
+INSERT INTO Crucero (nombre, destino, descripcion, puerto_de_salida, puerto_de_llegada, fecha_de_salida, fecha_de_llegada, imagen, 
 tipo_id)
 SELECT 
   'Crucero Egipto' AS nombre,
@@ -341,7 +342,7 @@ ORDER BY RAND();
 
 
 
-INSERT INTO Cruceros (nombre, destino, descripcion, puerto_de_salida, puerto_de_llegada, fecha_de_salida, fecha_de_llegada, imagen, 
+INSERT INTO Crucero (nombre, destino, descripcion, puerto_de_salida, puerto_de_llegada, fecha_de_salida, fecha_de_llegada, imagen, 
 tipo_id)
 SELECT 
   'Crucero Sudáfrica' AS nombre,
@@ -379,7 +380,7 @@ ORDER BY RAND();
 
 
 
-INSERT INTO Cruceros (nombre, destino, descripcion, puerto_de_salida, puerto_de_llegada, fecha_de_salida, fecha_de_llegada, imagen, 
+INSERT INTO Crucero (nombre, destino, descripcion, puerto_de_salida, puerto_de_llegada, fecha_de_salida, fecha_de_llegada, imagen, 
 tipo_id)
 SELECT 
   'Crucero Asia' AS nombre,
@@ -417,7 +418,7 @@ ORDER BY RAND();
 
 
 
-INSERT INTO Cruceros (nombre, destino, descripcion, puerto_de_salida, puerto_de_llegada, fecha_de_salida, fecha_de_llegada, imagen, 
+INSERT INTO Crucero (nombre, destino, descripcion, puerto_de_salida, puerto_de_llegada, fecha_de_salida, fecha_de_llegada, imagen, 
 tipo_id)
 SELECT 
   'Crucero Sudamérica' AS nombre,
@@ -467,7 +468,7 @@ SELECT
   10 AS cantidad_disponible,
   id AS crucero_id
 FROM
-  cruceros;
+  Crucero;
 
 INSERT INTO camarotes (nombre, descripcion, tipo_de_cama, precio, cantidad_disponible, crucero_id)
 SELECT
@@ -478,7 +479,7 @@ SELECT
   20 AS cantidad_disponible,
   id AS crucero_id
 FROM
-  cruceros;
+  Crucero;
 
 INSERT INTO camarotes (nombre, descripcion, tipo_de_cama, precio, cantidad_disponible, crucero_id)
 SELECT
@@ -489,7 +490,7 @@ SELECT
   5 AS cantidad_disponible,
   id AS crucero_id
 FROM
-  cruceros;
+  Crucero;
 
 
 -- Insertar datos en la tabla Servicios
@@ -502,7 +503,7 @@ VALUES
 -- Insertar datos en la tabla ServiciosCrucero
 INSERT INTO ServiciosCrucero (crucero_id, servicio_id)
 SELECT c.id, s.id
-FROM cruceros c, servicios s;
+FROM Crucero c, servicios s;
 
 
 -- Usuario admin

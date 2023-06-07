@@ -6,7 +6,9 @@ use Doctrine\ORM\Mapping as ORM;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\ReservaRepository")
+ *@ORM\Table(name="reservas")
  */
+
 class Reserva
 {
     /**
