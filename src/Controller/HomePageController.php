@@ -34,11 +34,20 @@ class HomePageController extends AbstractController
     }
 
     /**
-     * @Route("/about", name="reserva")
+     * @Route("/about", name="about")
      */
     public function about(): Response
     {
         return $this->render('secciones/about.html.twig');
     }
+
+    /**
+     * @Route("/contact", name="contact")
+     */
+    public function contact(): Response
+    {
+        return $this->render('secciones/contact.html.twig');
+    }
+
 
 }
