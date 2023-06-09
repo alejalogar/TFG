@@ -30,16 +30,41 @@ class CruceroController extends AbstractController
     
 
     /**
-     * @Route("/cruceros/{tipoId}", name="cruceros_tipo")
+     * @Route("/cruceros/tipo/{tipoId}", name="cruceros_por_tipo")
      */
-    public function listCrucerosByTipo(CruceroRepository $cruceroRepository, $tipoId): Response
+    public function crucerosPorTipo($tipoId, TipoCruceroRepository $tipoCruceroRepository, CruceroRepository $cruceroRepository): Response
     {
+        $tipoCrucero = $tipoCruceroRepository->find($tipoId);
+        $tipos = $this->getDoctrine()->getRepository(Tipocrucero::class)->findAll();
+
+
+        if (!$tipoCrucero) {
+            throw $this->createNotFoundException('El tipo de crucero no existe.');
+        }
+
         $cruceros = $cruceroRepository->findCrucerosByTipo($tipoId);
 
-        // Hacer algo con los cruceros, por ejemplo, pasarlos a una plantilla para renderizarlos
-
-        return $this->render('cruceros/list.html.twig', [
+        return $this->render('cruceros/cruceros_por_tipo.html.twig', [
+            'tipoCrucero' => $tipoCrucero,
             'cruceros' => $cruceros,
+            'tipos' => $tipos,
         ]);
     }
+
+    /**
+     * @Route("/cruceros/destino/{destino}", name="cruceros_por_destino")
+     */
+    public function crucerosPorDestino($destino, CruceroRepository $cruceroRepository): Response
+    {
+        $cruceros = $cruceroRepository->findCrucerosByDestino($destino);
+        $tipos = $this->getDoctrine()->getRepository(Tipocrucero::class)->findAll();
+
+        return $this->render('cruceros/cruceros_por_destino.html.twig', [
+            'destino' => $destino,
+            'cruceros' => $cruceros,
+            'tipos' => $tipos,
+        ]);
+    }
+
+
 }

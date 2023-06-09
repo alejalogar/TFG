@@ -80,7 +80,15 @@ class CruceroRepository extends ServiceEntityRepository
 
 
 
-
+    public function findCrucerosByDestino($destino)
+    {
+        return $this->createQueryBuilder('c')
+            ->andWhere('c.destino = :destino')
+            ->setParameter('destino', $destino)
+            ->getQuery()
+            ->getResult();
+    }
+    
 
 
 
@@ -96,6 +104,11 @@ class CruceroRepository extends ServiceEntityRepository
     
         return $destinos;
     }
+
+
+
+
+
     
 
 

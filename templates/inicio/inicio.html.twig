@@ -126,30 +126,40 @@
                 <!-- Owl Carousel-->
                 <div class="owl-carousel owl-style-1" data-loop="true" data-items="1" data-nav="true" data-nav-text='["<", ">"]'>
                   <div>
-                    <a href="">
+                    <a href="{{ path('cruceros_por_tipo', {tipoId: 6}) }}">
                       <img src="images/amigos-ibiza.jpg" alt="" width="618" height="614"/>
-                      <h4 style="text-align:center;">Jóvenes: Ibiza, España</h4>
+                      <h4 style="text-align:center;">Adolescentes</h4>
                     </a>
                   </div>
                   <div>
-                    <img src="images/solteros.jpg" alt="" width="618" height="614"/>
-                    <h4 style="text-align:center;">Solteros: Miami, Florida</h4>
+                    <a href="{{ path('cruceros_por_tipo', {tipoId: 3}) }}">
+                      <img src="images/solteros.jpg" alt="" width="618" height="614"/>
+                      <h4 style="text-align:center;">Solteros</h4>
+                    </a>
                   </div>
                   <div>
-                    <img src="images/abuelos2.jpg" alt="" width="618" height="614"/>
-                    <h4 style="text-align:center;">Tercera edad: Fiordos Noruegos</h4>
+                    <a href="{{ path('cruceros_por_tipo', {tipoId: 5}) }}">
+                      <img src="images/abuelos2.jpg" alt="" width="618" height="614"/>
+                      <h4 style="text-align:center;">Tercera edad</h4>
+                    </a>
                   </div>
                   <div>
-                    <img src="images/pareja.jpg" alt="" width="618" height="614"/>
-                    <h4 style="text-align:center;">Pareja: Santorini, Grecia</h4>
+                    <a href="{{ path('cruceros_por_tipo', {tipoId: 1}) }}">
+                      <img src="images/pareja.jpg" alt="" width="618" height="614"/>
+                      <h4 style="text-align:center;">Parejas</h4>
+                    </a>
                   </div>
                   <div>
-                    <img src="images/familia.jpg" alt="" width="618" height="614"/>
-                    <h4 style="text-align:center;">Familias: Orlando, Florida</h4>
+                    <a href="{{ path('cruceros_por_tipo', {tipoId: 2}) }}">
+                      <img src="images/familia.jpg" alt="" width="618" height="614"/>
+                      <h4 style="text-align:center;">Familias</h4>
+                    </a>
                   </div>
                   <div>
-                    <img src="images/gay.jpg" alt="" width="618" height="614"/>
-                    <h4 style="text-align:center;">LGBTI+: Mykonos, Grecia</h4>
+                    <a href="{{ path('cruceros_por_tipo', {tipoId: 4}) }}">
+                      <img src="images/gay.jpg" alt="" width="618" height="614"/>
+                      <h4 style="text-align:center;">LGBTI+</h4>
+                    </a>
                   </div>
                 </div>
               </div>
@@ -168,7 +178,7 @@
               <article class="project-classic box-md"><img src="images/caribe.jpg" alt="" width="370" height="262"/>
                 <div class="project-classic-caption">
                   <div>
-                    <h4 class="project-classic-title" >CARIBE</h4>
+                    <h4 class="project-classic-title"> <a href="{{ path('cruceros_por_destino', {destino: "Caribe"}) }}">CARIBE</a></h4>
                   
                   </div>
                 </div>
@@ -178,7 +188,7 @@
               <article class="project-classic box-md"><img src="images/mediterraneo.jpg" alt="" width="370" height="262"/>
                 <div class="project-classic-caption">
                   <div>
-                    <h4 class="project-classic-title"><a href="#">MEDITERRANEO</a></h4>
+                    <h4 class="project-classic-title"><a href="{{ path('cruceros_por_destino', {destino: "Mediterráneo"}) }}">MEDITERRANEO</a></h4>
                   </div>
                 </div>
               </article>
@@ -187,7 +197,7 @@
               <article class="project-classic box-md"><img src="images/alaska.jpg" alt="" width="370" height="262"/>
                 <div class="project-classic-caption">
                   <div>
-                    <h4 class="project-classic-title"><a href="#">ALASKA</a></h4>
+                    <h4 class="project-classic-title"><a href="{{ path('cruceros_por_destino', {destino: "Alaska"}) }}">ALASKA</a></h4>
                   </div>
                 </div>
               </article>
@@ -196,7 +206,7 @@
               <article class="project-classic box-md"><img src="images/hawai.jpg" alt="" width="370" height="262"/>
                 <div class="project-classic-caption">
                   <div>
-                    <h4 class="project-classic-title"><a href="#">HAWAI</a></h4>
+                    <h4 class="project-classic-title"><a href="{{ path('cruceros_por_destino', {destino: "Norte de Europa"}) }}">NORTE DE EUROPA</a></h4>
                   </div>
                 </div>
               </article>
@@ -205,7 +215,7 @@
               <article class="project-classic box-md"><img src="images/Islas del Pacífico Sur.jpg" alt="" width="370" height="262"/>
                 <div class="project-classic-caption">
                   <div>
-                    <h4 class="project-classic-title"><a href="#">ISLAS DEL PACÍFICO SUR</a></h4>
+                    <h4 class="project-classic-title"><a href="{{ path('cruceros_por_destino', {destino: "Egipto"}) }}">EGIPTO</a></h4>
                   </div>
                 </div>
               </article>
@@ -214,7 +224,7 @@
               <article class="project-classic box-md"><img src="images/Islas Maldivas.jpg" alt="" width="370" height="262"/>
                 <div class="project-classic-caption">
                   <div>
-                    <h4 class="project-classic-title"><a href="#">ISLAS MALDIVAS</a></h4>
+                    <h4 class="project-classic-title"><a href="{{ path('cruceros_por_destino', {destino: "Sudáfrica"}) }}">SUDÁFRICA</a></h4>
                   </div>
                 </div>
               </article>
@@ -223,7 +233,7 @@
               <article class="project-classic box-md"><img src="images/dubai.jpg" alt="" width="370" height="262"/>
                 <div class="project-classic-caption">
                   <div>
-                    <h4 class="project-classic-title"><a href="#">DUBAI</a></h4>
+                    <h4 class="project-classic-title"><a href="{{ path('cruceros_por_destino', {destino: "Dubai"}) }}">DUBAI</a></h4>
                   </div>
                 </div>
               </article>
@@ -232,7 +242,7 @@
               <article class="project-classic box-md"><img src="images/eeuu.jpg" alt="" width="370" height="262"/>
                 <div class="project-classic-caption">
                   <div>
-                    <h4 class="project-classic-title"><a href="#">ESTADOS UNIDOS</a></h4>
+                    <h4 class="project-classic-title"><a href="{{ path('cruceros_por_destino', {destino: "Sudamérica"}) }}">SUDAMÉRICA</a></h4>
                   </div>
                 </div>
               </article>
@@ -241,7 +251,7 @@
               <article class="project-classic box-md"><img src="images/arabia.jpg" alt="" width="370" height="262"/>
                 <div class="project-classic-caption">
                   <div>
-                    <h4 class="project-classic-title"><a href="#">ARABIA SAUDI</a></h4>
+                    <h4 class="project-classic-title"><a href="{{ path('cruceros_por_destino', {destino: "Asia"}) }}">ASIA</a></h4>
                   </div>
                 </div>
               </article>

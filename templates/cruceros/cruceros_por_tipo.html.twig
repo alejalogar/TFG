@@ -1,0 +1,73 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}BH Cruceros{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link rel="icon" href="images/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Montserrat:300%7CQuestrial">
+    <link rel="stylesheet" href="{{ asset('css/bootstrap.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/fonts.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/cruceros.css') }}">
+    <style>
+      .ie-panel{
+      display: none;
+      background: #212121;
+      padding: 10px 0;
+      box-shadow: 3px 3px 5px 0 rgba(0,0,0,.3);
+      clear: both;
+      text-align:center;
+      position: relative;
+      z-index: 1;
+      } 
+      html.ie-10 .ie-panel,html.lt-ie-10 .ie-panel {
+      display: block;
+      }
+    </style>
+{% endblock %}
+
+
+
+{% block content %}
+
+<style>
+ p{
+  color: #000000;
+  font-weight: 700;
+}
+
+</style>
+
+
+<div class="card-container">
+  {% for crucero in cruceros %}
+    <div class="card mb-3">
+      <div class="row no-gutters">
+        <div class="col-md-4">
+          <img src="{{ crucero.imagen }}" alt="Imagen" class="card-img" width="300px" height="200px">
+        </div>
+        <div class="col-md-8">
+          <div class="card-body">
+            <h3 class="card-title">{{ crucero.nombre }}</h3>
+            <p class="card-text">{{ crucero.descripcion }}</p>
+            {% for tipo in tipos %}
+              {% if tipo.id == crucero.tipo.id %}
+                <p class="card-text">Tipo: {{ tipo.nombre }}</p>
+              {% endif %}
+            {% endfor %}
+            <p class="card-text">Fecha de salida: {{ crucero.fechaDeSalida|date('d-m-Y') }}</p>
+            {# <a href="{{ path('reservar', { 'cruceroId': crucero.id }) }}" class="btn btn-primary">Reservar</a> #}
+          </div>
+        </div>
+      </div>
+    </div>
+  {% endfor %}
+</div>
+
+
+
+
+{% endblock %}
