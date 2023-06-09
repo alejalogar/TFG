@@ -506,8 +506,8 @@ FROM Crucero c, servicios s;
 
 
 -- Usuario admin
-INSERT INTO user (nombre, email, password, roles)
-VALUES ('admin', 'admin@example.com', SHA2('123456789', 256), 'admin');
+INSERT INTO user (email, password, roles)
+VALUES ('admin@example.com', SHA2('123456789', 256), 'admin');
 
 
 
