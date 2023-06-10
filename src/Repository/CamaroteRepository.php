@@ -39,6 +39,16 @@ class CamaroteRepository extends ServiceEntityRepository
         }
     }
 
+    public function findCamarotesDisponiblesByCruceroId($cruceroId)
+    {
+        return $this->createQueryBuilder('c')
+            ->andWhere('c.crucero = :cruceroId')
+            ->andWhere('c.cantidadDisponible > 0')
+            ->setParameter('cruceroId', $cruceroId)
+            ->getQuery()
+            ->getResult();
+    }
+
 //    /**
 //     * @return Camarote[] Returns an array of Camarote objects
 //     */

@@ -38,6 +38,19 @@ class ServicioRepository extends ServiceEntityRepository
             $this->getEntityManager()->flush();
         }
     }
+    public function findServicioById($servicioIds)
+    {
+        if (!is_array($servicioIds)) {
+            $servicioIds = array($servicioIds);
+        }
+        
+        return $this->createQueryBuilder('s')
+            ->andWhere('s.id IN (:ids)')
+            ->setParameter('ids', $servicioIds)
+            ->getQuery()
+            ->getResult();
+    }
+
 
 //    /**
 //     * @return Servicio[] Returns an array of Servicio objects

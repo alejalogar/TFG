@@ -5,6 +5,7 @@ namespace App\Repository;
 use App\Entity\ServiciosCrucero;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
+use App\Entity\Servicio;
 
 /**
  * @extends ServiceEntityRepository<ServiciosCrucero>
@@ -39,6 +40,11 @@ class ServiciosCruceroRepository extends ServiceEntityRepository
         }
     }
 
+    public function findByCruceroId($cruceroId)
+{
+    return $this->findBy(['crucero' => $cruceroId]);
+}
+    
 //    /**
 //     * @return ServiciosCrucero[] Returns an array of ServiciosCrucero objects
 //     */

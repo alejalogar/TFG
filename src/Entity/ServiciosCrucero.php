@@ -1,12 +1,11 @@
 <?php
-
 namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\ServiciosCruceroRepository")
- * @ORM\Table(name="servicios")
+ * @ORM\Table(name="ServiciosCrucero")
  */
 class ServiciosCrucero
 {
@@ -18,13 +17,13 @@ class ServiciosCrucero
     private $id;
 
     /**
-     * @ORM\ManyToOne(targetEntity="App\Entity\Crucero")
+     * @ORM\ManyToOne(targetEntity="Crucero")
      * @ORM\JoinColumn(name="crucero_id", referencedColumnName="id")
      */
     private $crucero;
 
     /**
-     * @ORM\ManyToOne(targetEntity="App\Entity\Servicio")
+     * @ORM\ManyToOne(targetEntity="Servicio")
      * @ORM\JoinColumn(name="servicio_id", referencedColumnName="id")
      */
     private $servicio;
