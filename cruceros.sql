@@ -113,8 +113,8 @@ CREATE TABLE messenger_messages (
   message TEXT DEFAULT NULL,
   body TEXT NOT NULL,
   headers TEXT NOT NULL,
-  queue_name VARCHAR(255) DEFAULT NULL;
-  available_at DATETIME DEFAULT NULL;
+  queue_name VARCHAR(255) DEFAULT NULL,
+  available_at DATETIME DEFAULT NULL,
   created_at DATETIME NOT NULL,
   PRIMARY KEY (id),
   FOREIGN KEY (user_id) REFERENCES user(id)
