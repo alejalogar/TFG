@@ -3,6 +3,12 @@ body {
   background-image: url(../images/reservayaa.jpg);
 }
 
+.container{
+  margin-top: 20px;
+  margin-bottom: 20px;
+
+}
+
 /* enlace de p */
 a:hover {
   color: #002be9;
@@ -14,5 +20,30 @@ a:hover {
   margin-left: 200px;
   }
     
+.login-box{
+  background: #fff;
+  border: 50px;
+}
+
+.form-check-label {
+  display: inline-block;
+  margin-left: 0.5rem;
+}
+
+.form-check {
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.form-signin{
+  margin-bottom: 10px;
+  margin-top: 10px;
+}
+
+.btn {
+  margin-bottom: 5px;
+}
+
+
 
 

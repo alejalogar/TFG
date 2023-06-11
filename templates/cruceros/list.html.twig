@@ -65,9 +65,6 @@
             <option value="destino3">experiencia 3</option>
           </select>
 
-          <label for="fecha">Fecha:</label>
-          <input type="date" class="form-control" id="fecha" name="fecha" required>
-        <button type="submit" class="btn btn-primary">Buscar</button>
       </div>
       </form>
       <!-- Fin del formulario -->
@@ -75,14 +72,17 @@
   </div>
 </section>
       
-<div class="card-container">
+
   {% for crucero in cruceros %}
-    <div class="card mb-3">
+
       <div class="row no-gutters">
-        <div class="col-md-4">
-          <img src="{{ crucero.imagen }}" alt="Imagen" class="card-img" width="300px" height="200px">
+
+        <div class="col-md-5">
+          {# <img src="{{ crucero.imagen }}" alt="Imagen" class="card-img" width="300px" height="200px"> #}
+           <img src="../images/mediterraneo.jpg" alt="Imagen" class="card-img" width="300px" height="200px">
         </div>
-        <div class="col-md-8">
+
+        <div class="col-md-5">
           <div class="card-body">
             <h3 class="card-title">{{ crucero.nombre }}</h3>
             <p class="card-text">{{ crucero.descripcion }}</p>
@@ -92,13 +92,15 @@
               {% endif %}
             {% endfor %}
             <p class="card-text">Fecha de salida: {{ crucero.fechaDeSalida|date('d-m-Y') }}</p>
-            <a href="{{ path('reservar_crucero', { 'cruceroId': crucero.id }) }}" class="btn btn-primary">Reservar</a>
           </div>
         </div>
+
+         <div class="col-md-2 align-self-end">
+            <a href="{{ path('reservar_crucero', { 'cruceroId': crucero.id }) }}" class="btn btn-primary">Reservar</a>
+        </div>
       </div>
-    </div>
   {% endfor %}
-</div>
+
 
 
 

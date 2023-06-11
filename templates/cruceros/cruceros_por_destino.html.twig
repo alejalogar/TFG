@@ -42,16 +42,15 @@
 </style>
 
 
-<h1>Cruceros por destino - {{ destino }}</h1>
-
-    <div class="card-container">
+<h2>¡Era esto justo lo que estabas buscando!</h2>
         {% for crucero in cruceros %}
-            <div class="card mb-3">
+
                 <div class="row no-gutters">
-                    <div class="col-md-4">
+                    <div class="col-md-5">
                         <img src="{{ crucero.imagen }}" alt="Imagen" class="card-img" width="300px" height="200px">
                     </div>
-                    <div class="col-md-8">
+
+                    <div class="col-md-5">
                         <div class="card-body">
                             <h3 class="card-title">{{ crucero.nombre }}</h3>
                             <p class="card-text">{{ crucero.descripcion }}</p>
@@ -61,13 +60,27 @@
                                 {% endif %}
                             {% endfor %}
                             <p class="card-text">Fecha de salida: {{ crucero.fechaDeSalida|date('d-m-Y') }}</p>
-                            <a href="{{ path('reservar_crucero', { 'cruceroId': crucero.id }) }}" class="btn btn-primary">Reservar</a>
                         </div>
                     </div>
-                </div>
-            </div>
+
+                            <div class="col-md-2 align-self-end">
+            <a href="{{ path('reservar_crucero', { 'cruceroId': crucero.id }) }}" class="btn btn-primary">Reservar</a>
+        </div>
+        </div>
+
+        
+    <br>
+    <hr>
+    <br>
+            
         {% endfor %}
-    </div>
+
+
+<svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" fill="currentColor" class="bi bi-arrow-left" viewBox="0 0 16 16">
+    <a href="{{ path('inicio') }}" style="color: white;">
+        <path fill-rule="evenodd" d="M15 8a.5.5 0 0 0-.5-.5H2.707l3.147-3.146a.5.5 0 1 0-.708-.708l-4 4a.5.5 0 0 0 0 .708l4 4a.5.5 0 0 0 .708-.708L2.707 8.5H14.5A.5.5 0 0 0 15 8z"/>
+    </a>
+</svg>
 
 
 
