@@ -21,6 +21,11 @@ use App\Repository\CamaroteRepository;
 use App\Repository\ReservaRepository;
 use App\Repository\UserRepository;
 
+use Dompdf\Dompdf;
+use Symfony\Component\Mailer\MailerInterface;
+use Symfony\Component\Mime\Email;
+
+
 
 class CruceroController extends AbstractController
 {
@@ -78,7 +83,7 @@ class CruceroController extends AbstractController
 /**
  * @Route("/reservar/{cruceroId}", name="reservar_crucero")
  */
-public function reservarCrucero($cruceroId, Request $request, CruceroRepository $cruceroRepository, ServiciosCruceroRepository $serviciosCruceroRepository, ServicioRepository $serviciosRepository, CamaroteRepository $camarotesRepository, UserRepository $userRepository): Response
+public function reservarCrucero($cruceroId, Request $request, CruceroRepository $cruceroRepository, ServiciosCruceroRepository $serviciosCruceroRepository, ServicioRepository $serviciosRepository, CamaroteRepository $camarotesRepository, UserRepository $userRepository, MailerInterface $mailer): Response
 {
     $crucero = $cruceroRepository->find($cruceroId);
     $tipos = $this->getDoctrine()->getRepository(Tipocrucero::class)->findAll();
@@ -120,8 +125,25 @@ foreach ($servicioIds as $servicioCrucero) {
         $entityManager->persist($abordo);
         $entityManager->flush();
         
+        // Generar el contenido del PDF
+        $pdfContent = $this->generatePdfContent($crucero, $tipos, $servicios, $camarotes);
+
+        // Enviar el PDF por correo electrónico
+        $usuario = $user->getUsername();
+        $message = (new Email())
+            ->from('bhcruceros@gmail.com')
+            ->to($usuario)
+            ->subject('Confirmación de Reserva')
+            ->text('¡Tu reserva se ha realizado con éxito! Adjunto encontrarás los detalles de tu reserva.')
+            ->attach($pdfContent, 'reserva.pdf', 'application/pdf');
+
+        $mailer->send($message);
+
         // Redirigir a una página de confirmación o mostrar un mensaje de éxito
-        return $this->redirectToRoute('confirmacion_reserva');
+        return $this->render('cruceros/confirmacion_reserva.html.twig', [
+            'crucero' => $crucero,
+            'tipos' => $tipos,
+        ]);
     }
 
     return $this->render('cruceros/reservar_crucero.html.twig', [
@@ -130,6 +152,24 @@ foreach ($servicioIds as $servicioCrucero) {
         'servicios' => $servicios,
         'camarotes' => $camarotes,
     ]);
+}
+
+private function generatePdfContent($crucero, $tipos, $servicios, $camarotes)
+{
+
+    $html = $this->render('pdf/pdf.html.twig', [
+        'crucero' => $crucero,
+        'tipos' => $tipos,
+        'servicios' => $servicios,
+        'camarotes' => $camarotes,
+    ]);
+
+    $dompdf = new Dompdf();
+    $dompdf->loadHtml($html);
+    $dompdf->setPaper('A4', 'portrait');
+    $dompdf->render();
+
+    return $dompdf->output();
 }
 
 
