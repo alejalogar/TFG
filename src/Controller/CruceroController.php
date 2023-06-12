@@ -20,6 +20,7 @@ use App\Repository\ServicioRepository;
 use App\Repository\CamaroteRepository;
 use App\Repository\ReservaRepository;
 use App\Repository\UserRepository;
+use App\From\Type\TaskType;
 
 use Dompdf\Dompdf;
 use Symfony\Component\Mailer\MailerInterface;
@@ -149,30 +150,12 @@ class CruceroController extends AbstractController
             $entityManager->persist($abordo);
             $entityManager->flush();
 
-            // Generar el contenido del PDF
-            $pdfContent = $this->generatePdfContent($crucero, $tipos, $servicios, $camarotes);
-
-            if (isset($pdfContent)) {
-                // Obtener el correo electrónico del usuario logueado
-                $userEmail = $user->getUsername();
-
-                // Crear el mensaje de correo electrónico
-                $message = (new \Symfony\Component\Mime\Email())
-                    ->from('bhcruceros@gmail.com')
-                    ->to($userEmail)
-                    ->subject('Confirmación de reserva')
-                    ->text('Adjunto encontrarás los detalles de tu reserva.')
-                    ->attach($pdfContent, 'reserva.pdf', 'application/pdf');
-
-                // Enviar el correo electrónico
-                $this->mailer->send($message);
+           
                 return $this->render('cruceros/confirmacion_reserva.html.twig', [
                     'crucero' => $crucero,
                     'tipos' => $tipos,
                 ]);
             }
-        }
-
         return $this->render('cruceros/reservar_crucero.html.twig', [
             'crucero' => $crucero,
             'tipos' => $tipos,
