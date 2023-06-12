@@ -11,11 +11,57 @@
   color: #000000;
   font-weight: 700;
 }
+  .row {
+    border: 1px solid #ccc;
+    overflow: hidden;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+    margin-left: 20px;
+    margin-right: 20px;
+  }
+
+  .card-img {
+    width: 100%;
+    height: 100%;
+    max-height: 400px;
+  }
+
+  .card-body {
+    padding: 10px; /* Ajusta el espaciado interno del cuerpo de la tarjeta según tus necesidades */
+  }
+
+  .card-title {
+    /*color texto*/
+    color: #1BCEEE;
+    font-size: 1.5rem;
+  }
+
+  .card-text {
+    margin-bottom: 5px;
+  }
+
+  .btn {
+  margin-right: 10px;
+  margin-left: 10px;
+   width: 80%;
+ }
+
+.row .col-md-5:hover {
+  background-color: #A8D7DF;
+  transition: background-color 2s ease;
+}
+
+.row .col-md-5:hover .card-title,
+.row .col-md-5:hover .card-text {
+  color: #000000;
+  transition: color 2s ease;
+}
+  
 
 </style>
 <!-- BLUE HORIZON-->
 
-<section class="section bg-image background-position-1 section-formulario" id="home" style="background-image: url(images/trail-sea-water-surface-boat.jpg)">
+<section class="section bg-image background-position-1 section-formulario" id="home" style="background-image: url(images/trail-sea-water-surface-boat.jpg)" height="100px">
 
       <!-- Agregar formulario -->
       <form class="form-style form-large form-inline" action="/buscar" method="GET">
@@ -48,34 +94,30 @@
 
   {% for crucero in cruceros %}
 
-      <div class="row no-gutters">
+<div class="row no-gutters">
+  <div class="col-md-5">
+    <img src="{{ crucero.imagen }}" alt="Imagen" class="card-img">
 
-        <div class="col-md-5">
-          {# <img src="{{ crucero.imagen }}" alt="Imagen" class="card-img" width="300px" height="200px"> #}
-           <img src="../images/mediterraneo.jpg" alt="Imagen" class="card-img" width="300px" height="200px">
-        </div>
+  </div>
 
-        <div class="col-md-5">
-          <div class="card-body">
-            <h3 class="card-title">{{ crucero.nombre }}</h3>
-            <p class="card-text">{{ crucero.descripcion }}</p>
-            {% for tipo in tipos %}
-              {% if tipo.id == crucero.tipo.id %}
-                <p class="card-text">Tipo: {{ tipo.nombre }}</p>
-              {% endif %}
-            {% endfor %}
-            <p class="card-text">Fecha de salida: {{ crucero.fechaDeSalida|date('d-m-Y') }}</p>
-          </div>
-        </div>
+  <div class="col-md-5">
+    <div class="card-body">
+      <h3 class="card-title">{{ crucero.nombre }}</h3>
+      <p class="card-text">{{ crucero.descripcion }}</p>
+      {% for tipo in tipos %}
+        {% if tipo.id == crucero.tipo.id %}
+          <p class="card-text">Tipo: {{ tipo.nombre }}</p>
+        {% endif %}
+      {% endfor %}
+      <p class="card-text">Fecha de salida: {{ crucero.fechaDeSalida|date('d-m-Y') }}</p>
+    </div>
+  </div>
 
-         <div class="col-md-2 align-self-end">
-            <a href="{{ path('reservar_crucero', { 'cruceroId': crucero.id }) }}" class="btn btn-primary">Reservar</a>
-        </div>
-      </div>
+  <div class="col-md-2 align-self-center align-items-center">
+    <a href="{{ path('reservar_crucero', { 'cruceroId': crucero.id }) }}" class="btn btn-primary">Reservar</a>
+  </div>
+</div>
+
   {% endfor %}
-
-
-
-
 
 {% endblock %}

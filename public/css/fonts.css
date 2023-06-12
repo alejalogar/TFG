@@ -9836,18 +9836,3 @@
 .fl-bigmug-line-zoom60:before {
 	content: "\e0db";
 }
-
-.card-title{
-	/* tipo de texto */
-	font-family: "Helvetica Neue", Arial, sans-serif;
-	text-decoration: underline;
-	font-style: italic;
-	
-}
-
-.card-text{
-	font-family: "Helvetica Neue", Arial, sans-serif;
-	/* cursviva */
-	font-style: italic;
-	font-size: 14px;
-}
