@@ -150,10 +150,16 @@ class CruceroController extends AbstractController
             $entityManager->persist($abordo);
             $entityManager->flush();
 
-           
-                return $this->render('cruceros/confirmacion_reserva.html.twig', [
+            $precioCamarote = $this->camaroteRepository->find($camaroteId)->getPrecio(); 
+            
+            $precioServicio = $this->servicioRepository->find($servicioId)->getPrecio(); 
+
+            $suma = $precioCamarote + $precioServicio;
+
+            return $this->render('cruceros/confirmacion_reserva.html.twig', [
                     'crucero' => $crucero,
                     'tipos' => $tipos,
+                    'suma' => $suma,
                 ]);
             }
         return $this->render('cruceros/reservar_crucero.html.twig', [
