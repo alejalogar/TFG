@@ -30,19 +30,38 @@ use Symfony\Component\Mime\Email;
 class CruceroController extends AbstractController
 {
 
-    /**
-     * @Route("/cruceros", name="cruceros_list")
-     */
-    public function findAllCruceros(): Response
-    {
-        $cruceros = $this->getDoctrine()->getRepository(Crucero::class)->findAll();
-        $tipos = $this->getDoctrine()->getRepository(Tipocrucero::class)->findAll();
-        return $this->render('cruceros/list.html.twig', [
-            'cruceros' => $cruceros,
-            'tipos' => $tipos,
-        ]);
-    }
+/**
+ * @Route("/cruceros", name="cruceros_list")
+ */
+public function findAllCruceros(Request $request): Response
+{
+    $destino = $request->query->get('destino');
+    $experiencia = $request->query->get('experiencia');
+
+    $cruceroRepository = $this->getDoctrine()->getRepository(Crucero::class);
+
     
+
+    if ($destino && $experiencia) {
+        $cruceros = $cruceroRepository->findCrucerosByDestinoAndExperiencia($destino, $experiencia);
+    } elseif ($destino) {
+        $cruceros = $cruceroRepository->findCrucerosByDestino($destino);
+    } elseif ($experiencia) {
+        $cruceros = $cruceroRepository->findCrucerosByExperiencia($experiencia);
+    } else {
+        $cruceros = $cruceroRepository->findAll();
+    }
+
+    $tipos = $this->getDoctrine()->getRepository(TipoCrucero::class)->findAll();
+
+    return $this->render('cruceros/list.html.twig', [
+        'cruceros' => $cruceros,
+        'tipos' => $tipos,
+        'destinos' => $destinos, // Pasar la variable 'destinos' a la plantilla Twig
+        'experiencias' => $experiencias, // Pasar la variable 'experiencias' a la plantilla Twig
+    ]);
+}
+
 
     /**
      * @Route("/cruceros/tipo/{tipoId}", name="cruceros_por_tipo")
