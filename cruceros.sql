@@ -107,19 +107,6 @@ CREATE TABLE ServiciosCrucero (
   FOREIGN KEY (servicio_id) REFERENCES servicios(id)
 );
 
-CREATE TABLE messenger_messages (
-  id INT NOT NULL AUTO_INCREMENT,
-  user_id INT DEFAULT NULL,
-  message TEXT DEFAULT NULL,
-  body TEXT NOT NULL,
-  headers TEXT NOT NULL,
-  queue_name VARCHAR(255) DEFAULT NULL,
-  available_at DATETIME DEFAULT NULL,
-  created_at DATETIME NOT NULL,
-  PRIMARY KEY (id),
-  FOREIGN KEY (user_id) REFERENCES user(id)
-);
-
 
 -- Insertar datos en la tabla TipoCrucero
 INSERT INTO TipoCrucero (nombre)

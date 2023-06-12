@@ -52,13 +52,12 @@
 {% endfor %}
 <hr>
 
-
 <form id="reservaForm" action="{{ path('reservar_crucero', {'cruceroId': crucero.id}) }}" method="POST">
   <h2>Información de los camarotes</h2>
   <select name="camarote" id="camaroteSelect">
     <option>Seleccione un camarote</option>
     {% for camarote in camarotes %}
-      <option value="{{ camarote.id }}">
+      <option value="{{ camarote.id }}" data-precio="{{ camarote.precio }}">
         {{ camarote.nombre }} - ({{ camarote.precio }} € {{ camarote.descripcion }})
       </option>
     {% endfor %}
@@ -69,12 +68,14 @@
   <select name="servicio" id="servicioSelect">
     <option>Seleccione un servicio</option>
     {% for servicio in servicios %}
-      <option value="{{ servicio.id }}">
+      <option value="{{ servicio.id }}" data-precio="{{ servicio.precio }}">
         {{ servicio.nombre }} - ({{ servicio.precio }} € {{ servicio.descripcion }})
       </option>
     {% endfor %}
   </select>
   <br><br>
+
+  <p id="sumaTexto">Precio total: 0 €</p>
 
   <button id="confirmButton" disabled>Confirmar</button>
 </form>
@@ -82,18 +83,26 @@
 <script>
   const camaroteSelect = document.getElementById('camaroteSelect');
   const servicioSelect = document.getElementById('servicioSelect');
+  const sumaTexto = document.getElementById('sumaTexto');
   const confirmButton = document.getElementById('confirmButton');
 
   // Habilitar el botón "Confirmar" cuando se seleccione un valor en ambos formularios
-  camaroteSelect.addEventListener('change', enableButton);
-  servicioSelect.addEventListener('change', enableButton);
+  camaroteSelect.addEventListener('change', calcularSuma);
+  servicioSelect.addEventListener('change', calcularSuma);
 
-  function enableButton() {
+  function calcularSuma() {
+    const camarotePrecio = parseFloat(camaroteSelect.options[camaroteSelect.selectedIndex].getAttribute('data-precio'));
+    const servicioPrecio = parseFloat(servicioSelect.options[servicioSelect.selectedIndex].getAttribute('data-precio'));
+    const suma = camarotePrecio + servicioPrecio;
+    sumaTexto.textContent = 'Suma: ' + suma + ' €';
+
     if (camaroteSelect.value !== 'Seleccione un camarote' && servicioSelect.value !== 'Seleccione un servicio') {
       confirmButton.disabled = false;
     } else {
       confirmButton.disabled = true;
     }
+    const sumaInput = document.getElementById('sumaInput');
+    sumaInput.value = suma;
   }
 
   // Enviar el formulario cuando se haga clic en "Confirmar"
@@ -102,5 +111,6 @@
     reservaForm.submit();
   });
 </script>
+
 
 {% endblock %}

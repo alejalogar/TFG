@@ -30,6 +30,7 @@ class Abordo
 
     /**
      * @ORM\Column(type="datetime")
+     * name="fecha_de_solicitud"
      */
     private $fechaDeSolicitud;
 
