@@ -152,13 +152,19 @@ class CruceroController extends AbstractController
 
             $precioCamarote = $this->camaroteRepository->find($camaroteId)->getPrecio(); 
             
-            $precioServicio = $this->servicioRepository->find($servicioId)->getPrecio(); 
+            $precioServicio = $this->servicioRepository->find($servicioId)->getPrecio();
+
+            $camarote = $this->camaroteRepository->find($camaroteId);
+            
+            $servici = $this->servicioRepository->find($servicioId);
 
             $suma = $precioCamarote + $precioServicio;
 
             return $this->render('cruceros/confirmacion_reserva.html.twig', [
                     'crucero' => $crucero,
                     'tipos' => $tipos,
+                    'camarote' => $camarote,
+                    'servici' => $servici,
                     'suma' => $suma,
                 ]);
             }
