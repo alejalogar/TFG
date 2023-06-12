@@ -57,7 +57,7 @@ class CruceroController extends AbstractController
         $this->mailer = $mailer;
     }
 
-    /**
+/**
      * @Route("/cruceros", name="cruceros_list")
      */
     public function findAllCruceros(Request $request): Response
