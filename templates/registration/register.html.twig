@@ -23,44 +23,53 @@
 {% endblock %}
 
 {% block content %}
-   <div class="m-5 custom-content">
-    <form class="form-signin" method="post">
-        <h1 class="h3 mb-3 font-weight-normal text-center">Registro de usuario</h1>
+    <div class="container d-flex justify-content-center align-items-center vh-100">
+        <div class="login-box rounded p-4">
 
-        {{ form_start(registrationForm) }}
+    <div class="login-logo text-center">
+<svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" fill="currentColor" class="bi bi-person-video" viewBox="0 0 16 16">
+  <path d="M8 9.05a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5Z"/>
+  <path d="M2 2a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2H2Zm10.798 11c-.453-1.27-1.76-3-4.798-3-3.037 0-4.345 1.73-4.798 3H2a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1h12a1 1 0 0 1 1 1v8a1 1 0 0 1-1 1h-1.202Z"/>
+</svg>
+    </div>
+            <h1 class="h3 mb-3 font-weight-normal text-center">Registro de usuario</h1>
+           
+            <form class="form-signin" method="post">
 
-        {% if form_errors(registrationForm) %}
-            <div class="alert alert-danger">
-                {{ form_errors(registrationForm) }}
-            </div>
-        {% endif %}
+                {{ form_start(registrationForm) }}
 
-        <label>Correo electrónico</label>
-        <div class="form-label-group">
-            {{ form_label(registrationForm.email, 'Correo electrónico') }}
-            {{ form_widget(registrationForm.email, { 'attr': {'class': 'form-control', 'placeholder': 'Correo electrónico', 'autofocus': true} }) }}
-            {{ form_errors(registrationForm.email) }}
+                {% if form_errors(registrationForm) %}
+                    <div class="alert alert-danger">
+                        {{ form_errors(registrationForm) }}
+                    </div>
+                {% endif %}
+
+                <div class="form-label-group">
+                <label>Correo electrónico</label>
+                    {{ form_label(registrationForm.email, 'Correo electrónico') }}
+                    {{ form_widget(registrationForm.email, { 'attr': {'class': 'form-control', 'placeholder': 'Correo electrónico', 'autofocus': true} }) }}
+                    {{ form_errors(registrationForm.email) }}
+                </div>
+
+                <div class="form-label-group">
+                <label>Contraseña</label>
+                    {{ form_label(registrationForm.plainPassword, 'Contraseña') }}
+                    {{ form_widget(registrationForm.plainPassword, { 'attr': {'class': 'form-control', 'placeholder': 'Contraseña'} }) }}
+                    {{ form_errors(registrationForm.plainPassword) }}
+                </div>
+
+                <div class="form-group form-check">
+                    {{ form_widget(registrationForm.agreeTerms, { 'attr': {'class': 'form-check-input'} }) }}
+                    {{ form_label(registrationForm.agreeTerms, 'Acepto los términos y condiciones', { 'label_attr': {'class': 'form-check-label'} }) }}
+                    {{ form_errors(registrationForm.agreeTerms) }}
+                </div>
+
+                <button type="submit" class="btn btn-lg btn-primary btn-block">Registrar</button>
+
+                {{ form_end(registrationForm) }}
+
+                <p>¿Ya tienes una cuenta? <a href="{{ path('app_login') }}">Iniciar sesión</a></p>
+            </form>
         </div>
-        <label>Contraseña</label>
-        <div class="form-label-group">
-            {{ form_label(registrationForm.plainPassword, 'Contraseña') }}
-            {{ form_widget(registrationForm.plainPassword, { 'attr': {'class': 'form-control', 'placeholder': 'Contraseña'} }) }}
-            {{ form_errors(registrationForm.plainPassword) }}
-        </div>
-        <label>Acepto los términos y condiciones</label>
-        <div class="form-group form-check">
-            {{ form_label(registrationForm.agreeTerms, 'Acepto los términos y condiciones', { 'label_attr': {'class': 'form-check-label'} }) }}
-            {{ form_widget(registrationForm.agreeTerms, { 'attr': {'class': 'form-check-input'} }) }}
-            {{ form_errors(registrationForm.agreeTerms) }}
-        </div>
-
-        <button type="submit" class="btn btn-lg btn-primary btn-block">Registrar</button>
-
-        {{ form_end(registrationForm) }}
-
-
-        <p>¿Ya tienes una cuenta? <a href="{{ path('app_login') }}">Iniciar sesión</a></p>
-    </form>
-</div>
-
+    </div>
 {% endblock %}

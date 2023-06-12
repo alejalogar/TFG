@@ -43,30 +43,37 @@
 <!-- BLUE HORIZON-->
 
       
-<div class="card-container">
-  {% for crucero in cruceros %}
-    <div class="card mb-3">
-      <div class="row no-gutters">
-        <div class="col-md-4">
-          <img src="{{ crucero.imagen }}" alt="Imagen" class="card-img" width="300px" height="200px">
+<h2>¡Era esto justo lo que estabas buscando!</h2>
+{% for crucero in cruceros %}
+    <div class="row no-gutters">
+
+        <div class="col-md-5">
+            <img src="../images/mediterraneo.jpg" alt="Imagen" class="card-img" width="300px" height="200px">
         </div>
-        <div class="col-md-8">
-          <div class="card-body">
-            <h3 class="card-title">{{ crucero.nombre }}</h3>
-            <p class="card-text">{{ crucero.descripcion }}</p>
-            {% for tipo in tipos %}
-              {% if tipo.id == crucero.tipo.id %}
-                <p class="card-text">Tipo: {{ tipo.nombre }}</p>
-              {% endif %}
-            {% endfor %}
-            <p class="card-text">Fecha de salida: {{ crucero.fechaDeSalida|date('d-m-Y') }}</p>
+
+        <div class="col-md-5">
+            <div class="card-body">
+                <h3 class="card-title">{{ crucero.nombre }}</h3>
+                <p class="card-text">{{ crucero.descripcion }}</p>
+                {% for tipo in tipos %}
+                    {% if tipo.id == crucero.tipo.id %}
+                        <p class="card-text">Tipo: {{ tipo.nombre }}</p>
+                    {% endif %}
+                {% endfor %}
+                <p class="card-text">Fecha de salida: {{ crucero.fechaDeSalida|date('d-m-Y') }}</p>
+            </div>
+        </div>
+
+        <div class="col-md-2 align-self-end">
             <a href="{{ path('reservar_crucero', { 'cruceroId': crucero.id }) }}" class="btn btn-primary">Reservar</a>
-          </div>
         </div>
-      </div>
     </div>
-  {% endfor %}
-</div>
+
+    <br>
+    <hr>
+    <br>
+{% endfor %}
+
 
 
 
