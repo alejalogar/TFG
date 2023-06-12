@@ -23,7 +23,7 @@ use App\Repository\UserRepository;
 
 use Dompdf\Dompdf;
 use Symfony\Component\Mailer\MailerInterface;
-use Symfony\Component\Mime\Email;
+
 
 
 class CruceroController extends AbstractController
@@ -42,13 +42,16 @@ class CruceroController extends AbstractController
         ServiciosCruceroRepository $serviciosCruceroRepository,
         ServicioRepository $servicioRepository,
         CamaroteRepository $camaroteRepository,
-        UserRepository $userRepository    ) {
+        UserRepository $userRepository,
+        MailerInterface $mailer
+    ) {
         $this->cruceroRepository = $cruceroRepository;
         $this->tipoCruceroRepository = $tipoCruceroRepository;
         $this->serviciosCruceroRepository = $serviciosCruceroRepository;
         $this->servicioRepository = $servicioRepository;
         $this->camaroteRepository = $camaroteRepository;
         $this->userRepository = $userRepository;
+        $this->mailer = $mailer;
     }
 
     /**
@@ -104,7 +107,7 @@ class CruceroController extends AbstractController
     /**
      * @Route("/reservar/{cruceroId}", name="reservar_crucero")
      */
-    public function reservarCrucero($cruceroId, Request $request, MailerInterface $mailer): Response
+    public function reservarCrucero($cruceroId, Request $request): Response
     {
         $crucero = $this->cruceroRepository->find($cruceroId);
         $tipos = $this->tipoCruceroRepository->findAll();
@@ -149,20 +152,25 @@ class CruceroController extends AbstractController
             // Generar el contenido del PDF
             $pdfContent = $this->generatePdfContent($crucero, $tipos, $servicios, $camarotes);
 
-            $email = (new Email())
-                ->from('bhcruceros@gmail.com')
-                ->to('alejalogar@gmail.com')
-                ->subject('Reserva de crucero')
-                ->text('Adjunto se encuentra el PDF de la reserva.')
-                ->attach($pdfContent, 'reserva.pdf', 'application/pdf');
+            if (isset($pdfContent)) {
+                // Obtener el correo electrónico del usuario logueado
+                $userEmail = $user->getUsername();
 
-                $mailer->send($email);
-            return $this->render('cruceros/confirmacion_reserva.html.twig', [
-                'crucero' => $crucero,
-                'tipos' => $tipos,
-                'servicios' => $servicios,
-                'camarotes' => $camarotes,
-            ]);
+                // Crear el mensaje de correo electrónico
+                $message = (new \Symfony\Component\Mime\Email())
+                    ->from('bhcruceros@gmail.com')
+                    ->to($userEmail)
+                    ->subject('Confirmación de reserva')
+                    ->text('Adjunto encontrarás los detalles de tu reserva.')
+                    ->attach($pdfContent, 'reserva.pdf', 'application/pdf');
+
+                // Enviar el correo electrónico
+                $this->mailer->send($message);
+                return $this->render('cruceros/confirmacion_reserva.html.twig', [
+                    'crucero' => $crucero,
+                    'tipos' => $tipos,
+                ]);
+            }
         }
 
         return $this->render('cruceros/reservar_crucero.html.twig', [
