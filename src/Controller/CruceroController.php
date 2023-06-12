@@ -24,6 +24,8 @@ use App\From\Type\TaskType;
 
 use Dompdf\Dompdf;
 use Symfony\Component\Mailer\MailerInterface;
+use Symfony\Component\Mime\Email;
+
 
 
 
@@ -58,14 +60,30 @@ class CruceroController extends AbstractController
     /**
      * @Route("/cruceros", name="cruceros_list")
      */
-    public function findAllCruceros(): Response
+    public function findAllCruceros(Request $request): Response
     {
-        $cruceros = $this->cruceroRepository->findAll();
-        $tipos = $this->tipoCruceroRepository->findAll();
+        $destino = $request->query->get('destino');
+        $experiencia = $request->query->get('experiencia');
         
+        if ($destino && $experiencia) {
+            $cruceros = $this->cruceroRepository->findCrucerosByDestinoAndExperiencia($destino, $experiencia);
+        } elseif ($destino) {
+            $cruceros = $this->cruceroRepository->findCrucerosByDestino($destino);
+        } elseif ($experiencia) {
+            $cruceros = $this->cruceroRepository->findCrucerosByExperiencia($experiencia);
+        } else {
+            $cruceros = $this->cruceroRepository->findAll();
+        }
+        
+        $tipos = $this->tipoCruceroRepository->findAll();
+        $destinos = $this->cruceroRepository->findAllDestinos(); // Reemplaza 'destinos' por el método correcto de obtener los destinos
+        $experiencias = $this->tipoCruceroRepository->findAll(); // Reemplaza 'experiencias' por el método correcto de obtener las experiencias
+
         return $this->render('cruceros/list.html.twig', [
             'cruceros' => $cruceros,
             'tipos' => $tipos,
+            'destinos' => $destinos,
+            'experiencias' => $experiencias,
         ]);
     }
 
@@ -108,7 +126,7 @@ class CruceroController extends AbstractController
     /**
      * @Route("/reservar/{cruceroId}", name="reservar_crucero")
      */
-    public function reservarCrucero($cruceroId, Request $request): Response
+    public function reservarCrucero($cruceroId, Request $request, MailerInterface $mailer): Response
     {
         $crucero = $this->cruceroRepository->find($cruceroId);
         $tipos = $this->tipoCruceroRepository->findAll();
@@ -160,14 +178,39 @@ class CruceroController extends AbstractController
 
             $suma = $precioCamarote + $precioServicio;
 
+            // Generar el PDF
+            $html = $this->renderView('cruceros/confirmacion_reserva.html.twig', [
+                'crucero' => $crucero,
+                'tipos' => $tipos,
+                'camarote' => $camarote,
+                'servici' => $servici,
+                'suma' => $suma,
+            ]);
+            $dompdf = new Dompdf();
+            $dompdf->loadHtml($html);
+            $dompdf->setPaper('A4', 'portrait');
+            $dompdf->render();
+            $pdfContent = $dompdf->output();
+
+            // Enviar el PDF por correo electrónico
+            $usuario = $this->getUser()->getUsername();
+            $email = (new Email())
+                ->from('tu@correo.com')
+                ->to($usuario)
+                ->subject('Confirmación de reserva')
+                ->text('Adjunto encontrarás la confirmación de tu reserva en formato PDF.')
+                ->attach($pdfContent, 'confirmacion_reserva.pdf', 'application/pdf');
+
+            $mailer->send($email);
+
             return $this->render('cruceros/confirmacion_reserva.html.twig', [
-                    'crucero' => $crucero,
-                    'tipos' => $tipos,
-                    'camarote' => $camarote,
-                    'servici' => $servici,
-                    'suma' => $suma,
-                ]);
-            }
+                'crucero' => $crucero,
+                'tipos' => $tipos,
+                'camarote' => $camarote,
+                'servici' => $servici,
+                'suma' => $suma,
+            ]);
+        }
         return $this->render('cruceros/reservar_crucero.html.twig', [
             'crucero' => $crucero,
             'tipos' => $tipos,
