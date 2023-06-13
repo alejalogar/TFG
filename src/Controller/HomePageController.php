@@ -23,19 +23,18 @@ public function index(Request $request, CruceroRepository $cruceroRepository, Ti
     $destinos = $cruceroRepository->findAllDestinos();
     $tipos = $tipoCruceroRepository->findAll();
 
-    if ($request->query->has('destino') && $request->query->has('experiencia') && $request->query->has('fecha')) {
+    if ($request->query->has('destino') && $request->query->has('experiencia')) {
         $destino = $request->query->get('destino');
         $experiencia = $request->query->get('experiencia');
-        $fecha = $request->query->get('fecha');
 
-        $cruceros = $cruceroRepository->buscarCruceros($destino, $experiencia, $fecha);
+
+        $cruceros = $cruceroRepository->buscarCruceros($destino, $experiencia);
 
         // Verificar si se encontraron cruceros
         if (!empty($cruceros)) {
             return $this->render('cruceros/resultado_busqueda.html.twig', [
                 'destino' => $destino,
                 'experiencia' => $experiencia,
-                'fecha' => $fecha,
                 'cruceros' => $cruceros,
                 'tipos' => $tipos,
             ]);
@@ -43,8 +42,7 @@ public function index(Request $request, CruceroRepository $cruceroRepository, Ti
             // No se encontraron cruceros
             return $this->render('cruceros/no_results.html.twig', [
                 'destino' => $destino,
-                'experiencia' => $experiencia,
-                'fecha' => $fecha,
+                'experiencia' => $experiencia
             ]);
         }
     }

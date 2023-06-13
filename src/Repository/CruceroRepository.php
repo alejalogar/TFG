@@ -57,29 +57,57 @@ class CruceroRepository extends ServiceEntityRepository
             ->getResult();
     }
 
-    public function buscarCruceros($destino, $experiencia, $fecha)
-    {
+    public function findCrucerosByExperiencia($experiencia){
         $entityManager = $this->getEntityManager();
-    
-        // Obtener el tipo de crucero correspondiente al ID seleccionado
         $tipoCrucero = $entityManager->getRepository(TipoCrucero::class)->findOneBy(['nombre' => $experiencia]);
         $tipoCruceroId = $tipoCrucero->getId();
-    
         return $this->createQueryBuilder('c')
-            ->join('c.tipo', 't')
-            ->andWhere('c.destino = :destino')
-            ->andWhere('t.id = :experienciaId')
-            ->andWhere('c.fechaDeSalida = :fecha')
-            ->setParameter('destino', $destino)
-            ->setParameter('experienciaId', $tipoCruceroId)
-            ->setParameter('fecha', $fecha)
+            ->andWhere('c.tipo = :tipoId')
+            ->setParameter('tipoId', $tipoCruceroId)
             ->getQuery()
             ->getResult();
     }
+
+    public function findCrucerosByDestinoAndExperiencia($destino, $experiencia){
+        $entityManager = $this->getEntityManager();
+        $tipoCrucero = $entityManager->getRepository(TipoCrucero::class)->findOneBy(['nombre' => $experiencia]);
+        $tipoCruceroId = $tipoCrucero->getId();
+        return $this->createQueryBuilder('c')
+    ->andWhere('c.destinoId = :destino')
+    ->andWhere('c.tipoCrucero = :tipo')
+    ->setParameter('destino', $destino)
+    ->setParameter('tipo', $tipoCrucero)
+    ->getQuery()
+    ->getResult();
+
+    }
+
     
 
+    public function buscarCruceros($destino, $experiencia)
+{
+    $entityManager = $this->getEntityManager();
 
+    $queryBuilder = $this->createQueryBuilder('c')
+        ->join('c.tipo', 't');
 
+    if ($destino) {
+        $queryBuilder->andWhere('c.destino = :destino')
+            ->setParameter('destino', $destino);
+    }
+
+    if ($experiencia) {
+        $tipoCrucero = $entityManager->getRepository(TipoCrucero::class)->findOneBy(['nombre' => $experiencia]);
+        $tipoCruceroId = $tipoCrucero->getId();
+
+        $queryBuilder->andWhere('t.id = :experienciaId')
+            ->setParameter('experienciaId', $tipoCruceroId);
+    }
+
+    return $queryBuilder->getQuery()->getResult();
+}
+
+    
     public function findCrucerosByDestino($destino)
     {
         return $this->createQueryBuilder('c')
@@ -88,7 +116,6 @@ class CruceroRepository extends ServiceEntityRepository
             ->getQuery()
             ->getResult();
     }
-    
 
 
 
