@@ -1,3 +1,7 @@
 inicio:
     path: /
     controller: App\Controller\HomePageController::index
+admin_index:
+    path: /admin
+    controller: App\Controller\AdminController::index
+

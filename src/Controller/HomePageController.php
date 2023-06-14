@@ -11,6 +11,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 use App\Repository\CruceroRepository;
 use App\Repository\TipoCruceroRepository;
+use Symfony\Component\Security\Core\Authorization\AuthorizationCheckerInterface;
 
 
 class HomePageController extends AbstractController
@@ -18,7 +19,7 @@ class HomePageController extends AbstractController
 /**
  * @Route("/", name="inicio")
  */
-public function index(Request $request, CruceroRepository $cruceroRepository, TipoCruceroRepository $tipoCruceroRepository): Response
+public function index(Request $request, CruceroRepository $cruceroRepository, TipoCruceroRepository $tipoCruceroRepository, AuthorizationCheckerInterface $authorizationChecker): Response
 {
     $destinos = $cruceroRepository->findAllDestinos();
     $tipos = $tipoCruceroRepository->findAll();
@@ -45,6 +46,9 @@ public function index(Request $request, CruceroRepository $cruceroRepository, Ti
                 'experiencia' => $experiencia
             ]);
         }
+    }
+    if ($authorizationChecker->isGranted('ROLE_ADMIN')) {
+        return $this->redirectToRoute('admin_index'); 
     }
 
     return $this->render('inicio/inicio.html.twig', [

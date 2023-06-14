@@ -28,9 +28,33 @@ class AdminController extends AbstractController
         $this->reservaRepository = $reservaRepository;
     }
     /**
+     * @Route("/", name="inicio_admin")
+     */
+    public function index(): Response
+    {
+        $reservasPorCrucero = $this->reservaRepository->findAllReservasByCrucero();
+
+        // Renderiza una plantilla para mostrar las reservas organizadas por crucero
+        return $this->render('admin/reservas_por_crucero.html.twig', [
+            'reservasPorCrucero' => $reservasPorCrucero,
+        ]);
+    }
+    /**
      * @Route("/reservas", name="reservas")
      */
     public function reservasPorCrucero(): Response
+    {
+        $reservasPorCrucero = $this->reservaRepository->findAllReservasByCrucero();
+
+        // Renderiza una plantilla para mostrar las reservas organizadas por crucero
+        return $this->render('admin/reservas_por_crucero.html.twig', [
+            'reservasPorCrucero' => $reservasPorCrucero,
+        ]);
+    }
+    /**
+     * @Route("/cruceros", name="cruceros_admin")
+     */
+    public function cruceros(): Response
     {
         $reservasPorCrucero = $this->reservaRepository->findAllReservasByCrucero();
 
