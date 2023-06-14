@@ -1,0 +1,30 @@
+{% extends 'base.html.twig' %}
+
+{% block content %}
+<h1>Tus reservas</h1>
+
+{% if reservas is empty %}
+    <p>No hay reservas</p>
+{% else %}
+    {% for reserva in reservas %}
+
+<div class="row no-gutters">
+  <div class="col-md-5">
+    <img src="{{ reserva.camarote.crucero.imagen }}" alt="Imagen" class="card-img">
+
+  </div>
+
+  <div class="col-md-5">
+    <div class="card-body">
+      <h3 class="card-title">{{ reserva.camarote.crucero.nombre }}</h3>
+      <p class="card-text">{{ reserva.camarote.nombre }} - {{ reserva.camarote.tipoDeCama }} - {{ reserva.camarote.descripcion }}</p>
+          <p class="card-text">Tipo: {{ reserva.camarote.crucero.tipo.nombre }}</p>
+      <p class="card-text">Fecha de salida: {{ reserva.camarote.crucero.fechaDeSalida|date('d-m-Y') }}</p>
+      <p class="card-text">Fecha de llegada: {{ reserva.camarote.crucero.fechaDeLlegada|date('d-m-Y') }}</p>
+    </div>
+  </div>
+</div>
+{% endfor %}
+{% endif %}
+
+{% endblock %}
