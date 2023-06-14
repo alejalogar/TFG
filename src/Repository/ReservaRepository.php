@@ -39,6 +39,18 @@ class ReservaRepository extends ServiceEntityRepository
         }
     }
 
+    public function findAllReservasByCrucero(): array
+    {
+        return $this->createQueryBuilder('r')
+            ->leftJoin('r.camarote', 'c')
+            ->leftJoin('c.crucero', 'cr')
+            ->orderBy('cr.id')
+            ->getQuery()
+            ->getResult();
+    }
+    
+
+
 //    /**
 //     * @return Reserva[] Returns an array of Reserva objects
 //     */

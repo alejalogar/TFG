@@ -26,7 +26,9 @@ use Dompdf\Dompdf;
 use Symfony\Component\Mailer\MailerInterface;
 use Symfony\Component\Mime\Email;
 
-
+    /**
+     * @Route("/private", name="private")
+     */
 
 
 class CruceroController extends AbstractController

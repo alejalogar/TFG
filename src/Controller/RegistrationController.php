@@ -25,7 +25,7 @@ class RegistrationController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid()) {
             // Establecer el rol por defecto
-            $defaultRole = 'normal';
+            $defaultRole = 'ROLE_USER';
             $user->setRoles($defaultRole);
 
             // Codificar la contraseña

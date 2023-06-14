@@ -52,7 +52,7 @@
 {% endfor %}
 <hr>
 
-<form id="reservaForm" action="{{ path('reservar_crucero', {'cruceroId': crucero.id}) }}" method="POST">
+<form id="reservaForm" action="{{ path('privatereservar_crucero', {'cruceroId': crucero.id}) }}" method="POST">
   <h2>Información de los camarotes</h2>
   <select name="camarote" id="camaroteSelect">
     <option>Seleccione un camarote</option>

@@ -9,8 +9,10 @@ use Symfony\Component\Routing\Annotation\Route;
 use App\Entity\Reserva;
 use App\Repository\ReservaRepository;
 
-
-class ReservasController extends AbstractController
+    /**
+     * @Route("/admin", name="admin")
+     */
+class AdminController extends AbstractController
 {
     private $reservaRepository;
     private $tipoCruceroRepository;
@@ -20,29 +22,21 @@ class ReservasController extends AbstractController
     private $userRepository;
     private $mailer;
 
-    /**
-     * @Route("/private", name="private")
-     */
-    
     public function __construct(
         ReservaRepository $reservaRepository
     ) {
         $this->reservaRepository = $reservaRepository;
     }
     /**
-    * @Route("/reservas", name="reservas_index", methods={"GET"})
-    */
-    public function index(): Response
+     * @Route("/reservas", name="reservas")
+     */
+    public function reservasPorCrucero(): Response
     {
-        // Obtiene el usuario actualmente autenticado
-        $usuario = $this->getUser();
+        $reservasPorCrucero = $this->reservaRepository->findAllReservasByCrucero();
 
-        // Obtiene todas las reservas del usuario actual
-        $reservas = $this->reservaRepository->findBy(['usuario' => $usuario]);
-
-        // Renderiza la plantilla 'reservas/usuario.html.twig' y pasa las reservas como variable
-        return $this->render('reservas/reservas.html.twig', [
-            'reservas' => $reservas,
+        // Renderiza una plantilla para mostrar las reservas organizadas por crucero
+        return $this->render('admin/reservas_por_crucero.html.twig', [
+            'reservasPorCrucero' => $reservasPorCrucero,
         ]);
     }
 }
