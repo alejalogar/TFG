@@ -16,8 +16,8 @@
     overflow: hidden;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     margin-bottom: 20px;
-    margin-left: 20px;
-    margin-right: 20px;
+    margin-left: 60px;
+    margin-right: 60px;
   }
 
   .card-img {
@@ -56,20 +56,24 @@
   color: #000000;
   transition: color 2s ease;
 }
-  
 
+.form-form {
+  margin-top: 20px;
+  margin-bottom: 20px;
+  margin-left: 60px;
+  margin-right: 60px;
+  background-color: #A8D7DF;
+}
 </style>
 <!-- BLUE HORIZON-->
 
-<section class="section bg-image background-position-1 section-formulario" id="home" style="background-image: url(images/trail-sea-water-surface-boat.jpg)" height="100px">
+
 
       <!-- Agregar formulario -->
-      <form class="form-style form-large form-inline" action="/buscar" method="GET">
-        <div class="form-group">
-
-          <div class="form-group">
+      <form class="form-form form-large form-inline" action="{{ path('inicio') }}" method="GET">
+      <div class="form-group">
         <label for="destino">Destino:</label>
-        <select class="form-control" id="destino" name="destino" required>
+        <select class="form-control" id="destino" name="destino">
           <option value="">Destino</option>
           {% for destino in destinos %}
             <option value="{{ destino }}">{{ destino }}</option>
@@ -77,22 +81,20 @@
         </select>
 
         <label for="experiencia">Experiencia:</label>
-        <select class="form-control" id="experiencia" name="experiencia" required>
+        <select class="form-control" id="experiencia" name="experiencia">
           <option value="">Experiencia</option>
           {% for tipo in tipos %}
             <option value="{{ tipo.nombre }}">{{ tipo.nombre }}</option>
           {% endfor %}
         </select>
 
+        <button type="submit" class="btn btn-primary">Buscar</button>
       </div>
-      </form>
+    </form>
       <!-- Fin del formulario -->
-    </div>
-  </div>
-</section>
-      
 
-  {% for crucero in cruceros %}
+
+{% for crucero in cruceros %}
 
 <div class="row no-gutters">
   <div class="col-md-5">
@@ -119,5 +121,4 @@
 </div>
 
   {% endfor %}
-
 {% endblock %}

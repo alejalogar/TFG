@@ -50,7 +50,7 @@
               <li><a class="nav-custom-counter" href="#contacts"></a></li>
             </ul>
 
-<section class="section section-full section-inset-1 bg-default text-center bg-image background-position-1" id="home" style="background-image: url(images/trail-sea-water-surface-boat.jpg)">
+<section class="section section-full section-inset-1 bg-default text-center bg-image background-position-1" id="home" style="background-image: url(images/inicio3.jpg)">
   <div class="container">
     <div class="title-style-1-wrap">
       <div class="oh-desktop wow slideInLeft">
@@ -66,7 +66,7 @@
       <form class="form-style form-large form-inline" action="{{ path('inicio') }}" method="GET">
       <div class="form-group">
         <label for="destino">Destino:</label>
-        <select class="form-control" id="destino" name="destino" required>
+        <select class="form-control" id="destino" name="destino">
           <option value="">Destino</option>
           {% for destino in destinos %}
             <option value="{{ destino }}">{{ destino }}</option>
@@ -74,15 +74,12 @@
         </select>
 
         <label for="experiencia">Experiencia:</label>
-        <select class="form-control" id="experiencia" name="experiencia" required>
+        <select class="form-control" id="experiencia" name="experiencia">
           <option value="">Experiencia</option>
           {% for tipo in tipos %}
             <option value="{{ tipo.nombre }}">{{ tipo.nombre }}</option>
           {% endfor %}
         </select>
-
-        <label for="fecha">Fecha:</label>
-        <input type="date" class="form-control" id="fecha" name="fecha" required>
 
         <button type="submit" class="btn btn-primary">Buscar</button>
       </div>
