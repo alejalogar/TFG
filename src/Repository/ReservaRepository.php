@@ -48,6 +48,17 @@ class ReservaRepository extends ServiceEntityRepository
             ->getQuery()
             ->getResult();
     }
+    public function obtenerCamarotesReservados()
+    {
+        $queryBuilder = $this->createQueryBuilder('c')
+        ->select('c')
+        ->getQuery();
+
+    $camarotes = $queryBuilder->getResult();
+
+    return $camarotes;
+    }
+
     
 
 
