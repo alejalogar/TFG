@@ -40,23 +40,42 @@
 }
 
 </style>
+<a style="text-align:right;" href="{{ path('app_logout') }}"> Cerrar sesión </a>
 
-
-<h1>Reservas por Crucero</h1>
-
-    {% if reservasPorCrucero is empty %}
-        <p>No hay reservas disponibles</p>
-    {% else %}
-        {% for cruceroId, reservas in reservasPorCrucero %}
-            <h2>Crucero ID: {{ cruceroId }}</h2>
-            <ul>
-                {% for reserva in reservas %}
-                    <li>
-                        Reserva ID: {{ reserva.id }} - Usuario ID: {{ reserva.usuario_id }} - Camarote ID: {{ reserva.camarote_id }}
-                    </li>
+{% for reservaPorCrucero in reservasPorCrucero %}
+    <div class="card" style="cursor: pointer;">
+        <div class="card-header">
+            <h3>{{ reservaPorCrucero.nombre }} - {{ reservaPorCrucero.tipo }}</h3>
+        </div>
+        <div class="card-body">
+            <p>Fecha de salida y de llegada: {{ reservaPorCrucero.fechaSalida|date('d/m/Y') }} - {{ reservaPorCrucero.fechaLlegada|date('d/m/Y') }}</p>
+            <p>Usuarios que han reservado:</p>
+            <ul class="usuarios-lista" style="display: none;">
+                {% for reserva in reservaPorCrucero.reservasDetalle %}
+                    <li>{{ reserva.usuario.email }} - {{ reserva.fecha|date('d/m/Y') }} - {{ reserva.camarote.nombre }}</li>
                 {% endfor %}
             </ul>
-        {% endfor %}
-    {% endif %}
+            <p>Número de reservas: {{ reservaPorCrucero.reservas }}/{{ reservaPorCrucero.huecosRestantes }}</p>
+            
+        </div>
+    </div>
+    <hr>
+{% endfor %}
 
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+$(document).ready(function() {
+    $(".card").click(function() {
+        $(this).find(".usuarios-lista").slideToggle();
+    });
+});
+</script>
+
+
+
+<div class="align-self-center align-items-center d-flex">
+  <a href="{{ path('admininicio_admin') }}" style="color: blue;">
+    <h5 style="font-size: 16px;">Volver a la página anterior</h5>
+  </a>
+</div>
 {% endblock %}
