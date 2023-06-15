@@ -169,6 +169,11 @@ class CruceroController extends AbstractController
 
             $entityManager->persist($reserva);
             $entityManager->persist($abordo);
+
+            // Restar la cantidad disponible del camarote
+            $camarote = $this->camaroteRepository->find($camaroteId);
+            $camarote->setCantidadDisponible($camarote->getCantidadDisponible() - 1);
+
             $entityManager->flush();
 
             $precioCamarote = $this->camaroteRepository->find($camaroteId)->getPrecio(); 
@@ -220,23 +225,5 @@ class CruceroController extends AbstractController
             'servicios' => $servicios,
             'camarotes' => $camarotes,
         ]);
-    }
-
-    private function generatePdfContent($crucero, $tipos, $servicios, $camarotes)
-    {
-        // Generar el contenido del PDF utilizando una librería como Dompdf
-        $html = $this->renderView('pdf/pdf.html.twig', [
-            'crucero' => $crucero,
-            'tipos' => $tipos,
-            'servicios' => $servicios,
-            'camarotes' => $camarotes,
-        ]);
-
-        $dompdf = new Dompdf();
-        $dompdf->loadHtml($html);
-        $dompdf->setPaper('A4', 'portrait');
-        $dompdf->render();
-
-        return $dompdf->output();
     }
 }
