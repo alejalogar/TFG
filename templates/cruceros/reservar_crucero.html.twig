@@ -3,114 +3,247 @@
 {% block title %}BH Cruceros{% endblock %}
 
 {% block stylesheets %}
-    {{ parent() }}
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <link rel="icon" href="images/favicon.ico" type="image/x-icon">
-    <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Montserrat:300%7CQuestrial">
-    <link rel="stylesheet" href="{{ asset('css/bootstrap.css') }}">
-    <link rel="stylesheet" href="{{ asset('css/fonts.css') }}">
-    <link rel="stylesheet" href="{{ asset('css/cruceros.css') }}">
-    <style>
-      .ie-panel{
+  {{ parent() }}
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="icon" href="images/favicon.ico" type="image/x-icon">
+  <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Montserrat:300%7CQuestrial">
+  <link rel="stylesheet" href="{{ asset('css/bootstrap.css') }}">
+  <link rel="stylesheet" href="{{ asset('css/fonts.css') }}">
+  <link rel="stylesheet" href="{{ asset('css/cruceros.css') }}">
+  <style>
+    .ie-panel {
       display: none;
       background: #212121;
       padding: 10px 0;
       box-shadow: 3px 3px 5px 0 rgba(0,0,0,.3);
       clear: both;
-      text-align:center;
+      text-align: center;
       position: relative;
       z-index: 1;
-      } 
-      html.ie-10 .ie-panel,html.lt-ie-10 .ie-panel {
+    } 
+    html.ie-10 .ie-panel,
+    html.lt-ie-10 .ie-panel {
       display: block;
-      }
-    </style>
+    }
+
+    h1 {
+      color: #1BCEEE;
+      font-weight: 700;
+      font-size: 1.8rem;
+      margin-bottom: 10px;
+    }
+
+    p {
+      color: #000000;
+      font-weight: 700;
+      margin-bottom: 10px;
+    }
+
+    select {
+      width: 100%;
+      padding: 8px;
+      font-size: 16px;
+      border-radius: 4px;
+      border: 1px solid #ccc;
+      margin-bottom: 10px;
+    }
+
+    #sumaTexto {
+      font-weight: 700;
+    }
+
+    #confirmButton {
+      padding: 10px 20px;
+      font-size: 18px;
+      background-color: #06B4E3;
+      color: #ffffff;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+
+    #confirmButton:disabled {
+      background-color: #cccccc;
+      cursor: not-allowed;
+    }
+
+    th {
+      width: 300px; /* Ajusta el ancho según tus necesidades */
+      color: #1BCEEE;
+      font-size: 18px;
+      border-bottom: 1px solid #ccc;
+    }
+
+    td{
+      border-bottom: 1px solid #ccc;
+    }
+
+    .crucero-info-container {
+      background-image: url('{{ asset('images/cruceros.jpg') }}');
+      background-size: cover;
+      background-position: center;
+      padding: 20px;
+    }
+
+    .form-container {
+    background-color: #f8f8f8;
+    padding: 20px;
+    border-radius: 5px;
+    margin-top: 20px;
+  }
+
+  .form-container h1 {
+    margin-bottom: 10px;
+  }
+
+  .form-container select {
+    width: 100%;
+    padding: 5px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+  }
+
+  .form-container p {
+    margin-bottom: 10px;
+  }
+
+  .form-container button {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+  }
+
+  .form-container button:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+  }
+
+  img{
+    width: 100%;
+    height: 100%;
+    align-content: center;
+  }
+
+  table{
+    width: 100%;
+    height: 100%;
+    align-content: center;
+    border: 1px solid #ccc;
+  }
+
+  </style>
 {% endblock %}
 
 {% block content %}
-<style>
-  p{
-    color: #000000;
-    font-weight: 700;
-  }
-</style>
+<img src="{{ asset('../images/rrr.jpg') }}" alt="Descripción de la imagen">
 
-<h1>Información del crucero</h1>
-<p>Nombre del crucero: {{ crucero.nombre }}</p>
-<p>Destino del crucero: {{ crucero.destino }}</p>
-<p>Descripción del crucero: {{ crucero.descripcion }}</p>
-<p>Puerto de salida: {{ crucero.puertoDeSalida }}</p>
-<p>Puerto de llegada: {{ crucero.puertoDeLlegada }}</p>
-<p>Fecha de salida: {{ crucero.fechaDeSalida|date('d/m/Y') }}</p>
-<p>Fecha de llegada: {{ crucero.fechaDeLlegada|date('d/m/Y') }}</p>
-{% for tipo in tipos %}
-  {% if tipo.id == crucero.tipo.id %}
-      <p class="card-text">Tipo: {{ tipo.nombre }}</p>
-  {% endif %}
-{% endfor %}
-<hr>
-
-<form id="reservaForm" action="{{ path('privatereservar_crucero', {'cruceroId': crucero.id}) }}" method="POST">
-  <h2>Información de los camarotes</h2>
-  <select name="camarote" id="camaroteSelect">
-    <option>Seleccione un camarote</option>
-    {% for camarote in camarotes %}
-      <option value="{{ camarote.id }}" data-precio="{{ camarote.precio }}">
-        {{ camarote.nombre }} - ({{ camarote.precio }} € {{ camarote.descripcion }})
-      </option>
+  <h1>Información del crucero</h1>
+<div class="crucero-info-container">
+  <table>
+    <tr>
+      <th>Nombre del crucero:</th>
+      <td>{{ crucero.nombre }}</td>
+    </tr>
+    <tr>
+      <th>Destino del crucero:</th>
+      <td>{{ crucero.destino }}</td>
+    </tr>
+    <tr>
+      <th>Descripción del crucero:</th>
+      <td>{{ crucero.descripcion }}</td>
+    </tr>
+    <tr>
+      <th>Puerto de salida:</th>
+      <td>{{ crucero.puertoDeSalida }}</td>
+    </tr>
+    <tr>
+      <th>Puerto de llegada:</th>
+      <td>{{ crucero.puertoDeLlegada }}</td>
+    </tr>
+    <tr>
+      <th>Fecha de salida:</th>
+      <td>{{ crucero.fechaDeSalida|date('d/m/Y') }}</td>
+    </tr>
+    <tr>
+      <th>Fecha de llegada:</th>
+      <td>{{ crucero.fechaDeLlegada|date('d/m/Y') }}</td>
+    </tr>
+    {% for tipo in tipos %}
+      {% if tipo.id == crucero.tipo.id %}
+        <tr>
+          <th>Tipo:</th>
+          <td>{{ tipo.nombre }}</td>
+        </tr>
+      {% endif %}
     {% endfor %}
-  </select>
+  </table>
+</div>
+
+  <form id="reservaForm" action="{{ path('privatereservar_crucero', {'cruceroId': crucero.id}) }}" method="POST">
+    <h1>Información de los camarotes</h1>
+    <select name="camarote" id="camaroteSelect">
+      <option>Seleccione un camarote</option>
+      {% for camarote in camarotes %}
+        <option value="{{ camarote.id }}" data-precio="{{ camarote.precio }}">
+          {{ camarote.nombre }} - ({{ camarote.precio }} € {{ camarote.descripcion }})
+        </option>
+      {% endfor %}
+    </select>
+    <br><br><br>
+
+    <h1>Información de los servicios</h1>
+    <select name="servicio" id="servicioSelect">
+      <option>Seleccione un servicio</option>
+      {% for servicio in servicios %}
+        <option value="{{ servicio.id }}" data-precio="{{ servicio.precio }}">
+          {{ servicio.nombre }} - ({{ servicio.precio }} € {{ servicio.descripcion }})
+        </option>
+      {% endfor %}
+    </select>
+    <br><br><br>
+
+    <p id="sumaTexto">Precio total: 0 €</p>
+
+    <button id="confirmButton" disabled>Confirmar</button>
+
   <br><br>
+  </form>
 
-  <h2>Información de los servicios</h2>
-  <select name="servicio" id="servicioSelect">
-    <option>Seleccione un servicio</option>
-    {% for servicio in servicios %}
-      <option value="{{ servicio.id }}" data-precio="{{ servicio.precio }}">
-        {{ servicio.nombre }} - ({{ servicio.precio }} € {{ servicio.descripcion }})
-      </option>
-    {% endfor %}
-  </select>
-  <br><br>
+  <script>
+    const camaroteSelect = document.getElementById('camaroteSelect');
+    const servicioSelect = document.getElementById('servicioSelect');
+    const sumaTexto = document.getElementById('sumaTexto');
+    const confirmButton = document.getElementById('confirmButton');
 
-  <p id="sumaTexto">Precio total: 0 €</p>
+    // Habilitar el botón "Confirmar" cuando se seleccione un valor en ambos formularios
+    camaroteSelect.addEventListener('change', calcularSuma);
+    servicioSelect.addEventListener('change', calcularSuma);
 
-  <button id="confirmButton" disabled>Confirmar</button>
-</form>
+    function calcularSuma() {
+      const camarotePrecio = parseFloat(camaroteSelect.options[camaroteSelect.selectedIndex].getAttribute('data-precio'));
+      const servicioPrecio = parseFloat(servicioSelect.options[servicioSelect.selectedIndex].getAttribute('data-precio'));
+      const suma = camarotePrecio + servicioPrecio;
+      sumaTexto.textContent = 'Precio total: ' + suma + ' €';
 
-<script>
-  const camaroteSelect = document.getElementById('camaroteSelect');
-  const servicioSelect = document.getElementById('servicioSelect');
-  const sumaTexto = document.getElementById('sumaTexto');
-  const confirmButton = document.getElementById('confirmButton');
-
-  // Habilitar el botón "Confirmar" cuando se seleccione un valor en ambos formularios
-  camaroteSelect.addEventListener('change', calcularSuma);
-  servicioSelect.addEventListener('change', calcularSuma);
-
-  function calcularSuma() {
-    const camarotePrecio = parseFloat(camaroteSelect.options[camaroteSelect.selectedIndex].getAttribute('data-precio'));
-    const servicioPrecio = parseFloat(servicioSelect.options[servicioSelect.selectedIndex].getAttribute('data-precio'));
-    const suma = camarotePrecio + servicioPrecio;
-    sumaTexto.textContent = 'Suma: ' + suma + ' €';
-
-    if (camaroteSelect.value !== 'Seleccione un camarote' && servicioSelect.value !== 'Seleccione un servicio') {
-      confirmButton.disabled = false;
-    } else {
-      confirmButton.disabled = true;
+      if (camaroteSelect.value !== 'Seleccione un camarote' && servicioSelect.value !== 'Seleccione un servicio') {
+        confirmButton.disabled = false;
+      } else {
+        confirmButton.disabled = true;
+      }
+      const sumaInput = document.getElementById('sumaInput');
+      sumaInput.value = suma;
     }
-    const sumaInput = document.getElementById('sumaInput');
-    sumaInput.value = suma;
-  }
 
-  // Enviar el formulario cuando se haga clic en "Confirmar"
-  confirmButton.addEventListener('click', () => {
-    const reservaForm = document.getElementById('reservaForm');
-    reservaForm.submit();
-  });
-</script>
-
-
+    // Enviar el formulario cuando se haga clic en "Confirmar"
+    confirmButton.addEventListener('click', () => {
+      const reservaForm = document.getElementById('reservaForm');
+      reservaForm.submit();
+    });
+  </script>
 {% endblock %}

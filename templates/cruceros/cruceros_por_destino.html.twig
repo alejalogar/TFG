@@ -35,9 +35,11 @@
     font-size: 1.5rem;
   }
 
-  .card-text {
-    margin-bottom: 5px;
-  }
+ .card-text {
+  margin-top: 0;
+  margin-bottom: 5px; /* Ajusta el margen inferior según tus necesidades */
+  font-size: 14px;
+}
 
   .btn {
   margin-right: 10px;
@@ -45,16 +47,21 @@
    width: 80%;
  }
 
-.row .col-md-5:hover {
-  background-color: #A8D7DF;
+.row:hover {
+  background-color: #EBF5FB;
   transition: background-color 2s ease;
 }
 
-.row .col-md-5:hover .card-title,
+.row .col-md-5:hover .card-title{
+  color: #2E86C1;
+  transition: color 2s ease;
+}
+
 .row .col-md-5:hover .card-text {
   color: #000000;
   transition: color 2s ease;
 }
+
 
 .form-form {
   margin-top: 20px;
@@ -70,6 +77,11 @@
     font-size: 30px;
     }
 
+.image-container {
+  position: relative;
+  display: inline-block;
+}
+
 .image-text {
   position: absolute;
   top: 50%;
@@ -77,10 +89,19 @@
   transform: translate(-50%, -50%);
   text-align: center;
   color: white;
-  background-color: #EAE9E9;
-  padding: 20px;
+  background-color: rgba(255, 255, 255, 0.8);
+  padding: 40px;
 }
 
+.align-self-center {
+  align-self: center;
+}
+
+.align-items-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 </style>
 
 
@@ -88,8 +109,17 @@
   <img src="{{ asset('../images/barcos.jpg') }}" class="img-fluid" alt="Responsive image">
   <div class="image-text">
 <h2>¡Era esto justo lo que estabas buscando!</h2>
+<h2>¡No te lo pienses más y reserva ya!</h2>
   </div>
 </div>
+
+<div class="align-self-center align-items-center d-flex">
+  <a href="{{ path('inicio') }}" style="color: blue;">
+    <h5 style="font-size: 16px;">Volver a la página de inicio</h5>
+  </a>
+</div>
+
+
          {% for crucero in cruceros %}
 
 <div class="row no-gutters">
@@ -120,11 +150,11 @@
   {% endfor %}
 
 
-<svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" fill="currentColor" class="bi bi-arrow-left" viewBox="0 0 16 16">
-    <a href="{{ path('inicio') }}" style="color: white;">
-        <path fill-rule="evenodd" d="M15 8a.5.5 0 0 0-.5-.5H2.707l3.147-3.146a.5.5 0 1 0-.708-.708l-4 4a.5.5 0 0 0 0 .708l4 4a.5.5 0 0 0 .708-.708L2.707 8.5H14.5A.5.5 0 0 0 15 8z"/>
-    </a>
-</svg>
+<div class="align-self-center align-items-center d-flex">
+  <a href="{{ path('inicio') }}" style="color: blue;">
+    <h5 style="font-size: 16px;">Volver a la página de inicio</h5>
+  </a>
+</div>
 
 
 

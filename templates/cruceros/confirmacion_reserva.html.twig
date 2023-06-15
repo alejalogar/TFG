@@ -12,52 +12,198 @@
     <link rel="stylesheet" href="{{ asset('css/bootstrap.css') }}">
     <link rel="stylesheet" href="{{ asset('css/fonts.css') }}">
     <link rel="stylesheet" href="{{ asset('css/cruceros.css') }}">
-    <style>
-      .ie-panel{
+  <style>
+    .ie-panel {
       display: none;
       background: #212121;
       padding: 10px 0;
       box-shadow: 3px 3px 5px 0 rgba(0,0,0,.3);
       clear: both;
-      text-align:center;
+      text-align: center;
       position: relative;
       z-index: 1;
-      } 
-      html.ie-10 .ie-panel,html.lt-ie-10 .ie-panel {
+    } 
+    html.ie-10 .ie-panel,
+    html.lt-ie-10 .ie-panel {
       display: block;
-      }
-    </style>
+    }
+
+    h1 {
+      color: #1BCEEE;
+      font-weight: 700;
+      font-size: 1.8rem;
+      margin-bottom: 10px;
+    }
+
+    p {
+      color: #000000;
+      font-weight: 700;
+      font-size: 20px;
+      margin-bottom: 10px;
+    }
+
+    select {
+      width: 100%;
+      padding: 8px;
+      font-size: 16px;
+      border-radius: 4px;
+      border: 1px solid #ccc;
+      margin-bottom: 10px;
+    }
+
+    #sumaTexto {
+      font-weight: 700;
+    }
+
+    #confirmButton {
+      padding: 10px 20px;
+      font-size: 18px;
+      background-color: #06B4E3;
+      color: #ffffff;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+
+    #confirmButton:disabled {
+      background-color: #cccccc;
+      cursor: not-allowed;
+    }
+
+    th {
+      width: 300px; /* Ajusta el ancho según tus necesidades */
+      color: #1BCEEE;
+      font-size: 18px;
+      border-bottom: 1px solid #ccc;
+    }
+
+    td{
+      border-bottom: 1px solid #ccc;
+    }
+
+    .crucero-info-container {
+      background-image: url('{{ asset('images/cruceros.jpg') }}');
+      background-size: cover;
+      background-position: center;
+      padding: 20px;
+    }
+
+    .form-container {
+    background-color: #f8f8f8;
+    padding: 20px;
+    border-radius: 5px;
+    margin-top: 20px;
+  }
+
+  .form-container h1 {
+    margin-bottom: 10px;
+  }
+
+  .form-container select {
+    width: 100%;
+    padding: 5px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+  }
+
+  .form-container p {
+    margin-bottom: 10px;
+  }
+
+  .form-container button {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+  }
+
+  .form-container button:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+  }
+
+  img{
+    width: 100%;
+    height: 100%;
+    align-content: center;
+  }
+
+  table{
+    width: 100%;
+    height: 100%;
+    align-content: center;
+    border: 1px solid #ccc;
+  }
+
+  </style>
 {% endblock %}
 
-
-
 {% block content %}
+    <h1>Confirmación de Reserva</h1>
+    <div class="row">
+    <div class="col-md-5">
+    <p> ¡Hey {{ app.user.username }}, <br> <br> nos alegramos de comunicarle que su reserva se ha realizado con exito!</p><br>
+    <p> En breve recibirá un correo electrónico con los detalles de su reserva.</p>
+    </div>
+    <div class="col-md-7">
+    <img src="{{ asset('../images/rrr3.jpg') }}" alt="Descripción de la imagen">
+    </div>
+    </div>
 
-<style>
- p{
-  color: #000000;
-  font-weight: 700;
-}
+    <h1>Detalles de la reserva:</h1>
+<table>
+  <tr>
+    <th>Crucero:</th>
+    <td>{{ crucero.nombre }}</td>
+  </tr>
+  <tr>
+    <th>Tipo de Crucero:</th>
+    <td>{{ crucero.tipo.nombre }}</td>
+  </tr>
+  <tr>
+    <th>Destino del crucero:</th>
+    <td>{{ crucero.destino }}</td>
+  </tr>
+  <tr>
+    <th>Puerto de salida:</th>
+    <td>{{ crucero.puertoDeSalida }}</td>
+  </tr>
+  <tr>
+    <th>Puerto de llegada:</th>
+    <td>{{ crucero.puertoDeLlegada }}</td>
+  </tr>
+  <tr>
+    <th>Fecha de salida:</th>
+    <td>{{ crucero.fechaDeSalida|date('d/m/Y') }}</td>
+  </tr>
+  <tr>
+    <th>Fecha de llegada:</th>
+    <td>{{ crucero.fechaDeLlegada|date('d/m/Y') }}</td>
+  </tr>
+  <tr>
+    <th>Camarote:</th>
+    <td>{{ camarote.nombre }} - ({{ camarote.precio }} € {{ camarote.descripcion }})</td>
+  </tr>
+  <tr>
+    <th>Servicio:</th>
+    <td>{{ servici.nombre }} - ({{ servici.precio }} € {{ servici.descripcion }})</td>
+  </tr>
+</table>
 
-</style>
-
-
-<h1>Confirmación de Reserva</h1>
-    <p>¡Tu reserva se ha realizado con éxito!</p>
-
-    <h2>Detalles de la reserva:</h2>
-    <ul>
-        <li>Crucero: {{ crucero.nombre }}</li>
-        <li>Tipo de Crucero: {{ crucero.tipo.nombre }}</li>
-        <p>Destino del crucero: {{ crucero.destino }}</p>
-        <p>Puerto de salida: {{ crucero.puertoDeSalida }}</p>
-        <p>Puerto de llegada: {{ crucero.puertoDeLlegada }}</p>
-        <p>Fecha de salida: {{ crucero.fechaDeSalida|date('d/m/Y') }}</p>
-        <p>Fecha de llegada: {{ crucero.fechaDeLlegada|date('d/m/Y') }}</p>
-        <p>Camarote: {{ camarote.nombre }} - ({{ camarote.precio }} € {{ camarote.descripcion }})</p>
-        <p>Servicio: {{ servici.nombre }} - ({{ servici.precio }} € {{ servici.descripcion }})</p>
-    </ul>
     <p>Precio Total: {{ suma }} €</p>
-    <p>Gracias por elegir nuestro servicio. ¡Esperamos que disfrutes de tu crucero!</p>
-    <p><a class="rd-nav-link" href="/">Volver al inicio</a></p>
+
+    <div class="row">
+    <div class="col-md-6">
+     <img src="{{ asset('../images/rrr2.jpg') }}" alt="Descripción de la imagen">
+    </div>
+    <div class="col-md-6">
+     <p>Gracias por elegir nuestro servicio. ¡Esperamos que disfrutes de tu crucero!</p>
+    </div>
+    </div>
+
+     <p><a class="rd-nav-link" href="/">Volver al inicio</a></p>
+
 {% endblock %}
