@@ -40,52 +40,51 @@ class ReservaRepository extends ServiceEntityRepository
     }
 
     public function obtenerReservasAgrupadasPorCrucero()
-{
-    $entityManager = $this->getEntityManager();
-    $reservas = $this->findAll();
-    $reservasAgrupadas = [];
-
-    foreach ($reservas as $reserva) {
-        $crucero = $reserva->getCamarote()->getCrucero();
-
-        $cruceroId = $crucero->getId();
-        $cruceroNombre = $crucero->getNombre();
-        $cruceroTipo = $crucero->getTipo()->getNombre();
-        $cruceroFechaLlegada = $crucero->getFechaDeLlegada()->format('Y-m-d');
-        $cruceroFechaSalida = $crucero->getFechaDeSalida()->format('Y-m-d');
-        $cruceroReservasTotales = 1;
-        $cruceroHuecosRestantes = 35;
-
-        if (isset($reservasAgrupadas[$cruceroId])) {
-            $cruceroReservasTotales += $reservasAgrupadas[$cruceroId]['reservas'];
-        }
-
-        // Obtener los detalles de las reservas por crucero
-        if (!isset($reservasAgrupadas[$cruceroId])) {
-            $reservasAgrupadas[$cruceroId] = [
-                'nombre' => $cruceroNombre,
-                'tipo' => $cruceroTipo,
-                'fechaLlegada' => $cruceroFechaLlegada,
-                'fechaSalida' => $cruceroFechaSalida,
-                'reservas' => $cruceroReservasTotales,
-                'huecosRestantes' => $cruceroHuecosRestantes,
-                'reservasDetalle' => []
+    {
+        $entityManager = $this->getEntityManager();
+        $reservas = $this->findAll();
+        $reservasAgrupadas = [];
+    
+        foreach ($reservas as $reserva) {
+            $crucero = $reserva->getCamarote()->getCrucero();
+    
+            $cruceroId = $crucero->getId();
+            $cruceroNombre = $crucero->getNombre();
+            $cruceroTipo = $crucero->getTipo()->getNombre();
+            $cruceroFechaLlegada = $crucero->getFechaDeLlegada()->format('Y-m-d');
+            $cruceroFechaSalida = $crucero->getFechaDeSalida()->format('Y-m-d');
+            
+            // Verificar si el crucero ya existe en el arreglo
+            if (isset($reservasAgrupadas[$cruceroId])) {
+                // Incrementar el total de reservas existente
+                $reservasAgrupadas[$cruceroId]['reservas']++;
+            } else {
+                // Agregar un nuevo crucero al arreglo de reservas agrupadas
+                $reservasAgrupadas[$cruceroId] = [
+                    'nombre' => $cruceroNombre,
+                    'tipo' => $cruceroTipo,
+                    'fechaLlegada' => $cruceroFechaLlegada,
+                    'fechaSalida' => $cruceroFechaSalida,
+                    'reservas' => 1, // Inicializar con 1 reserva
+                    'huecosRestantes' => 35,
+                    'reservasDetalle' => []
+                ];
+            }
+    
+            // Obtener los detalles de las reservas asociadas al crucero
+            $reservasDetalle = $reservasAgrupadas[$cruceroId]['reservasDetalle'];
+            $reservasDetalle[] = [
+                'usuario' => $reserva->getUsuario(),
+                'fecha' => $reserva->getFechaDeReserva()->format('Y-m-d'),
+                'camarote' => $reserva->getCamarote(),
             ];
+    
+            $reservasAgrupadas[$cruceroId]['reservasDetalle'] = $reservasDetalle;
         }
-
-        // Obtener los detalles de las reservas asociadas al crucero
-        $reservasDetalle = $reservasAgrupadas[$cruceroId]['reservasDetalle'];
-        $reservasDetalle[] = [
-            'usuario' => $reserva->getUsuario(),
-            'fecha' => $reserva->getFechaDeReserva()->format('Y-m-d'),
-            'camarote' => $reserva->getCamarote(),
-        ];
-
-        $reservasAgrupadas[$cruceroId]['reservasDetalle'] = $reservasDetalle;
+    
+        return $reservasAgrupadas;
     }
-
-    return $reservasAgrupadas;
-}
+    
 
 
 

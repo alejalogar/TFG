@@ -187,29 +187,29 @@ class CruceroController extends AbstractController
             $suma = $precioCamarote + $precioServicio;
 
             // Generar el PDF
-            // $html = $this->renderView('cruceros/confirmacion_reserva.html.twig', [
-            //     'crucero' => $crucero,
-            //     'tipos' => $tipos,
-            //     'camarote' => $camarote,
-            //     'servici' => $servici,
-            //     'suma' => $suma,
-            // ]);
-            // $dompdf = new Dompdf();
-            // $dompdf->loadHtml($html);
-            // $dompdf->setPaper('A4', 'portrait');
-            // $dompdf->render();
-            // $pdfContent = $dompdf->output();
+            $html = $this->renderView('cruceros/confirmacion_reserva.html.twig', [
+                'crucero' => $crucero,
+                'tipos' => $tipos,
+                'camarote' => $camarote,
+                'servici' => $servici,
+                'suma' => $suma,
+            ]);
+            $dompdf = new Dompdf();
+            $dompdf->loadHtml($html);
+            $dompdf->setPaper('A4', 'portrait');
+            $dompdf->render();
+            $pdfContent = $dompdf->output();
 
-            // // Enviar el PDF por correo electrónico
-            // $usuario = $this->getUser()->getUsername();
-            // $email = (new Email())
-            //     ->from('tu@correo.com')
-            //     ->to($usuario)
-            //     ->subject('Confirmación de reserva')
-            //     ->text('Adjunto encontrarás la confirmación de tu reserva en formato PDF.')
-            //     ->attach($pdfContent, 'confirmacion_reserva.pdf', 'application/pdf');
+            // Enviar el PDF por correo electrónico
+            $usuario = $this->getUser()->getUsername();
+            $email = (new Email())
+                ->from('admin@localhost')
+                ->to('12505800@alu.murciaeduca.es')
+                ->subject('Confirmación de reserva')
+                ->text('Adjunto encontrarás la confirmación de tu reserva en formato PDF.')
+                ->attach($pdfContent, 'confirmacion_reserva.pdf', 'application/pdf');
 
-            // $mailer->send($email);
+            $mailer->send($email);
 
             return $this->render('cruceros/confirmacion_reserva.html.twig', [
                 'crucero' => $crucero,
