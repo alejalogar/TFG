@@ -12,21 +12,6 @@
     <link rel="stylesheet" href="{{ asset('css/bootstrap.css') }}">
     <link rel="stylesheet" href="{{ asset('css/fonts.css') }}">
     <link rel="stylesheet" href="{{ asset('css/cruceros.css') }}">
-    <style>
-      .ie-panel{
-      display: none;
-      background: #212121;
-      padding: 10px 0;
-      box-shadow: 3px 3px 5px 0 rgba(0,0,0,.3);
-      clear: both;
-      text-align:center;
-      position: relative;
-      z-index: 1;
-      } 
-      html.ie-10 .ie-panel,html.lt-ie-10 .ie-panel {
-      display: block;
-      }
-    </style>
 {% endblock %}
 
 
@@ -39,9 +24,39 @@
   font-weight: 700;
 }
 
+a{
+color: #FFFFFF;
+margin-bottom: 100px;
+}
+
+h4{
+color: #FFFFFF;
+margin-bottom: 40px;
+font-weight: 400;
+}
+
+h4:hover{
+  border: 1px solid #FFFFFF;
+  border-radius: 5px;
+  padding: 2px;
+}
+
+body{
+  background-image: url("{{ asset('../images/inicio.jpg') }}");
+}
+
 </style>
+
 <a style="text-align:right;" href="{{ path('app_logout') }}"> Cerrar sesión </a>
 
-<a href="{{ path('adminreservas') }}"><h4 style="text-align:center;">reservas</h4></a>
+<a href="{{ path('adminreservas') }}"><h4 style="text-align:center;">Reservas</h4></a>
+
+<a href=""><h4 style="text-align:center;">Cruceros</h4></a>
+
+<a href=""><h4 style="text-align:center;">Destinos</h4></a>
+
+<a href=""><h4 style="text-align:center;">Experiencias</h4></a>
+
+<a href=""><h4 style="text-align:center;">Usuarios</h4></a>
 
 {% endblock %}

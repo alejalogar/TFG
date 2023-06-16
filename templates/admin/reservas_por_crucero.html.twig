@@ -12,21 +12,7 @@
     <link rel="stylesheet" href="{{ asset('css/bootstrap.css') }}">
     <link rel="stylesheet" href="{{ asset('css/fonts.css') }}">
     <link rel="stylesheet" href="{{ asset('css/cruceros.css') }}">
-    <style>
-      .ie-panel{
-      display: none;
-      background: #212121;
-      padding: 10px 0;
-      box-shadow: 3px 3px 5px 0 rgba(0,0,0,.3);
-      clear: both;
-      text-align:center;
-      position: relative;
-      z-index: 1;
-      } 
-      html.ie-10 .ie-panel,html.lt-ie-10 .ie-panel {
-      display: block;
-      }
-    </style>
+
 {% endblock %}
 
 
@@ -39,8 +25,26 @@
   font-weight: 700;
 }
 
+body{
+  background-image: url("{{ asset('../images/inicio.jpg') }}");
+}
+
+.card{
+  background-color: #ffffff;
+  border-radius: 10px;
+  padding: 10px;
+  margin-bottom: 10px;
+}
+
+h5{
+    color: #FFFFFF;
+    font-weight: 400;
+}
+
 </style>
 <a style="text-align:right;" href="{{ path('app_logout') }}"> Cerrar sesión </a>
+
+<h1 style="color: #FFFFFF; text-align: center;">Reservas por crucero</h1>
 
 {% for reservaPorCrucero in reservasPorCrucero %}
     <div class="card" style="cursor: pointer;">
@@ -59,7 +63,6 @@
             
         </div>
     </div>
-    <hr>
 {% endfor %}
 
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
