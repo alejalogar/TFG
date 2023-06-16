@@ -5,90 +5,94 @@
 {% block stylesheets %}
     {{ parent() }}
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <link rel="icon" href="images/favicon.ico" type="image/x-icon">
     <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Montserrat:300%7CQuestrial">
     <link rel="stylesheet" href="{{ asset('css/bootstrap.css') }}">
     <link rel="stylesheet" href="{{ asset('css/fonts.css') }}">
     <link rel="stylesheet" href="{{ asset('css/cruceros.css') }}">
-  <style>
-    .ie-panel {
-      display: none;
-      background: #212121;
-      padding: 10px 0;
-      box-shadow: 3px 3px 5px 0 rgba(0,0,0,.3);
-      clear: both;
-      text-align: center;
-      position: relative;
-      z-index: 1;
-    } 
-    html.ie-10 .ie-panel,
-    html.lt-ie-10 .ie-panel {
-      display: block;
-    }
+{% endblock %}
 
-    h1 {
-      color: #1BCEEE;
-      font-weight: 700;
-      font-size: 1.8rem;
-      margin-bottom: 10px;
-    }
+{% block content %}
+<style>
+  .ie-panel {
+    display: none;
+    background: #212121;
+    padding: 10px 0;
+    box-shadow: 3px 3px 5px 0 rgba(0,0,0,.3);
+    clear: both;
+    text-align: center;
+    position: relative;
+    z-index: 1;
+  }
 
-    p {
-      color: #000000;
-      font-weight: 700;
-      font-size: 20px;
-      margin-bottom: 10px;
-    }
+  html.ie-10 .ie-panel,
+  html.lt-ie-10 .ie-panel {
+    display: block;
+  }
 
-    select {
-      width: 100%;
-      padding: 8px;
-      font-size: 16px;
-      border-radius: 4px;
-      border: 1px solid #ccc;
-      margin-bottom: 10px;
-    }
+  h1 {
+    color: #1BCEEE;
+    font-weight: 700;
+    font-size: 1.8rem;
+    margin-bottom: 10px;
+  }
 
-    #sumaTexto {
-      font-weight: 700;
-    }
+  p {
+    color: #000000;
+    font-weight: 700;
+    font-size: 20px;
+    margin-bottom: 10px;
+  }
 
-    #confirmButton {
-      padding: 10px 20px;
-      font-size: 18px;
-      background-color: #06B4E3;
-      color: #ffffff;
-      border: none;
-      border-radius: 4px;
-      cursor: pointer;
-    }
+  select {
+    width: 100%;
+    padding: 8px;
+    font-size: 16px;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+    margin-bottom: 10px;
+  }
 
-    #confirmButton:disabled {
-      background-color: #cccccc;
-      cursor: not-allowed;
-    }
+  #sumaTexto {
+    font-weight: 700;
+  }
 
-    th {
-      width: 300px; /* Ajusta el ancho según tus necesidades */
-      color: #1BCEEE;
-      font-size: 18px;
-      border-bottom: 1px solid #ccc;
-    }
+  #confirmButton {
+    padding: 10px 20px;
+    font-size: 18px;
+    background-color: #06B4E3;
+    color: #ffffff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
 
-    td{
-      border-bottom: 1px solid #ccc;
-    }
+  #confirmButton:disabled {
+    background-color: #cccccc;
+    cursor: not-allowed;
+  }
 
-    .crucero-info-container {
-      background-image: url('{{ asset('images/cruceros.jpg') }}');
-      background-size: cover;
-      background-position: center;
-      padding: 20px;
-    }
+  th {
+    width: 300px;
+    color: #1BCEEE;
+    font-size: 18px;
+    border-bottom: 1px solid #ccc;
+  }
 
-    .form-container {
+  td {
+    border-bottom: 1px solid #ccc;
+  }
+
+  .crucero-info-container {
+    background-image: url('{{ asset('images/cruceros.jpg') }}');
+    background-size: cover;
+    background-position: center;
+    padding: 20px;
+  }
+
+  .form-container {
     background-color: #f8f8f8;
     padding: 20px;
     border-radius: 5px;
@@ -125,35 +129,50 @@
     cursor: not-allowed;
   }
 
-  img{
+  img {
     width: 100%;
-    height: 100%;
+    height: auto;
     align-content: center;
   }
 
-  table{
+  table {
     width: 100%;
-    height: 100%;
+    height: auto;
     align-content: center;
     border: 1px solid #ccc;
   }
 
-  </style>
-{% endblock %}
+  .row {
+    display: flex;
+    flex-wrap: wrap;
+  }
 
-{% block content %}
-    <h1>Confirmación de Reserva</h1>
-    <div class="row">
-    <div class="col-md-5">
-    <p> ¡Hey {{ app.user.username }}, <br> <br> nos alegramos de comunicarle que su reserva se ha realizado con exito!</p><br>
-    <p> En breve recibirá un correo electrónico con los detalles de su reserva.</p>
-    </div>
-    <div class="col-md-7">
+  .col-md-5, .col-md-7, .col-md-6 {
+    flex-basis: 100%;
+    padding: 10px;
+  }
+
+  @media (min-width: 768px) {
+    .col-md-5, .col-md-7 {
+      flex-basis: 50%;
+    }
+  }
+</style>
+
+<h1>Confirmación de Reserva</h1>
+
+<div class="row">
+  <div class="col-md-5">
+    <p>¡Hey {{ app.user.username }}, <br><br> nos alegramos de comunicarle que su reserva se ha realizado con éxito!</p><br>
+    <p>En breve recibirá un correo electrónico con los detalles de su reserva.</p>
+  </div>
+  <div class="col-md-7">
     <img src="{{ asset('../images/rrr3.jpg') }}" alt="Descripción de la imagen">
-    </div>
-    </div>
+  </div>
+</div>
 
-    <h1>Detalles de la reserva:</h1>
+<h1>Detalles de la reserva:</h1>
+
 <table>
   <tr>
     <th>Crucero:</th>
@@ -193,17 +212,16 @@
   </tr>
 </table>
 
-    <p>Precio Total: {{ suma }} €</p>
+<p>Precio Total: {{ suma }} €</p>
 
-    <div class="row">
-    <div class="col-md-6">
-     <img src="{{ asset('../images/rrr2.jpg') }}" alt="Descripción de la imagen">
-    </div>
-    <div class="col-md-6">
-     <p>Gracias por elegir nuestro servicio. ¡Esperamos que disfrutes de tu crucero!</p>
-    </div>
-    </div>
+<div class="row">
+  <div class="col-md-6">
+    <img src="{{ asset('../images/rrr2.jpg') }}" alt="Descripción de la imagen">
+  </div>
+  <div class="col-md-6">
+    <p>Gracias por elegir nuestro servicio. ¡Esperamos que disfrutes de tu crucero!</p>
+  </div>
+</div>
 
-     <p><a class="rd-nav-link" href="/">Volver al inicio</a></p>
-
+<p><a class="rd-nav-link" href="/">Volver al inicio</a></p>
 {% endblock %}

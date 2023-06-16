@@ -1,21 +1,19 @@
-/* imagenes */
+/* Estilos para imágenes */
 .img {
-    border-radius: 50%;
-    width: 400px;
-    height: 400px;
-    transition: transform 3s;
-  }
-  
-  .img:hover {
-    transform: scale(1.3);
-  }
-  
-  
-
-h3{
-    color:  #9fd5ff;
+  border-radius: 50%;
+  max-width: 100%; /* Hace que la imagen se ajuste al contenedor */
+  height: auto; /* Permite que la altura se ajuste automáticamente */
+  transition: transform 3s;
 }
 
-.row{
-    margin-top: 70px;
+.img:hover {
+  transform: scale(1.3);
+}
+
+h3 {
+  color: #9fd5ff;
+}
+
+.row {
+  margin-top: 70px;
 }

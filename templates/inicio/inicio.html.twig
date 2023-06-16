@@ -5,7 +5,7 @@
 {% block stylesheets %}
     {{ parent() }}
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <link rel="icon" href="images/favicon.ico" type="image/x-icon">
     <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Montserrat:300%7CQuestrial">
@@ -26,10 +26,51 @@
       html.ie-10 .ie-panel,html.lt-ie-10 .ie-panel {
       display: block;
       }
-    </style>
+       .form-form {
+        margin-top: 20px;
+        margin-bottom: 20px;
+        margin-left: 10px;
+        margin-right: 10px;
+        background-image: url("../images/barcos-filtro.jpg");
+        background-size: 100% auto;
+        height: 300px;
+      }
+
+      .form-group {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        margin-top: 20px;
+        margin-bottom: 20px;
+        margin-left: 10px;
+        margin-right: 10px;
+      }
+
+      .align-self-center {
+        align-self: center;
+      }
+
+      .align-items-center {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      @media (max-width: 767px) {
+        .row {
+          margin-left: 0;
+          margin-right: 0;
+        }
+
+        .form-form,
+        .form-group {
+          margin-left: 10px;
+          margin-right: 10px;
+        }
+      }
+  </style>
 {% endblock %}
-
-
 
 {% block content %}
 
@@ -40,15 +81,8 @@
 }
 
 </style>
-<!-- BLUE HORIZON-->
 
-            <ul class="nav-custom rd-navbar-nav">
-              <li><a class="nav-custom-counter" href="#home"></a></li>
-              <li><a class="nav-custom-counter" href="#about"></a></li>
-              <li><a class="nav-custom-counter" href="#works"></a></li>
-              <li><a class="nav-custom-counter" href="#projects"></a></li>
-              <li><a class="nav-custom-counter" href="#contacts"></a></li>
-            </ul>
+<!-- BLUE HORIZON-->
 
 <section class="section section-full section-inset-1 bg-default text-center bg-image background-position-1" id="home" style="background-image: url(images/inicio3.jpg)">
   <div class="container">
@@ -64,21 +98,21 @@
 
       <!-- Agregar formulario -->
       <form class="form-style form-large form-inline" action="{{ path('inicio') }}" method="GET">
-      <div class="form-group">
-        <label for="destino">Destino:</label>
-        <select class="form-control" id="destino" name="destino">
-          <option value="">Destino</option>
-          {% for destino in destinos %}
-            <option value="{{ destino }}">{{ destino }}</option>
-          {% endfor %}
-        </select>
+        <div class="form-group">
+          <label for="destino">Destino:</label>
+          <select class="form-control" id="destino" name="destino">
+            <option value="">Destino</option>
+            {% for destino in destinos %}
+              <option value="{{ destino }}">{{ destino }}</option>
+            {% endfor %}
+          </select>
 
-        <label for="experiencia">Experiencia:</label>
-        <select class="form-control" id="experiencia" name="experiencia">
-          <option value="">Experiencia</option>
-          {% for tipo in tipos %}
-            <option value="{{ tipo.nombre }}">{{ tipo.nombre }}</option>
-          {% endfor %}
+          <label for="experiencia">Experiencia:</label>
+          <select class="form-control" id="experiencia" name="experiencia">
+            <option value="">Experiencia</option>
+            {% for tipo in tipos %}
+              <option value="{{ tipo.nombre }}">{{ tipo.nombre }}</option>
+            {% endfor %}
         </select>
 
         <button type="submit" class="btn btn-primary">Buscar</button>
@@ -96,8 +130,6 @@
             <div class="col-sm-9 col-md-5 cube-classic-wrap">
               <h2 class="wow fadeInLeft">¡Bienvenido a nuestro sitio web <br class="d-none d-md-block"><span class="text-primary">de cruceros</span>  de ensueño! <br class="d-none d-md-block">
               </h2>
-              <div class="cube-classic cube-classic-1"><span class="cube-classic-item"></span><span class="cube-classic-item"></span><span class="cube-classic-item"></span><span class="cube-classic-item"></span><span class="cube-classic-item"></span><span class="cube-classic-item"></span><span class="cube-classic-item"></span><span class="cube-classic-item"></span><span class="cube-classic-item"></span><span class="cube-classic-item"></span><span class="cube-classic-item"></span><span class="cube-classic-item"></span><span class="cube-classic-item"></span><span class="cube-classic-item"></span><span class="cube-classic-item"></span><span class="cube-classic-item"></span><span class="cube-classic-item"></span><span class="cube-classic-item"></span><span class="cube-classic-item"></span><span class="cube-classic-item"></span><span class="cube-classic-item"></span><span class="cube-classic-item"></span><span class="cube-classic-item"></span><span class="cube-classic-item"></span><span class="cube-classic-item"></span><span class="cube-classic-item"></span><span class="cube-classic-item"></span><span class="cube-classic-item"></span><span class="cube-classic-item"></span><span class="cube-classic-item"></span><span class="cube-classic-item"></span><span class="cube-classic-item"></span><span class="cube-classic-item"></span><span class="cube-classic-item"></span><span class="cube-classic-item"></span><span class="cube-classic-item"></span><span class="cube-classic-item"></span><span class="cube-classic-item"></span><span class="cube-classic-item"></span><span class="cube-classic-item"></span><span class="cube-classic-item"></span><span class="cube-classic-item"></span><span class="cube-classic-item"></span><span class="cube-classic-item"></span><span class="cube-classic-item"></span><span class="cube-classic-item"></span><span class="cube-classic-item"></span><span class="cube-classic-item"></span><span class="cube-classic-item"></span><span class="cube-classic-item"></span><span class="cube-classic-item"></span><span class="cube-classic-item"></span><span class="cube-classic-item"></span><span class="cube-classic-item"></span><span class="cube-classic-item"></span><span class="cube-classic-item"></span><span class="cube-classic-item"></span><span class="cube-classic-item"></span><span class="cube-classic-item"></span><span class="cube-classic-item"></span><span class="cube-classic-item"></span><span class="cube-classic-item"></span><span class="cube-classic-item"></span><span class="cube-classic-item"></span><span class="cube-classic-item"></span><span class="cube-classic-item"></span><span class="cube-classic-item"></span><span class="cube-classic-item"></span><span class="cube-classic-item"></span><span class="cube-classic-item"></span><span class="cube-classic-item"></span><span class="cube-classic-item"></span><span class="cube-classic-item"></span><span class="cube-classic-item"></span><span class="cube-classic-item"></span><span class="cube-classic-item"></span><span class="cube-classic-item"></span><span class="cube-classic-item"></span><span class="cube-classic-item"></span><span class="cube-classic-item"></span><span class="cube-classic-item"></span><span class="cube-classic-item"></span><span class="cube-classic-item"></span><span class="cube-classic-item"></span><span class="cube-classic-item"></span><span class="cube-classic-item"></span><span class="cube-classic-item"></span><span class="cube-classic-item"></span><span class="cube-classic-item"></span><span class="cube-classic-item"></span><span class="cube-classic-item"></span><span class="cube-classic-item"></span><span class="cube-classic-item"></span><span class="cube-classic-item"></span><span class="cube-classic-item"></span><span class="cube-classic-item"></span><span class="cube-classic-item"></span><span class="cube-classic-item"></span><span class="cube-classic-item"></span><span class="cube-classic-item"></span>
-              </div>
             </div>
             <div class="col-md-7 col-lg-6 col-xl-5">
               <p class="wow fadeInRight">Estamos encantados de recibirte a bordo de esta experiencia virtual donde podrás explorar los destinos más exóticos y emocionantes del mundo, mientras sueñas con tus próximas vacaciones en alta mar. Sumérgete en un océano de posibilidades y déjanos llevar tus sueños de viaje a un nivel completamente nuevo.</p>
@@ -115,8 +147,6 @@
               <h2 class="wow fadeInLeft" data-wow-delay=".1s">Cruceros mas  <span class="text-primary d-inline-block wow fadeInRight">vendidos</span>
               </h2>
               <p class="wow fadeInLeft">Si estás buscando una experiencia de viaje única y emocionante, los cruceros son una excelente opción. Ya sea que sueñes con relajarte en playas paradisíacas, descubrir ciudades fascinantes o disfrutar de una gran variedad de actividades a bordo, los cruceros ofrecen todo esto y más.</p>
-              <div class="cube-classic cube-classic-2"><span class="cube-classic-item"></span><span class="cube-classic-item"></span><span class="cube-classic-item"></span><span class="cube-classic-item"></span><span class="cube-classic-item"></span><span class="cube-classic-item"></span><span class="cube-classic-item"></span><span class="cube-classic-item"></span><span class="cube-classic-item"></span><span class="cube-classic-item"></span><span class="cube-classic-item"></span><span class="cube-classic-item"></span><span class="cube-classic-item"></span><span class="cube-classic-item"></span><span class="cube-classic-item"></span><span class="cube-classic-item"></span><span class="cube-classic-item"></span><span class="cube-classic-item"></span><span class="cube-classic-item"></span><span class="cube-classic-item"></span><span class="cube-classic-item"></span><span class="cube-classic-item"></span><span class="cube-classic-item"></span><span class="cube-classic-item"></span><span class="cube-classic-item"></span><span class="cube-classic-item"></span><span class="cube-classic-item"></span><span class="cube-classic-item"></span><span class="cube-classic-item"></span><span class="cube-classic-item"></span><span class="cube-classic-item"></span><span class="cube-classic-item"></span><span class="cube-classic-item"></span><span class="cube-classic-item"></span><span class="cube-classic-item"></span><span class="cube-classic-item"></span><span class="cube-classic-item"></span><span class="cube-classic-item"></span><span class="cube-classic-item"></span><span class="cube-classic-item"></span><span class="cube-classic-item"></span><span class="cube-classic-item"></span><span class="cube-classic-item"></span><span class="cube-classic-item"></span><span class="cube-classic-item"></span><span class="cube-classic-item"></span><span class="cube-classic-item"></span><span class="cube-classic-item"></span><span class="cube-classic-item"></span><span class="cube-classic-item"></span><span class="cube-classic-item"></span><span class="cube-classic-item"></span><span class="cube-classic-item"></span><span class="cube-classic-item"></span><span class="cube-classic-item"></span><span class="cube-classic-item"></span><span class="cube-classic-item"></span><span class="cube-classic-item"></span><span class="cube-classic-item"></span><span class="cube-classic-item"></span><span class="cube-classic-item"></span><span class="cube-classic-item"></span><span class="cube-classic-item"></span><span class="cube-classic-item"></span><span class="cube-classic-item"></span><span class="cube-classic-item"></span><span class="cube-classic-item"></span><span class="cube-classic-item"></span><span class="cube-classic-item"></span><span class="cube-classic-item"></span><span class="cube-classic-item"></span><span class="cube-classic-item"></span><span class="cube-classic-item"></span><span class="cube-classic-item"></span><span class="cube-classic-item"></span><span class="cube-classic-item"></span><span class="cube-classic-item"></span><span class="cube-classic-item"></span><span class="cube-classic-item"></span><span class="cube-classic-item"></span><span class="cube-classic-item"></span><span class="cube-classic-item"></span><span class="cube-classic-item"></span><span class="cube-classic-item"></span><span class="cube-classic-item"></span><span class="cube-classic-item"></span><span class="cube-classic-item"></span><span class="cube-classic-item"></span><span class="cube-classic-item"></span><span class="cube-classic-item"></span><span class="cube-classic-item"></span><span class="cube-classic-item"></span><span class="cube-classic-item"></span><span class="cube-classic-item"></span><span class="cube-classic-item"></span><span class="cube-classic-item"></span><span class="cube-classic-item"></span><span class="cube-classic-item"></span><span class="cube-classic-item"></span><span class="cube-classic-item"></span>
-              </div>
             </div>
             <div class="col-sm-8 col-md-6 wow blurIn">
               <div class="inset-xl-left-25">

@@ -1,140 +1,85 @@
-
 {% block stylesheets %}
     <link rel="stylesheet" href="{{ asset('css/inicio.css') }}">
+    <style>
+        @media (max-width: 767px) {
+            .rd-navbar-main {
+                flex-direction: column;
+            }
+            .rd-navbar-nav-wrap {
+                margin-top: 20px;
+            }
+            .contacts-classic {
+                margin-top: 20px;
+            }
+            .contacts-classic-title {
+                margin-bottom: 5px;
+            }
+            .list-inline {
+                justify-content: center;
+            }
+        }
+    </style>
 {% endblock %}
 
-
-<!-- Page Header-->
-      <header class="page-header">
-        <!-- RD Navbar-->
-        <div class="rd-navbar-wrap position-relative">
-          <nav class="rd-navbar" data-layout="rd-navbar-sidebar" data-device-layout="rd-navbar-sidebar" data-sm-layout="rd-navbar-sidebar" data-sm-device-layout="rd-navbar-sidebar" data-md-layout="rd-navbar-sidebar" data-md-device-layout="rd-navbar-sidebar" data-lg-layout="rd-navbar-sidebar" data-lg-device-layout="rd-navbar-sidebar" data-xl-layout="rd-navbar-sidebar" data-xl-device-layout="rd-navbar-sidebar" data-xxl-layout="rd-navbar-sidebar" data-xxl-device-layout="rd-navbar-sidebar" data-lg-stick-up-offset="46px" data-xl-stick-up-offset="46px" data-xxl-stick-up-offset="46px" data-lg-stick-up="true" data-xl-stick-up="true" data-xxl-stick-up="true" data-auto-height="false" data-sm-auto-height="false" data-md-auto-height="false" data-lg-auto-height="false" data-xl-auto-height="false" data-xxl-auto-height="false">
+<header class="page-header">
+    <div class="rd-navbar-wrap position-relative">
+        <nav class="rd-navbar" data-layout="rd-navbar-sidebar" data-device-layout="rd-navbar-sidebar" data-sm-layout="rd-navbar-sidebar" data-sm-device-layout="rd-navbar-sidebar" data-md-layout="rd-navbar-sidebar" data-md-device-layout="rd-navbar-sidebar" data-lg-layout="rd-navbar-sidebar" data-lg-device-layout="rd-navbar-sidebar" data-xl-layout="rd-navbar-sidebar" data-xl-device-layout="rd-navbar-sidebar" data-xxl-layout="rd-navbar-sidebar" data-xxl-device-layout="rd-navbar-sidebar" data-lg-stick-up-offset="46px" data-xl-stick-up-offset="46px" data-xxl-stick-up-offset="46px" data-lg-stick-up="true" data-xl-stick-up="true" data-xxl-stick-up="true" data-auto-height="false" data-sm-auto-height="false" data-md-auto-height="false" data-lg-auto-height="false" data-xl-auto-height="false" data-xxl-auto-height="false">
             <div class="rd-navbar-main-outer">
-              <div class="rd-navbar-main">
-                <!-- RD Navbar Panel-->
-                <div class="rd-navbar-panel">
-                  <!-- RD Navbar Toggle-->
-                  <button class="rd-navbar-toggle" data-rd-navbar-toggle=".rd-navbar-nav-wrap"><span></span></button>
-                  <!-- RD Navbar Brand-->
-                  <div class="rd-navbar-brand">
-                  </div>
+                <div class="rd-navbar-main">
+                    <div class="rd-navbar-panel">
+                        <button class="rd-navbar-toggle" data-rd-navbar-toggle=".rd-navbar-nav-wrap"><span></span></button>
+                        <div class="rd-navbar-brand"></div>
+                    </div>
+                    <div class="rd-navbar-nav-wrap">
+                        <div class="rd-navbar-nav-container">
+                            <ul class="rd-navbar-nav">
+                                <li class="rd-nav-item"><a class="rd-nav-link" href="/">Inicio</a></li>
+                                <li class="rd-nav-item"><a class="rd-nav-link" href="/about">Sobre nosotros</a></li>
+                                <li class="rd-nav-item"><a class="rd-nav-link" href="/private/cruceros">Todos nuestros cruceros</a></li>
+                                <li class="rd-nav-item"><a class="rd-nav-link" href="/reservas">Tus reservas</a></li>
+                                <li class="rd-nav-item"><a class="rd-nav-link" href="/contact">Contacto</a></li>
+                                <li class="rd-nav-item"><a class="rd-nav-link" href="{{path("app_login")}}"><svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-person-circle" viewBox="0 0 16 16">
+                                            <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z"/>
+                                            <path fill-rule="evenodd" d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z"/>
+                                        </svg></a></li>
+                            </ul>
+                            <ul class="contacts-classic">
+                                <li>
+                                    <div class="contacts-classic-title">Teléfono:</div>+34 (409) 987–5874
+                                </li>
+                                <li>
+                                    <div class="contacts-classic-title">E-mail:</div>bluehorizon@cruceros.com
+                                </li>
+                                <li>
+                                    <div class="contacts-classic-title">Siguenos:</div>
+                                    <ul class="list-inline list-social list-inline-sm">
+                                        <li>
+                                            <a class="icon" href="https://www.linkedin.com">
+                                                <img src="/images/iconos/linkedin.png" alt="LinkedIn">
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a class="icon" href="https://twitter.com">
+                                                <img src="/images/iconos/twiter.png" alt="Twiter">
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a class="icon" href="https://es-es.facebook.com/">
+                                                <img src="/images/iconos/facebook.png" alt="Facebook">
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a class="icon" href="https://www.instagram.com/">
+                                                <img src="/images/iconos/instagram.png" alt="Instagram">
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
                 </div>
-                <div class="rd-navbar-nav-wrap">
-                  <div class="rd-navbar-nav-container">
-                    <!-- RD Navbar Nav-->
-                    <ul class="rd-navbar-nav">
-                      <li class="rd-nav-item"><a class="rd-nav-link" href="/">Inicio</a>
-                      </li>
-                      <li class="rd-nav-item"><a class="rd-nav-link" href="/about">Sobre nosotros</a>
-                      </li>
-                      <li class="rd-nav-item"><a class="rd-nav-link" href="/private/cruceros">Todos nuestros cruceros</a>
-                      </li>
-                      <li class="rd-nav-item"><a class="rd-nav-link" href="/reservas">Tus reservas</a>
-                      </li>
-                      <li class="rd-nav-item"><a class="rd-nav-link" href="/contact">Contacto</a>
-                      </li>
-                      {# este li redirige a login.html.twig #}
-                      <li class="rd-nav-item"><a class="rd-nav-link" href="{{path("app_login")}}"><svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-person-circle" viewBox="0 0 16 16">
-                        <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z"/>
-                        <path fill-rule="evenodd" d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z"/>
-                      </svg></a>
-                      </li>
-                    </ul>
-                    <ul class="contacts-classic">
-                      <li>
-                        <div class="contacts-classic-title">Teléfono:</div>+34 (409) 987–5874
-                      </li>
-                      <li>
-                        <div class="contacts-classic-title">E-mail:</div>bluehorizon@cruceros.com
-                      </li>
-                      <li>
-                        <div class="contacts-classic-title">Siguenos:</div>
-                        <ul class="list-inline list-social list-inline-sm">
-                          <li>
-                            <a class="icon" href="https://www.linkedin.com" style="display: flex; justify-content: center;">
-                              <img src="/images/iconos/linkedin.png" alt="LinkedIn" style="margin: auto;">
-                            </a>
-                          </li>
-                          <li>
-                            <a class="icon" href="https://twitter.com" style="display: flex; justify-content: center;">
-                              <img src="/images/iconos/twiter.png" alt="Twiter" style="margin: auto;">
-                            </a>
-                          </li>
-                          <li>
-                            <a class="icon" href="https://es-es.facebook.com/" style="display: flex; justify-content: center;">
-                              <img src="/images/iconos/facebook.png" alt="Facebook" style="margin: auto;">
-                            </a>
-                          </li>
-                          <li>
-                            <a class="icon" href="https://www.instagram.com/" style="display: flex; justify-content: center;">
-                              <img src="/images/iconos/instagram.png" alt="Instagram" style="margin: auto;">
-                            </a>
-                          </li>
-                        </ul>
-                      </li>
-                    </ul>
-                  </div>
-                </div>
-              </div>
             </div>
-          </nav>
-        </div>
-      </header>
-
-
-
-
-
-
-
-
-
-
-
-    {# <header>
-        <nav class="navbar navbar-expand-lg">
-            <div class="container-fluid">
-
-                <a class="navbar-brand" href="#"> BLUE ODYSSEY </a>
-
-              <div class="collapse navbar-collapse d-flex" id="navbarNavDropdown">
-                <ul class="navbar-nav">
-                  <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="#">Inicio</a>
-                  </li>
-                  
-                  
-                  <li class="nav-item dropdown"> <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                    Cruceros </a>
-
-                    <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" href="#">Juveniles</a></li>
-                        <li><a class="dropdown-item" href="#">Familias con niños</a></li>
-                        <li><a class="dropdown-item" href="#">Solteros y solteras</a></li>
-                        <li><a class="dropdown-item" href="#">Parejas</a></li>
-                        <li><a class="dropdown-item" href="#">LGTB+</a></li>
-                        <li><a class="dropdown-item" href="#">No tan mayores</a></li>
-                        <li><a class="dropdown-item" href="#">Pensionistas y jubilados</a></li>
-                    </ul>
-                </li>
-                
-                <li class="nav-item">
-                  <a class="nav-link" href="#">Sobre nosotros</a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="#">Contacto</a>
-                </li>
-
-                <li class="nav-item">
-                  <a class="nav-link" href="#"> <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-person-circle" viewBox="0 0 16 16">
-                  <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z"/>
-                  <path fill-rule="evenodd" d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z"/>
-                  </svg> Iniciar sesión</a>
-                </li>
-
-                </ul>
-              </div>
-            </div>
-          </nav>
-      </header> #}
-
+        </nav>
+    </div>
+</header>

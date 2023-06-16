@@ -5,8 +5,7 @@
 {% block stylesheets %}
   {{ parent() }}
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="icon" href="images/favicon.ico" type="image/x-icon">
   <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Montserrat:300%7CQuestrial">
   <link rel="stylesheet" href="{{ asset('css/bootstrap.css') }}">
@@ -88,102 +87,115 @@
     }
 
     .form-container {
-    background-color: #f8f8f8;
-    padding: 20px;
-    border-radius: 5px;
-    margin-top: 20px;
-  }
+      background-color: #f8f8f8;
+      padding: 20px;
+      border-radius: 5px;
+      margin-top: 20px;
+    }
 
-  .form-container h1 {
-    margin-bottom: 10px;
-  }
+    .form-container h1 {
+      margin-bottom: 10px;
+    }
 
-  .form-container select {
-    width: 100%;
-    padding: 5px;
-    margin-bottom: 10px;
-    border: 1px solid #ccc;
-    border-radius: 3px;
-  }
+    .form-container select {
+      width: 100%;
+      padding: 5px;
+      margin-bottom: 10px;
+      border: 1px solid #ccc;
+      border-radius: 3px;
+    }
 
-  .form-container p {
-    margin-bottom: 10px;
-  }
+    .form-container p {
+      margin-bottom: 10px;
+    }
 
-  .form-container button {
-    background-color: #4CAF50;
-    color: white;
-    padding: 10px 20px;
-    border: none;
-    border-radius: 3px;
-    cursor: pointer;
-  }
+    .form-container button {
+      background-color: #4CAF50;
+      color: white;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 3px;
+      cursor: pointer;
+    }
 
-  .form-container button:disabled {
-    background-color: #ccc;
-    cursor: not-allowed;
-  }
+    .form-container button:disabled {
+      background-color: #ccc;
+      cursor: not-allowed;
+    }
 
-  img{
-    width: 100%;
-    height: 100%;
-    align-content: center;
-  }
+    img{
+      width: 100%;
+      height: auto;
+      align-content: center;
+    }
 
-  table{
-    width: 100%;
-    height: 100%;
-    align-content: center;
-    border: 1px solid #ccc;
-  }
+    table{
+      width: 100%;
+      height: 100%;
+      align-content: center;
+      border: 1px solid #ccc;
+    }
+
+    @media (max-width: 768px) {
+      .crucero-info-container {
+        padding: 10px;
+      }
+      th, td {
+        display: block;
+        width: 100%;
+      }
+      th {
+        font-size: 16px;
+      }
+    }
 
   </style>
 {% endblock %}
 
 {% block content %}
-<img src="{{ asset('../images/rrr.jpg') }}" alt="Descripción de la imagen">
+  <img src="{{ asset('../images/rrr.jpg') }}" alt="Descripción de la imagen">
 
   <h1>Información del crucero</h1>
-<div class="crucero-info-container">
-  <table>
-    <tr>
-      <th>Nombre del crucero:</th>
-      <td>{{ crucero.nombre }}</td>
-    </tr>
-    <tr>
-      <th>Destino del crucero:</th>
-      <td>{{ crucero.destino }}</td>
-    </tr>
-    <tr>
-      <th>Descripción del crucero:</th>
-      <td>{{ crucero.descripcion }}</td>
-    </tr>
-    <tr>
-      <th>Puerto de salida:</th>
-      <td>{{ crucero.puertoDeSalida }}</td>
-    </tr>
-    <tr>
-      <th>Puerto de llegada:</th>
-      <td>{{ crucero.puertoDeLlegada }}</td>
-    </tr>
-    <tr>
-      <th>Fecha de salida:</th>
-      <td>{{ crucero.fechaDeSalida|date('d/m/Y') }}</td>
-    </tr>
-    <tr>
-      <th>Fecha de llegada:</th>
-      <td>{{ crucero.fechaDeLlegada|date('d/m/Y') }}</td>
-    </tr>
-    {% for tipo in tipos %}
-      {% if tipo.id == crucero.tipo.id %}
-        <tr>
-          <th>Tipo:</th>
-          <td>{{ tipo.nombre }}</td>
-        </tr>
-      {% endif %}
-    {% endfor %}
-  </table>
-</div>
+  <div class="crucero-info-container">
+    <table>
+      <tr>
+        <th>Nombre del crucero:</th>
+        <td>{{ crucero.nombre }}</td>
+      </tr>
+      <tr>
+        <th>Destino del crucero:</th>
+        <td>{{ crucero.destino }}</td>
+      </tr>
+      <tr>
+        <th>Descripción del crucero:</th>
+        <td>{{ crucero.descripcion }}</td>
+      </tr>
+      <tr>
+        <th>Puerto de salida:</th>
+        <td>{{ crucero.puertoDeSalida }}</td>
+      </tr>
+      <tr>
+        <th>Puerto de llegada:</th>
+        <td>{{ crucero.puertoDeLlegada }}</td>
+      </tr>
+      <tr>
+        <th>Fecha de salida:</th>
+        <td>{{ crucero.fechaDeSalida|date('d/m/Y') }}</td>
+      </tr>
+      <tr>
+        <th>Fecha de llegada:</th>
+        <td>{{ crucero.fechaDeLlegada|date('d/m/Y') }}</td>
+      </tr>
+      {% for tipo in tipos %}
+        {% if tipo.id == crucero.tipo.id %}
+          <tr>
+            <th>Tipo:</th>
+            <td>{{ tipo.nombre }}</td>
+          </tr>
+        {% endif %}
+      {% endfor %}
+    </table>
+  </div>
 
   <form id="reservaForm" action="{{ path('privatereservar_crucero', {'cruceroId': crucero.id}) }}" method="POST">
     <h1>Información de los camarotes</h1>
@@ -212,7 +224,7 @@
 
     <button id="confirmButton" disabled>Confirmar</button>
 
-  <br><br>
+    <br><br>
   </form>
 
   <script>

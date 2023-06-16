@@ -3,24 +3,23 @@ body {
   background-image: url(../images/reservayaa.jpg);
 }
 
-.container{
+.container {
   margin-top: 20px;
   margin-bottom: 20px;
-
 }
 
-/* enlace de p */
+/* Enlace de p */
 a:hover {
   color: #002be9;
-  text-decoration-line: line-through ;
+  text-decoration-line: line-through;
 }
-  
-#custom-content{
-   margin-right: 200px;
+
+#custom-content {
+  margin-right: 200px;
   margin-left: 200px;
-  }
-    
-.login-box{
+}
+
+.login-box {
   background: #fff;
   border: 50px;
 }
@@ -35,7 +34,7 @@ a:hover {
   vertical-align: middle;
 }
 
-.form-signin{
+.form-signin {
   margin-bottom: 10px;
   margin-top: 10px;
 }
@@ -44,6 +43,10 @@ a:hover {
   margin-bottom: 5px;
 }
 
-
-
-
+/* Estilos responsive */
+@media (max-width: 768px) {
+  #custom-content {
+    margin-right: 50px;
+    margin-left: 50px;
+  }
+}

@@ -1,23 +1,20 @@
-{# list.html.twig #}
-
 {% extends 'base.html.twig' %}
 
 {% block title %}BH Cruceros{% endblock %}
 
 {% block content %}
-
 <style>
- p{
-  color: #000000;
-  font-weight: 700;
-}
+  p {
+    color: #000000;
+    font-weight: 700;
+  }
+
   .row {
-    /*borde*/
     border: 1px solid #A8D7DF;
     margin-bottom: 10px;
-    margin-left: 60px;
-    margin-right: 60px;
-     }
+    margin-left: 10px;
+    margin-right: 10px;
+  }
 
   .card-img {
     width: 100%;
@@ -27,121 +24,122 @@
   }
 
   .card-body {
-    padding: 5px; /* Ajusta el espaciado interno del cuerpo de la tarjeta según tus necesidades */
+    padding: 5px;
   }
 
   .card-title {
-    /*color texto*/
     color: #1BCEEE;
     font-size: 1.5rem;
   }
 
- .card-text {
-  margin-top: 0;
-  margin-bottom: 5px; /* Ajusta el margen inferior según tus necesidades */
-  font-size: 14px;
-}
-
+  .card-text {
+    margin-top: 0;
+    margin-bottom: 5px;
+    font-size: 14px;
+  }
 
   .btn {
     margin-right: 10px;
     margin-left: 10px;
     width: 80%;
- }
+  }
 
-.row:hover {
-  background-color: #EBF5FB;
-  transition: background-color 2s ease;
-}
+  .row:hover {
+    background-color: #EBF5FB;
+    transition: background-color 2s ease;
+  }
 
-.row .col-md-5:hover .card-title{
-  color: #2E86C1;
-  transition: color 2s ease;
-}
+  .row .col-md-5:hover .card-title {
+    color: #2E86C1;
+    transition: color 2s ease;
+  }
 
-.row .col-md-5:hover .card-text {
-  color: #000000;
-  transition: color 2s ease;
-}
+  .row .col-md-5:hover .card-text {
+    color: #000000;
+    transition: color 2s ease;
+  }
 
-.form-form {
-  margin-top: 20px;
-  margin-bottom: 20px;
-  margin-left: 60px;
-  margin-right: 60px;
-  /*imagen de fondo*/
-  background-image: url("../images/barcos-filtro.jpg");
-  background-size: 100% auto;
-  height: 300px; /* Ajusta la altura según tus necesidades */
-}
+  .form-form {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    margin-left: 10px;
+    margin-right: 10px;
+    background-image: url("../images/barcos-filtro.jpg");
+    background-size: 100% auto;
+    height: 300px;
+  }
 
-.form-group{
-/*posicion centrada*/
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-  margin-top: 20px;
-  margin-bottom: 20px;
-  margin-left: 60px;
-  margin-right: 60px;
-  /*fondo transparnte*/
-  background-color: rgba(255, 255, 255, 0.5);
-}
+  .form-group {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    margin-left: 10px;
+    margin-right: 10px;
+    background-color: rgba(255, 255, 255, 0.5);
+  }
 
-.align-self-center {
-  align-self: center;
-}
+  .align-self-center {
+    align-self: center;
+  }
 
-.align-items-center {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
+  .align-items-center {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
 
+  @media (max-width: 767px) {
+    .row {
+      margin-left: 0;
+      margin-right: 0;
+    }
+
+    .form-form,
+    .form-group {
+      margin-left: 10px;
+      margin-right: 10px;
+    }
+  }
 </style>
+
 <!-- BLUE HORIZON-->
+<form class="form-form form-large form-inline" action="{{ path('inicio') }}" method="GET">
+  <div class="form-group">
+    <label for="destino">Destino:</label>
+    <select class="form-control" id="destino" name="destino">
+      <option value="">Destino</option>
+      {% for destino in destinos %}
+        <option value="{{ destino }}">{{ destino }}</option>
+      {% endfor %}
+    </select>
 
+    <label for="experiencia">Experiencia:</label>
+    <select class="form-control" id="experiencia" name="experiencia">
+      <option value="">Experiencia</option>
+      {% for tipo in tipos %}
+        <option value="{{ tipo.nombre }}">{{ tipo.nombre }}</option>
+      {% endfor %}
+    </select>
 
+    <button type="submit" class="btn btn-primary">Filtrar</button>
+  </div>
+</form>
+<!-- Fin del formulario -->
 
-      <!-- Agregar formulario -->
-      <form class="form-form form-large form-inline" action="{{ path('inicio') }}" method="GET">
-      <div class="form-group">
-        <label for="destino">Destino:</label>
-        <select class="form-control" id="destino" name="destino">
-          <option value="">Destino</option>
-          {% for destino in destinos %}
-            <option value="{{ destino }}">{{ destino }}</option>
-          {% endfor %}
-        </select>
-
-        <label for="experiencia">Experiencia:</label>
-        <select class="form-control" id="experiencia" name="experiencia">
-          <option value="">Experiencia</option>
-          {% for tipo in tipos %}
-            <option value="{{ tipo.nombre }}">{{ tipo.nombre }}</option>
-          {% endfor %}
-        </select>
-
-        <button type="submit" class="btn btn-primary">Filtrar</button>
-      </div>
-    </form>
-      <!-- Fin del formulario -->
 <div class="align-self-center align-items-center d-flex">
   <a href="{{ path('inicio') }}" style="color: blue;">
     <h5 style="font-size: 16px;">Volver a la página de inicio</h5>
   </a>
 </div>
 
-
 {% for crucero in cruceros %}
-
 <div class="row no-gutters">
   <div class="col-md-5">
     <img src="{{ crucero.imagen }}" alt="Imagen" class="card-img">
-
   </div>
-
   <div class="col-md-5">
     <div class="card-body">
       <h3 class="card-title">{{ crucero.nombre }}</h3>
@@ -152,19 +150,16 @@
         {% endif %}
       {% endfor %}
       <p class="card-text">Fecha de salida: {{ crucero.fechaDeSalida|date('d-m-Y') }}</p>
-            <p class="card-text">Fecha de llegada: {{ crucero.fechaDeLlegada|date('d-m-Y') }}</p>
-
+      <p class="card-text">Fecha de llegada: {{ crucero.fechaDeLlegada|date('d-m-Y') }}</p>
     </div>
   </div>
-
   <div class="col-md-2 align-self-center align-items-center">
     <a href="{{ path('privatereservar_crucero', { 'cruceroId': crucero.id }) }}" class="btn btn-primary">Reservar</a>
   </div>
 </div>
+{% endfor %}
 
-  {% endfor %}
-
-  <div class="align-self-center align-items-center d-flex">
+<div class="align-self-center align-items-center d-flex">
   <a href="{{ path('inicio') }}" style="color: blue;">
     <h5 style="font-size: 16px;">Volver a la página de inicio</h5>
   </a>

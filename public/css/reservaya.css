@@ -1,181 +1,202 @@
-/* styles.css */
-
 /* Estilos generales */
-
 body {
-
-    background-image: url(../images/reservayaa.jpg);
-    background-repeat: no-repeat;
-    background-size: cover;
-  }
+  background-image: url(../images/reservayaa.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+}
 
 .container {
-    max-width: 800px;
-    padding: 20px;
-    margin-top: 110px;
-  }
+  max-width: 800px;
+  padding: 20px;
+  margin-top: 110px;
+}
 
-  .d-inline-block{
-    /*texto negrita*/
-    font-weight: bold;
-    /*tamaño de letra*/
-    font-size: 50px;
-    /*espacio entre letras*/
-    letter-spacing: 6px;
+.d-inline-block {
+  /* Texto negrita */
+  font-weight: bold;
+  /* Tamaño de letra */
+  font-size: 50px;
+  /* Espacio entre letras */
+  letter-spacing: 6px;
+}
 
-  }
-  .subtitle-classic {
-    font-size: 16px;
-    line-height: 1.2;
-    margin: 20px;
-  }
+.subtitle-classic {
+  font-size: 16px;
+  line-height: 1.2;
+  margin: 20px;
+}
 
-  .line {
-    border: none;
-    border-top: 1px solid #000000; /* Color y estilo de la línea */
-    margin: 10px 0; /* Espacio vertical alrededor de la línea */
-  }
-  h2 {
-    text-align: center;
-    margin-bottom: 20px;
-  }
-  
-  .form-wrap {
-    margin-bottom: 20px;
-  }
-  
-  .form-label {
-    display: block;
-    margin-bottom: 18px;
-    font-weight: bold;
-    
-  }
-  
-  .form-input {
-    width: 100%;
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-  }
-  
-  .form-button {
-    text-align: center;
-  }
-  
-  .button {
-    display: inline-block;
-    padding: 10px 20px;
-    background-color: #000000;
-    color: white;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-  }
+.line {
+  border: none;
+  border-top: 1px solid #000000; /* Color y estilo de la línea */
+  margin: 10px 0; /* Espacio vertical alrededor de la línea */
+}
 
-  .footer-classic-list-social{
-    margin-top: 0px;
-    margin-bottom: 0px;
-    /*posicion centrada*/
-    text-align: center;
-  }
+h2 {
+  text-align: center;
+  margin-bottom: 20px;
+}
 
-  .rights{
-    /*posicion centrada*/
-    text-align: center;
-  }
+.form-wrap {
+  margin-bottom: 20px;
+}
 
+.form-label {
+  display: block;
+  margin-bottom: 18px;
+  font-weight: bold;
+}
 
+.form-input {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
 
-  
-  /* Estilos para la animación */
-  @keyframes fadeInRight {
-    from {
+.form-button {
+  text-align: center;
+}
+
+.button {
+  display: inline-block;
+  padding: 10px 20px;
+  background-color: #000000;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.footer-classic-list-social {
+  margin-top: 0px;
+  margin-bottom: 0px;
+  /* Posicion centrada */
+  text-align: center;
+}
+
+.rights {
+  /* Posicion centrada */
+  text-align: center;
+}
+
+/* Estilos para la animación */
+@keyframes fadeInRight {
+  from {
       opacity: 0;
       transform: translateX(20px);
-    }
-    to {
+  }
+  to {
       opacity: 1;
       transform: translateX(0);
-    }
   }
-  
-  @keyframes fadeInUp {
-    from {
+}
+
+@keyframes fadeInUp {
+  from {
       opacity: 0;
       transform: translateY(20px);
-    }
-    to {
+  }
+  to {
       opacity: 1;
       transform: translateY(0);
-    }
   }
-  
-  /* Aplicar animación a elementos */
-  .wow {
-    visibility: hidden;
-  }
-  
-  .wow.fadeInRight {
-    animation: fadeInRight 1s forwards;
-  }
-  
-  .wow.fadeInUp {
-    animation: fadeInUp 1s forwards;
-  }
+}
 
-  .button-default:hover {
-    background-color: #0010e9; /* Cambia el color de fondo al pasar el cursor */
-    color: #ffffff; /* Cambia el color del texto al pasar el cursor */
-  }
+/* Aplicar animación a elementos */
+.wow {
+  visibility: hidden;
+}
 
-  .list-social .icon {
-	position: relative;
-	text-align: center;
-	width: 38px;
-	height: 38px;
-	font-size: 18px;
-	line-height: 36px;
-	border-radius: 50%;
-    padding: 2px;
-	transition: all .25s ease;
-	z-index: 1;
+.wow.fadeInRight {
+  animation: fadeInRight 1s forwards;
+}
+
+.wow.fadeInUp {
+  animation: fadeInUp 1s forwards;
+}
+
+.button-default:hover {
+  background-color: #0010e9; /* Cambia el color de fondo al pasar el cursor */
+  color: #ffffff; /* Cambia el color del texto al pasar el cursor */
+}
+
+.list-social .icon {
+  position: relative;
+  text-align: center;
+  width: 38px;
+  height: 38px;
+  font-size: 18px;
+  line-height: 36px;
+  border-radius: 50%;
+  padding: 2px;
+  transition: all .25s ease;
+  z-index: 1;
 }
 
 .list-social .icon::after {
-	position: absolute;
-	content: '';
-	top: -1px;
-	right: -1px;
-	bottom: -1px;
-	left: -1px;
-	border-radius: inherit;
-	background: #9fd5ff;
-	transition: inherit;
-	transform: scale(0);
-	z-index: -1;
+  position: absolute;
+  content: '';
+  top: -1px;
+  right: -1px;
+  bottom: -1px;
+  left: -1px;
+  border-radius: inherit;
+  background: #9fd5ff;
+  transition: inherit;
+  transform: scale(0);
+  z-index: -1;
 }
 
 .list-social .icon:hover {
-	color: #151515;
-	border-color: transparent;
+  color: #151515;
+  border-color: transparent;
 }
 
 .list-social .icon:hover::after {
-	transform: none;
+  transform: none;
 }
 
 * + .list-social {
-	margin-top: 20px;
+  margin-top: 20px;
 }
 
 .ie-10 .list-social .icon::after,
 .ie-11 .list-social .icon::after,
 .ie-edge .list-social .icon::after {
-	transform: scale(0) translate3d(0, 0, 0);
+  transform: scale(0) translate3d(0, 0, 0);
 }
 
 .ie-10 .list-social .icon:hover::after,
 .ie-11 .list-social .icon:hover::after,
 .ie-edge .list-social .icon:hover::after {
-	transform: translate3d(0, 0, 0);
+  transform: translate3d(0, 0, 0);
+}
+
+/* Estilos responsive */
+@media (max-width: 768px) {
+  .container {
+      margin-top: 50px;
+      padding: 10px;
+  }
+
+  .d-inline-block {
+      font-size: 30px;
+  }
+
+  .subtitle-classic {
+      font-size: 14px;
+  }
+
+  .form-label {
+      margin-bottom: 10px;
+  }
+
+  .form-input {
+      padding: 8px;
+  }
+
+  .button {
+      padding: 8px 16px;
+  }
 }

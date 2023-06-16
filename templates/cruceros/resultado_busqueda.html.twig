@@ -34,17 +34,17 @@
 {% block content %}
 
 <style>
- p{
-  color: #000000;
-  font-weight: 700;
-}
+  p{
+    color: #000000;
+    font-weight: 700;
+  }
   .row {
     border: 1px solid #ccc;
     overflow: hidden;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     margin-bottom: 20px;
-    margin-left: 60px;
-    margin-right: 60px;
+    margin-left: 20px;
+    margin-right: 20px;
   }
 
   .card-img {
@@ -54,82 +54,107 @@
   }
 
   .card-body {
-    padding: 10px; /* Ajusta el espaciado interno del cuerpo de la tarjeta según tus necesidades */
+    padding: 10px;
   }
 
   .card-title {
-    /*color texto*/
     color: #1BCEEE;
     font-size: 1.5rem;
   }
 
- .card-text {
-  margin-top: 0;
-  margin-bottom: 5px; /* Ajusta el margen inferior según tus necesidades */
-  font-size: 14px;
-}
+  .card-text {
+    margin-top: 0;
+    margin-bottom: 5px;
+    font-size: 14px;
+  }
 
   .btn {
-  margin-right: 10px;
-  margin-left: 10px;
-   width: 80%;
- }
+    margin-right: 10px;
+    margin-left: 10px;
+    width: 80%;
+  }
 
-.row:hover {
-  background-color: #EBF5FB;
-  transition: background-color 2s ease;
-}
+  .row:hover {
+    background-color: #EBF5FB;
+    transition: background-color 2s ease;
+  }
 
-.row .col-md-5:hover .card-title{
-  color: #2E86C1;
-  transition: color 2s ease;
-}
+  .row .col-md-5:hover .card-title{
+    color: #2E86C1;
+    transition: color 2s ease;
+  }
 
-.row .col-md-5:hover .card-text {
-  color: #000000;
-  transition: color 2s ease;
-}
+  .row .col-md-5:hover .card-text {
+    color: #000000;
+    transition: color 2s ease;
+  }
 
+  .form-form {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    margin-left: 20px;
+    margin-right: 20px;
+    background-color: #A8D7DF;
+  }
 
-.form-form {
-  margin-top: 20px;
-  margin-bottom: 20px;
-  margin-left: 60px;
-  margin-right: 60px;
-  background-color: #A8D7DF;
-}
   h2{
     color: #000000;
-    /*centro de la pagina*/
     text-align: center;
     font-size: 30px;
+  }
+
+  .image-container {
+    position: relative;
+    display: inline-block;
+  }
+
+  .image-text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    color: white;
+    background-color: rgba(255, 255, 255, 0.8);
+    padding: 40px;
+  }
+
+  .align-self-center {
+    align-self: center;
+  }
+
+  .align-items-center {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  @media (max-width: 768px) {
+    .row {
+      margin-left: 10px;
+      margin-right: 10px;
     }
 
-.image-container {
-  position: relative;
-  display: inline-block;
-}
+    .card-img {
+      max-height: 300px;
+    }
 
-.image-text {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  text-align: center;
-  color: white;
-  background-color: rgba(255, 255, 255, 0.8);
-  padding: 40px;
-}
+    .card-title {
+      font-size: 1.2rem;
+    }
 
-.align-self-center {
-  align-self: center;
-}
+    .btn {
+      width: 100%;
+    }
 
-.align-items-center {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
+    h2 {
+      font-size: 24px;
+    }
+
+    .image-text {
+      padding: 20px;
+    }
+  }
 </style>
 
 <!-- BLUE HORIZON-->
@@ -138,8 +163,8 @@
 <div class="image-container">
   <img src="{{ asset('../images/barcos.jpg') }}" class="img-fluid" alt="Responsive image">
   <div class="image-text">
-<h2>¡Era esto justo lo que estabas buscando!</h2>
-<h2>¡No te lo pienses más y reserva ya!</h2>
+    <h2>¡Era esto justo lo que estabas buscando!</h2>
+    <h2>¡No te lo pienses más y reserva ya!</h2>
   </div>
 </div>
 
@@ -156,7 +181,6 @@
 <div class="row no-gutters">
   <div class="col-md-5">
     <img src="{{ crucero.imagen }}" alt="Imagen" class="card-img">
-
   </div>
 
   <div class="col-md-5">
@@ -178,9 +202,9 @@
   </div>
 </div>
 
-  {% endfor %}
+{% endfor %}
 
-  <div class="align-self-center align-items-center d-flex">
+<div class="align-self-center align-items-center d-flex">
   <a href="{{ path('inicio') }}" style="color: blue;">
     <h5 style="font-size: 16px;">Volver a la página de inicio</h5>
   </a>

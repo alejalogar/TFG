@@ -1,30 +1,30 @@
 body {
-    font-family: Arial, sans-serif;
-    background-image: url(../images/reservayaa.jpg);
-  }
-
-.container{
-    margin-top: 20px;
-    margin-bottom: 20px;
+  font-family: Arial, sans-serif;
+  background-image: url(../images/reservayaa.jpg);
 }
 
-.login-logo{
-    margin-bottom: 15px;
+.container {
+  margin-top: 20px;
+  margin-bottom: 20px;
 }
 
-.form-signin h1{
+.login-logo {
+  margin-bottom: 15px;
+}
+
+.form-signin h1 {
   font-size: 1px;
-  /*posicion centrada*/
+  /* Posicion centrada */
   text-align: center;
 }
 
-.form-group label{
+.form-group label {
   font-weight: normal;
   font-size: 15px;
   margin-bottom: 2px;
 }
 
-.form-signin{
+.form-signin {
   margin-bottom: 10px;
   margin-top: 10px;
 }
@@ -33,6 +33,18 @@ body {
   margin-bottom: 5px;
 }
 
+/* Estilos responsive */
+@media (max-width: 768px) {
+  .container {
+    margin-top: 10px;
+    margin-bottom: 10px;
+  }
 
+  .login-logo {
+    margin-bottom: 10px;
+  }
 
-  
+  .form-group label {
+    font-size: 13px;
+  }
+}
