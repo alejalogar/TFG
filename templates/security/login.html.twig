@@ -54,7 +54,7 @@
 
                 {% if app.user %}
                     Ya estás logueado como {{ app.user.username }}. <a href="{{ path('app_logout') }}"> Cerrar sesión </a>
-                {% endif %}
+                {% else %}
 
                 <div class="form-group">
                     <label for="inputEmail">Email</label>
@@ -76,7 +76,9 @@
                 <button class="btn btn-lg btn-primary" type="submit">Iniciar sesión</button>
                 <br>
                 <h5><a href="{{ path('register') }}">¿No tienes cuenta? Regístrate aquí</a></h5>
+                {% endif %}
             </form>
+            
         </div>
     </div>
 {% endblock %}
